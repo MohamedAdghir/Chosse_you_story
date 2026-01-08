@@ -9,13 +9,41 @@ def getOpt(textOpts="",inputOptText="",rangeList=[],exceptions=[],dictionary={})
         else:
             print("Invalid Options")
 
-password = "Alolb8*"
+password = "10101**A*"
 def checkPassword(password):
-    if len(password) not in range(8,12):
-        print("Invalid range")
-    elif not password:
-        print("hola")
-
+    if not 8 <= len(password) <= 12:
+        print("La contraseña debe tener entre 8 y 12 caracteres.")
+        return False
+    if " " in password:
+        print("La contraseña no puede contener espacios.")
+        return False
+    carac_upper = False
+    carac_lower = False
+    carac_digit = False
+    carac_special = False
+    for c in password:
+        if c.isupper():
+            carac_upper = True
+        elif c.islower():
+            carac_lower = True
+        elif c.isdigit():
+            carac_digit = True
+        elif not c.isalnum():
+            carac_special = True
+    if not carac_upper:
+        print("Falta al menos una letra mayúscula.")
+        return False
+    if not carac_lower:
+        print("Falta al menos una letra minúscula.")
+        return False
+    if not carac_digit:
+        print("Falta al menos un número.")
+        return False
+    if not carac_special:
+        print("Falta al menos un carácter especial.")
+        return False
+    return True
+checkPassword(password)
 nombre = ("Holaaaa")
 def checkUser(user):
     if len(user) not in range(6,10):
