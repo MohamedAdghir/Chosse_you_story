@@ -1,4 +1,5 @@
 import  datetime
+
 #Funcion de las opciones del menu
 def getOpt(textOpts="",inputOptText="",rangeList=[],exceptions=[],dictionary={}):
     while True:
@@ -9,6 +10,7 @@ def getOpt(textOpts="",inputOptText="",rangeList=[],exceptions=[],dictionary={})
             return opc
         else:
             print("Invalid Options")
+
 #Funcion de comprobar que la contraseña cumpla con los parametros
 def checkPassword(password):
     if not 8 <= len(password) <= 12:
@@ -43,6 +45,7 @@ def checkPassword(password):
         print("Falta al menos un carácter especial.")
         return False
     return True
+
 #Funcion de comprobar que el usuario cumpla con los parametros
 def checkUser(user):
     if len(user) not in range(6,10):
@@ -52,6 +55,7 @@ def checkUser(user):
         print("Only numers and characters")
         return False
     return True
+
 #Funcion para los encabezados
 def getHeadeForTableFromTuples(t_name_columns,t_size_columns,title=""):
     suma = 0
