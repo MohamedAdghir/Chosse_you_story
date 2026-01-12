@@ -1,0 +1,138 @@
+/* HEADER */
+
+.main-header {
+    width: 100%;
+    background: rgba(0, 10, 15, 0.55);
+    backdrop-filter: blur(6px);
+    border-bottom: 2px solid #00ffea;
+    position: relative;
+    z-index: 10;
+}
+.main-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #00ffee,
+        transparent
+    );
+    animation: energyFlow 3s linear infinite;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+.header-container .logo img {
+    transition: transform 0.4s ease, filter 0.4s ease;
+    height: 80px;
+    width: auto;
+}
+.header-container .logo img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 8px rgba(0,255,255,0.6));
+}
+.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+.menu ul li a {
+    position: relative;
+    padding-bottom: 4px;
+    text-decoration: none;
+    color: #00ffea;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.menu ul li a:hover {
+    color: #9ffcff;
+    text-shadow: 
+        0 0 6px rgba(0,255,255,0.6),
+        0 0 12px rgba(0,255,255,0.3);
+}
+.menu ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: #00ffee;
+    transition: width 0.3s ease;
+}
+.menu ul li a:hover::after {
+    width: 100%;
+}
+
+
+/* FOOTER */
+.main-footer {
+    position: relative;
+    width: 100%;
+    background: rgba(0, 10, 15, 0.55);
+    backdrop-filter: blur(6px);
+    padding: 20px 0;
+    margin-top: 80px;
+    box-shadow: 0 -10px 40px rgba(0, 255, 255, 0.08);
+}
+
+.main-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #00ffee,
+        transparent
+    );
+    animation: energyFlowFooter 4s linear infinite;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-container p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.5px;
+}
+
+.footer-container .social-icons a {
+    color: #00ffee;
+    margin-left: 18px;
+    font-size: 1.3rem;
+    transition: 
+        transform 0.3s ease,
+        text-shadow 0.3s ease,
+        color 0.3s ease;
+}
+
+.footer-container .social-icons a:hover {
+    color: #9ffcff;
+    transform: translateY(-3px);
+    text-shadow:
+        0 0 6px rgba(0,255,255,0.7),
+        0 0 14px rgba(0,255,255,0.4);
+}

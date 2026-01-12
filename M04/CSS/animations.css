@@ -1,0 +1,8 @@
+@keyframes energyFlow {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
+@keyframes energyFlowFooter {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
