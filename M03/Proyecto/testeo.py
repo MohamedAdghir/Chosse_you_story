@@ -31,8 +31,10 @@ def formatText(text, lenLine, split):
 
     return formatedText
 
+# Funcion para formatear textos en columnas
 def getFormatedBodyColumns(texts,lenLines,margin=2):
     formatedColumns = []
+    finalText = ""
     for i in range(len(texts)):
         formatedColumns.append([])
         formatedText = formatText(texts[i],lenLines[i],"\n")
@@ -42,9 +44,24 @@ def getFormatedBodyColumns(texts,lenLines,margin=2):
             end = formatedText.find("\n", start)
             formatedColumns[i].append(formatedText[start:end])
             start = end + 1
-    return formatedColumns
 
-columnas = getFormatedBodyColumns((text1,text1,text1),(20,30,50),margin=2)
-for columna in columnas:
-    print(columna)
-print(formatText(text1,20,"\n"))
+    maxLine = 0
+    for text in formatedColumns:
+        if len(text) > maxLine:
+            maxLine = len(text)
+            
+    for i in range(len(formatedColumns)):
+        while len(formatedColumns[i]) != maxLine:
+            formatedColumns[i].append("")
+
+    for i in range(maxLine):
+        for j in range(len(formatedColumns)):
+            finalText += formatedColumns[j][i].ljust(lenLines[j]," ")
+            if j != len(formatedColumns)-1:
+                finalText += "".ljust(margin," ")
+        finalText += "\n"
+
+    return finalText
+
+giga = getFormatedBodyColumns((text1,text2,text3,text1),(30,30,20,20),2)
+print(giga)
