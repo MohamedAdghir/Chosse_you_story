@@ -1,4 +1,5 @@
 import  datetime
+import time
 
 # Funcion para formatear texto
 def formatText(text, lenLine, split):
@@ -162,6 +163,17 @@ def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
 
     return resultado
 
+def writeText(texto, retraso_base=0.05):
+    for caracter in texto:
+        print(caracter, end='', flush=True)
+        
+        if caracter in ',;':
+            time.sleep(retraso_base * 8)  # pausa corta
+        elif caracter in '.!?':
+            time.sleep(retraso_base * 12)  # pausa larga
+        else:
+            time.sleep(retraso_base)  # retraso normal
+    print()  # salto de línea al final
 
 #print(getFormatedAnswers("1",texto,0,120))
 
