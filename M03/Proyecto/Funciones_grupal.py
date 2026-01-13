@@ -1,4 +1,66 @@
 import  datetime
+import time
+
+# Funcion para formatear texto
+def formatText(text, lenLine, split):
+    formatedText = ""
+    start = 0
+    end = 0
+
+    while end < len(text):
+        if text[end] == " ":
+            start = end + 1
+            end += lenLine + 1
+        else:
+            start = end
+            end += lenLine
+
+        if end >= len(text):
+            slicedText = text[start:]
+            formatedText += slicedText + "\n"
+        else:
+            if text[end] != " ":
+                space = text[start:end].rfind(" ")
+                if space != -1:
+                    end = start + space
+
+            slicedText = text[start:end]
+            formatedText += slicedText + split
+
+    return formatedText
+
+# Funcion para formatear textos en columnas
+def getFormatedBodyColumns(texts,lenLines,margin=2):
+    formatedColumns = []
+    finalText = ""
+    for i in range(len(texts)):
+        formatedColumns.append([])
+        formatedText = formatText(texts[i],lenLines[i],"\n")
+        start = 0
+        end = 0
+        for j in range(formatedText.count("\n")):
+            end = formatedText.find("\n", start)
+            formatedColumns[i].append(formatedText[start:end])
+            start = end + 1
+
+    maxLine = 0
+    for text in formatedColumns:
+        if len(text) > maxLine:
+            maxLine = len(text)
+            
+    for i in range(len(formatedColumns)):
+        while len(formatedColumns[i]) != maxLine:
+            formatedColumns[i].append("")
+
+    for i in range(maxLine):
+        for j in range(len(formatedColumns)):
+            finalText += formatedColumns[j][i].ljust(lenLines[j]," ")
+            if j != len(formatedColumns)-1:
+                finalText += "".ljust(margin," ")
+        finalText += "\n"
+
+    return finalText
+
 #Funcion de las opciones del menu
 def getOpt(textOpts="",inputOptText="",rangeList=[],exceptions=[],dictionary={}):
     while True:
@@ -9,6 +71,7 @@ def getOpt(textOpts="",inputOptText="",rangeList=[],exceptions=[],dictionary={})
             return opc
         else:
             print("Invalid Options")
+
 #Funcion de comprobar que la contraseña cumpla con los parametros
 def checkPassword(password):
     if not 8 <= len(password) <= 12:
@@ -43,6 +106,7 @@ def checkPassword(password):
         print("Falta al menos un carácter especial.")
         return False
     return True
+
 #Funcion de comprobar que el usuario cumpla con los parametros
 def checkUser(user):
     if len(user) not in range(6,10):
@@ -52,6 +116,7 @@ def checkUser(user):
         print("Only numers and characters")
         return False
     return True
+
 #Funcion para los encabezados
 def getHeadeForTableFromTuples(t_name_columns,t_size_columns,title=""):
     suma = 0
@@ -98,6 +163,17 @@ def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
 
     return resultado
 
+def writeText(texto, retraso_base=0.05):
+    for caracter in texto:
+        print(caracter, end='', flush=True)
+        
+        if caracter in ',;':
+            time.sleep(retraso_base * 8)  # pausa corta
+        elif caracter in '.!?':
+            time.sleep(retraso_base * 12)  # pausa larga
+        else:
+            time.sleep(retraso_base)  # retraso normal
+    print()  # salto de línea al final
 
 #print(getFormatedAnswers("1",texto,0,120))
 
