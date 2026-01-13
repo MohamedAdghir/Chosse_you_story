@@ -18,7 +18,7 @@ ADD CONSTRAINT chk_username_chars CHECK (username REGEXP '^[A-Za-z0-9]+$'); /* V
 ALTER TABLE USERS
 MODIFY password VARCHAR(12) NOT NULL, /* VARCHAR(12), no nulo */
 ADD CONSTRAINT chk_password_length CHECK (CHAR_LENGTH(password) BETWEEN 8 AND 12), /* La longitud debe ser entre 6 y 10 caracteres */
-ADD CONSTRAINT chk_password_complexity CHECK (password REGEXP '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])[^ ]+$'); /* Validar el input utilizando REGEXP */
+ADD CONSTRAINT chk_password_complexity CHECK (REGEXP_LIKE(password,'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])[^ ]+$','c')); /* Validar el input utilizando REGEXP */
 
 /* created_at */
 ALTER TABLE USERS
@@ -85,7 +85,7 @@ ADD PRIMARY KEY (id_adventure);
 
 /* name */
 ALTER TABLE ADVENTURE
-MODIFY name VARCHAR(20) NOT NULL,
+MODIFY name VARCHAR(50) NOT NULL,
 ADD UNIQUE (name);
 
 /* description */
@@ -239,7 +239,7 @@ MODIFY description TEXT NOT NULL;
 
 /* resolution */
 ALTER TABLE ADVENTURE_STEP_ANSWER
-MODIFY resolution TEXT NOT NULL;
+MODIFY resolution TEXT NULL;
 
 /* next_step */
 ALTER TABLE ADVENTURE_STEP_ANSWER

@@ -1,4 +1,6 @@
 
+import time
+
 text1 = "Narrador: Este no era el camino correcto hacia la sala de reuniones, y $NAME lo sabía perfectamente. Quizás quería hacer una parada en la sala de descanso de empleados primero, solo para admirarla."
 text2 = "Ah, sí. Sin duda, una habitación digna de admiración. Al fin y al cabo, había merecido la pena el desvío, solo por pasar unos momentos aquí, en esta sala inmaculada y bellamente construida. $NAME se quedó allí de pie, absorbiéndolo todo."
 text3 = "Narrador: Pero, ansioso por volver al trabajo, $NAME tomó la primera puerta abierta a su izquierda."
@@ -63,5 +65,17 @@ def getFormatedBodyColumns(texts,lenLines,margin=2):
 
     return finalText
 
-giga = getFormatedBodyColumns((text1,text2,text3,text1),(30,30,20,20),2)
-print(giga)
+def writeText(texto, retraso_base=0.05):
+    for caracter in texto:
+        print(caracter, end='', flush=True)
+        
+        if caracter in ',;':
+            time.sleep(retraso_base * 8)  # pausa corta
+        elif caracter in '.!?':
+            time.sleep(retraso_base * 12)  # pausa larga
+        else:
+            time.sleep(retraso_base)  # retraso normal
+    print()  # salto de línea al final
+
+texto = formatText(text2,50,"\n")
+escribir_con_efectos(texto, 0.05)
