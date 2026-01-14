@@ -82,5 +82,3 @@ def checkUserbdd(user,password):
         return -1
     else:
         return 1
-
-print(checkUserbdd("Tester","Passw0rd!"))
