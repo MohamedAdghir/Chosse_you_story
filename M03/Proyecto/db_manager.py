@@ -76,3 +76,27 @@ def get_user_ids():
 
 #print(get_user_ids())
 
+
+def get_adventures_with_chars():
+    connection = connect_to_db()
+    try:
+        with connection.cursor(pymysql.cursors.DictCursor) as cursor:
+            cursor.execute("SELECT a.id_adventure, a.name, a.description, ca.id_character FROM ADVENTURE a LEFT JOIN CHARACTER_ADVENTURE ca ON a.id_adventure = ca.id_adventure")
+            resultados = cursor.fetchall()
+            adventures = {}
+            for row in resultados:
+                adv_id = row["id_adventure"]
+                if adv_id not in adventures:
+                    adventures[adv_id] = {"Name": row["name"], "Description": row["description"],"Characters": []}
+                adventures[adv_id]["Characters"].append(row["id_character"])
+            return adventures
+    except pymysql.MySQLError as e:
+        print("Error al ejecutar la sentencia:",e)
+        return None
+    finally:
+        connection.close()
+
+print(get_adventures_with_chars())
+
+
+
