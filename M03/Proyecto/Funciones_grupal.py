@@ -2,6 +2,7 @@ import  datetime
 import time
 from  db_manager import *
 
+
 # Funcion para formatear texto
 def formatText(text, lenLine, split):
     formatedText = ""
@@ -67,8 +68,7 @@ def getOpt(textOpts="",inputOptText="",rangeList=[],exceptions=[],dictionary={})
     while True:
         print(textOpts)
         opc = input(inputOptText)
-        opc = int(opc)
-        if opc in rangeList or opc in exceptions or opc in dictionary.keys():
+        if opc in str(rangeList) or opc in exceptions or opc in dictionary.keys():
             return opc
         else:
             print("Invalid Options")
@@ -196,9 +196,7 @@ def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
 
 #getTableFromDict(tuple_of_keys,weigth_of_columns,diccionari)
 
-lista = get_users()
-usario = "Tester"
-print(lista)
+
 def user_exist(lista,usuario):
     lista = list(lista)
     if usuario in lista:
@@ -206,4 +204,4 @@ def user_exist(lista,usuario):
     else:
         return False
 
-print(user_exist(lista,usario))
+#print(user_exist(lista,usario))

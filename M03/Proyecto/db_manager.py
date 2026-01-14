@@ -2,7 +2,7 @@ import pymysql
 
 def connect_to_db():
     host = "192.168.20.166"
-    user = 'ibtipyuser'
+    user = 'pyuserremote'
     password = '1234567890'
     database = 'choose_your_story'
 
@@ -142,7 +142,7 @@ def get_id_bystep_adventure():
         connection.close()
        
 
-print(get_id_bystep_adventure())
+#print(get_id_bystep_adventure())
 def insertUser(user,password):
     connection = connect_to_db()
     try:
