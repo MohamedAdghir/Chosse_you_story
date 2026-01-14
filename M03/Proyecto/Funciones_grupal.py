@@ -1,5 +1,6 @@
 import  datetime
 import time
+from  db_manager import *
 
 # Funcion para formatear texto
 def formatText(text, lenLine, split):
@@ -194,5 +195,15 @@ def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
         print(texto)
 
 #getTableFromDict(tuple_of_keys,weigth_of_columns,diccionari)
-text1 = "Seguro que más de uno recuerda aquellos libros en los que podías elegir cómo\
-seguir con la aventura que estabas viviendo simplemente aleshores el resultat de fer la següent crida:"
+
+lista = get_users()
+usario = "Tester"
+print(lista)
+def user_exist(lista,usuario):
+    lista = list(lista)
+    if usuario in lista:
+        return True
+    else:
+        return False
+
+print(user_exist(lista,usario))

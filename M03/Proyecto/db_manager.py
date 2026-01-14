@@ -1,9 +1,9 @@
 import pymysql
 
 def connect_to_db():
-    host = 'localhost'
-    user = 'pyuser'
-    password = 'Python.user1'
+    host = "192.168.20.166"
+    user = 'pyuserremote'
+    password = 'Password1!'
     database = 'choose_your_story'
 
     try:
@@ -74,4 +74,5 @@ def get_user_ids():
     finally:
         connection.close()
 
-print(get_user_ids())
+#print(get_user_ids())
+
