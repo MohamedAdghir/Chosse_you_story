@@ -89,3 +89,23 @@ def insertUser(user,password):
         connection.close()
     
 #insertUser("jeffrey","Phreth!1")
+
+def get_first_step_adventure(adventure_id):
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = "select id_adventure_step from ADVENTURE_STEP where id_adventure = %s and first_step = 1"
+            cursor.execute(sql,(adventure_id))
+            resultado = cursor.fetchone()
+            if resultado is None:
+                return None
+            else:
+                return resultado["id_adventure_step"]
+    except pymysql.MySQLError as e:
+        print("Error:", e)
+    finally:
+        connection.close()
+
+#print(get_first_step_adventure(1))
+    
+        
