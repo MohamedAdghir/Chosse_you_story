@@ -76,6 +76,73 @@ def get_user_ids():
 
 #print(get_user_ids())
 
+
+def get_adventures_with_chars():
+    connection = connect_to_db()
+    try:
+        with connection.cursor(pymysql.cursors.DictCursor) as cursor:
+            cursor.execute("SELECT a.id_adventure, a.name, a.description, ca.id_character FROM ADVENTURE a LEFT JOIN CHARACTER_ADVENTURE ca ON a.id_adventure = ca.id_adventure")
+            resultados = cursor.fetchall()
+            adventures = {}
+            for row in resultados:
+                adv_id = row["id_adventure"]
+                if adv_id not in adventures:
+                    adventures[adv_id] = {"Name": row["name"], "Description": row["description"],"Characters": []}
+                adventures[adv_id]["Characters"].append(row["id_character"])
+            return adventures
+    except pymysql.MySQLError as e:
+        print("Error al ejecutar la sentencia:",e)
+        return None
+    finally:
+        connection.close()
+
+#print(get_adventures_with_chars())
+
+
+def get_id_bystep_adventure():
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = """
+                SELECT as_step.id_adventure_step, 
+                    as_step.description, 
+                    as_step.final_step, 
+                    asw.id_adventure_step_answer
+                FROM ADVENTURE_STEP as_step
+                LEFT JOIN ADVENTURE_STEP_ANSWER asw 
+                ON as_step.id_adventure_step = asw.id_adventure_step
+            """
+            cursor.execute(sql)
+            resultados = cursor.fetchall()
+
+            id_by_steps = {}
+
+            for row in resultados:
+                id_step = row['id_adventure_step']
+
+                if id_step not in id_by_steps:
+                    id_by_steps[id_step] = {
+                        'Description': row['description'],
+                        'answers_in_step': [],
+                        'Final_Step': row['final_step']
+                    }
+
+                if row['id_adventure_step_answer'] is not None:
+                    id_by_steps[id_step]['answers_in_step'].append(row['id_adventure_step_answer'])
+
+            for step in id_by_steps.values():
+                step['answers_in_step'] = tuple(step['answers_in_step'])
+
+            return id_by_steps
+
+    except Exception as e:
+        print("Error al ejecutar la sentencia:", e)
+        return None
+    finally:
+        connection.close()
+       
+
+print(get_id_bystep_adventure())
 def insertUser(user,password):
     connection = connect_to_db()
     try:
