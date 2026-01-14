@@ -109,3 +109,21 @@ def get_first_step_adventure(adventure_id):
 #print(get_first_step_adventure(1))
     
         
+def get_answers_bystep_adventure(adventure_id_step):
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = "select id_adventure_step_answer,id_adventure_step,description,resolution,next_step from ADVENTURE_STEP_ANSWER where id_adventure_step =  %s "
+            cursor.execute(sql,(adventure_id_step))
+            resultado = cursor.fetchall()
+            answers = {}
+            for fila in resultado:
+                clave = (fila["id_adventure_step_answer"],fila["id_adventure_step"])
+                answers[clave] = {"Description": fila["description"],"Resolution_Answer": fila["resolution"],"NextStep_Adventure": fila["next_step"]}
+            return answers
+    except pymysql.MySQLError as e:
+        print("Error:", e)
+    finally:
+        connection.close()
+
+#print(get_answers_bystep_adventure(1))
