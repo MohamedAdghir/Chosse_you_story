@@ -1,7 +1,32 @@
 body {
     margin: 0;
+    padding: 0;
     font-family: 'Orbitron', sans-serif;
-    background: url('../assets/images/visual/bg-cave-main.png') no-repeat center center fixed;
-    background-size: cover;
     color: #ffffff;
+    background-color: #050708;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; 
+    height: 100%;
+    background: url("../assets/images/particles.png") repeat;
+    opacity: 0.30;
+    pointer-events: none;
+    z-index: 0;
+    animation: particles-float 120s linear infinite;
+    background-color: #0a0a0a;
+}
+body::after {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    opacity: 0.20;
+    pointer-events: none;
+    z-index: 0;
+    animation: particles-float-reverse 180s linear infinite;
 }
