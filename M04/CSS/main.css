@@ -5,7 +5,7 @@ body {
     color: #ffffff;
     background-color: #050708;
 }
-body::before {
+.body-index::before {
     content: "";
     position: fixed;
     top: 0; left: 0;
@@ -18,7 +18,7 @@ body::before {
     animation: particles-float 120s linear infinite;
     background-color: #0a0a0a;
 }
-body::after {
+.body-index::after {
     content: "";
     position: fixed;
     bottom: 0;
