@@ -96,7 +96,49 @@ def get_adventures_with_chars():
     finally:
         connection.close()
 
-print(get_adventures_with_chars())
+#print(get_adventures_with_chars())
 
 
+def get_id_bystep_adventure():
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = """
+                SELECT as_step.id_adventure_step, 
+                    as_step.description, 
+                    as_step.final_step, 
+                    asw.id_adventure_step_answer
+                FROM ADVENTURE_STEP as_step
+                LEFT JOIN ADVENTURE_STEP_ANSWER asw 
+                ON as_step.id_adventure_step = asw.id_adventure_step
+            """
+            cursor.execute(sql)
+            resultados = cursor.fetchall()
 
+            id_by_steps = {}
+
+            for row in resultados:
+                id_step = row['id_adventure_step']
+
+                if id_step not in id_by_steps:
+                    id_by_steps[id_step] = {
+                        'Description': row['description'],
+                        'answers_in_step': [],
+                        'Final_Step': row['final_step']
+                    }
+
+                if row['id_adventure_step_answer'] is not None:
+                    id_by_steps[id_step]['answers_in_step'].append(row['id_adventure_step_answer'])
+
+            for step in id_by_steps.values():
+                step['answers_in_step'] = tuple(step['answers_in_step'])
+
+            return id_by_steps
+
+    except Exception as e:
+        print("Error al ejecutar la sentencia:", e)
+        return None
+    finally:
+        connection.close()
+
+print(get_id_bystep_adventure())
