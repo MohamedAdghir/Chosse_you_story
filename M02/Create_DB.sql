@@ -10,7 +10,7 @@ CREATE TABLE USERS (
     username VARCHAR(10),
     password VARCHAR(12),
     created_at TIMESTAMP,
-    created_by VARCHAR(20),
+    created_by VARCHAR(50),
     updated_at TIMESTAMP,
     updated_by VARCHAR(20)
 );
@@ -21,7 +21,7 @@ CREATE TABLE CHARACTERS (
     name VARCHAR(20),
     description TEXT, /* PREGUNTAR QUE PASA CON LA DESCRIPCIÓN <------------------------ */
     created_at TIMESTAMP,
-    created_by VARCHAR(20),
+    created_by VARCHAR(50),
     updated_at TIMESTAMP,
     updated_by VARCHAR(20)
 );
@@ -31,7 +31,7 @@ CREATE TABLE ADVENTURE (
     name VARCHAR(40),
     description TEXT,
     created_at TIMESTAMP,
-    created_by VARCHAR(20),
+    created_by VARCHAR(50),
     updated_at TIMESTAMP,
     updated_by VARCHAR(20)
 );
@@ -40,7 +40,7 @@ CREATE TABLE CHARACTER_ADVENTURE (
     id_character INT,
     id_adventure INT,
     created_at TIMESTAMP,
-    created_by VARCHAR(20),
+    created_by VARCHAR(50),
     updated_at TIMESTAMP,
     updated_by VARCHAR(20)
 );
@@ -52,7 +52,7 @@ CREATE TABLE ADVENTURE_STEP (
     first_step BOOLEAN,
     final_step BOOLEAN,
     created_at TIMESTAMP,
-    created_by VARCHAR(20),
+    created_by VARCHAR(50),
     updated_at TIMESTAMP,
     updated_by VARCHAR(20)
 );
@@ -64,7 +64,7 @@ CREATE TABLE ADVENTURE_STEP_ANSWER (
     resolution TEXT,
     next_step INT,
     created_at TIMESTAMP,
-    created_by VARCHAR(20),
+    created_by VARCHAR(50),
     updated_at TIMESTAMP,
     updated_by VARCHAR(20)
 );

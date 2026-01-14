@@ -74,4 +74,13 @@ def get_user_ids():
     finally:
         connection.close()
 
-print(get_user_ids())
+def checkUserbdd(user,password):
+    existingUsers = get_users()
+    if user not in existingUsers:
+        return 0
+    elif existingUsers[user]["password"] != password:
+        return -1
+    else:
+        return 1
+
+print(checkUserbdd("Tester","Passw0rd!"))
