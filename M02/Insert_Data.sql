@@ -13,9 +13,13 @@ VALUES ('Makoke', CURRENT_USER()),
 INSERT INTO ADVENTURE (name, description, created_by)
 VALUES ('Aventura de testeo', 'Una descripción lo suficientemente larga como para comprobar que el efecto de los formateos de texto queden efectivamente bien cuando las apliquemos realmente.', CURRENT_USER());
 
+/* Personajes de la aventura de prueba */
+INSERT INTO CHARACTER_ADVENTURE (id_character, id_adventure, created_by)
+VALUES (1,1,CURRENT_USER()), (2,1,CURRENT_USER());
+
 /* Pasos y respuestas de la aventura */
 INSERT INTO ADVENTURE_STEP (id_adventure, description, first_step, final_step, created_by)
-VALUES (1, 'Este es el tutorial para aprender a jugar al juego.', TRUE, FALSE, CURRENT_USER()),
+VALUES (1, 'Este es el tutorial para aprender a jugar al juego, $NAME.', TRUE, FALSE, CURRENT_USER()),
        (1, 'Te dijimos que si la pulsas ibas a morir.', FALSE, TRUE, CURRENT_USER()),
        (1, 'Pero las cosas no seran tan faciles como esto.', FALSE, FALSE, CURRENT_USER()),
        (1, 'Terminas sin hacer nada y mueres de aburrimiento.', FALSE, TRUE, CURRENT_USER()),
