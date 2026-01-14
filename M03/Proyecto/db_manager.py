@@ -194,3 +194,11 @@ def get_answers_bystep_adventure(adventure_id_step):
         connection.close()
 
 #print(get_answers_bystep_adventure(1))
+def checkUserbdd(user,password):
+    existingUsers = get_users()
+    if user not in existingUsers:
+        return 0
+    elif existingUsers[user]["password"] != password:
+        return -1
+    else:
+        return 1

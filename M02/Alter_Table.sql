@@ -27,7 +27,7 @@ MODIFY created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
 /* created_by */
 ALTER TABLE USERS
-MODIFY created_by VARCHAR(20) NOT NULL ;
+MODIFY created_by VARCHAR(50) NOT NULL ;
 /* VARCHAR(20), no nulo, por defecto será el usuario actual, el que este introduciendo los datos */
 
 /* updated_at */
@@ -61,7 +61,7 @@ MODIFY created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
 /* created_by */
 ALTER TABLE CHARACTERS
-MODIFY created_by VARCHAR(20) NOT NULL ;
+MODIFY created_by VARCHAR(50) NOT NULL ;
 /* VARCHAR(20), no nulo, por defecto será el usuario actual, el que este introduciendo los datos */
 
 /* updated_at */
@@ -99,7 +99,7 @@ MODIFY created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
 /* created_by */
 ALTER TABLE ADVENTURE
-MODIFY created_by VARCHAR(20) NOT NULL ;
+MODIFY created_by VARCHAR(50) NOT NULL ;
 /* VARCHAR(20), no nulo, por defecto será el usuario actual, el que este introduciendo los datos */
 
 /* updated_at */
@@ -148,7 +148,7 @@ MODIFY created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
 /* created_by */
 ALTER TABLE CHARACTER_ADVENTURE
-MODIFY created_by VARCHAR(20) NOT NULL ;
+MODIFY created_by VARCHAR(50) NOT NULL ;
 /* VARCHAR(20), no nulo, por defecto será el usuario actual, el que este introduciendo los datos */
 
 /* updated_at */
@@ -200,7 +200,7 @@ MODIFY created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
 /* created_by */
 ALTER TABLE ADVENTURE_STEP
-MODIFY created_by VARCHAR(20) NOT NULL ;
+MODIFY created_by VARCHAR(50) NOT NULL ;
 /* VARCHAR(20), no nulo, por defecto será el usuario actual, el que este introduciendo los datos */
 
 /* updated_at */
@@ -257,7 +257,7 @@ MODIFY created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
 /* created_by */
 ALTER TABLE ADVENTURE_STEP_ANSWER
-MODIFY created_by VARCHAR(20) NOT NULL ;
+MODIFY created_by VARCHAR(50) NOT NULL ;
 /* VARCHAR(20), no nulo, por defecto será el usuario actual, el que este introduciendo los datos */
 
 /* updated_at */
