@@ -1,0 +1,96 @@
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes particles-float {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 800px 1200px;
+    }
+}
+@keyframes particles-float-reverse {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -600px -900px;
+    }
+}
+@supports (animation-timeline: view()) {
+  .reveal-step {
+    animation-name: revealFade;
+    animation-duration: 1s;
+    animation-timeline: view();
+    animation-range: entry 0% exit 40%;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes revealFade {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@supports not (animation-timeline: view()) {
+  .reveal-step {
+    animation: revealFallback 1s ease forwards;
+  }
+
+  @keyframes revealFallback {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+.paths-svg path {
+  fill: none;
+  stroke: #00ffee;
+  stroke-width: 2;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+}
+@keyframes drawPath {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+@supports (animation-timeline: view()) {
+  .paths-svg path {
+    animation-name: drawPath;
+    animation-duration: 1.5s;
+    animation-timeline: view();
+    animation-range: entry 0% exit 60%;
+    animation-fill-mode: forwards;
+  }
+
+  .paths-svg path:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+
+  .paths-svg path:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+
+  .paths-svg path:nth-child(4) {
+    animation-delay: 0.9s;
+  }
+}
