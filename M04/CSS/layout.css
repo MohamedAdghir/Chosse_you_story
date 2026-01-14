@@ -1,0 +1,265 @@
+/* HEADER */
+
+.main-header {
+    width: 100%;
+    background: rgba(0, 10, 15, 0.55);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid #00ffea;
+    position: relative;
+    z-index: 10;
+}
+.main-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,transparent,#00ffee,transparent);
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.header-container .logo img {
+    height: 100px;
+    width: auto;
+    transform: scale(1.50);
+    filter: drop-shadow(0 0 12px #00FFFF);
+}
+.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+.menu ul li a {
+    position: relative;
+    padding-bottom: 4px;
+    text-decoration: none;
+    color: #00ffea;
+    font-weight: bold;
+}
+.menu ul li a:hover {
+    color: #9ffcff;
+    
+}
+.menu ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: #00ffee;
+    transition: width 0.3s ease;
+}
+.menu ul li a:hover::after {
+    width: 100%;
+}
+.menu a.active {
+    text-shadow: 0 0 6px rgba(0,255,255,0.6),0 0 12px rgba(0,255,255,0.3);
+}
+
+
+
+/* FOOTER */
+.main-footer {
+    position: relative;
+    width: 100%;
+    background: rgba(0, 10, 15, 0.55);
+    backdrop-filter: blur(5px);
+    padding: 20px 0;
+    margin-top: 120px;
+    box-shadow: 0 -10px 40px rgba(0, 255, 255, 0.08);
+    z-index: 20;
+}
+
+.main-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,transparent,#00ffee,transparent);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-container p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.5px;
+}
+
+.footer-container .material-icons a {
+    color: #00ffee;
+    margin-left: 18px;
+    font-size: 1.3rem;
+    transition: 
+        transform 0.3s ease,
+        text-shadow 0.3s ease,
+        color 0.3s ease;
+}
+
+.footer-container .material-icons a:hover {
+    color: #9ffcff;
+    transform: translateY(-3px);
+    text-shadow:
+        0 0 6px rgba(0,255,255,0.7),
+        0 0 14px rgba(0,255,255,0.4);
+}
+
+
+/* SECCION HERO */
+.hero {
+  min-height: 70vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 10%;
+  background-image: url('../assets/images/bg-cave-main.png');
+  background-size: cover;
+  background-position: center;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(to bottom,rgba(5,7,8,0) 0%, #050708 100%);
+
+  pointer-events: none;
+}
+.hero-content {
+    max-width: 520px;
+    z-index: 2;
+    animation: heroFadeIn 1.4s ease forwards;
+}
+.section-how {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+.svg-story {
+  text-align: center;
+  padding: 120px 10% 140px;
+}
+
+.svg-story h2 {
+  color: #00ffee;
+  margin-bottom: 40px;
+}
+
+.paths-svg {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto 30px;
+  display: block;
+}
+
+.svg-story p {
+  max-width: 500px;
+  margin: 0 auto;
+  opacity: 0.85;
+}
+.instructions {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(to left, #03142a, #111f2b);
+  padding: 0 10%;
+  padding-top: 50px;
+  overflow: hidden;
+}
+
+.instructions::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url('../assets/images/particles.png') repeat;
+  opacity: 0.25;
+  pointer-events: none;
+  animation: particles-float-reverse 200s linear infinite;
+}
+.instructions-intro {
+  background: linear-gradient(to bottom, #111f2b, #03142a);
+  max-width: 900px;
+  margin: 80px auto 60px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+.instructions-intro h1 {
+    color:#00ffee;
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+}
+.instructions-intro p {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.6rem;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  font-family: 'Inter', sans-serif;
+  color: #cfcfcf;
+  font-size: 1.1rem;
+}
+
+.instructions-steps {
+  max-width: 1000px;
+  margin: 0 auto 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 0 20px;
+}
+
+.instruction-step {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.step-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+.step-text h2 {
+  font-family: 'Cinzel', serif;
+  margin-bottom: 12px;
+}
+
+.step-text p {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: #d0d0d0;
+}
