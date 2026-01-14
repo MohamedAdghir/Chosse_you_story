@@ -2,8 +2,8 @@ import pymysql
 
 def connect_to_db():
     host = "192.168.20.166"
-    user = 'pyuserremote'
-    password = 'Password1!'
+    user = 'ibtipyuser'
+    password = '1234567890'
     database = 'choose_your_story'
 
     try:
@@ -76,3 +76,16 @@ def get_user_ids():
 
 #print(get_user_ids())
 
+def insertUser(user,password):
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = "insert into USERS (username,password,created_by) values (%s, %s,CURRENT_USER())"
+            cursor.execute(sql,(user,password))
+            connection.commit()
+    except pymysql.MySQLError as e:
+        print("Error al insertar el usuario:", e)
+    finally:
+        connection.close()
+    
+#insertUser("jeffrey","Phreth!1")
