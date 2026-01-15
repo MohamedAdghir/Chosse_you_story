@@ -9,6 +9,7 @@ while flg_salir:
         opc = int(opc)
         if opc == 1:
             print("Login")
+            login_name = input("")
             menu_general = "Play"
         elif opc == 2:
             print("Create User")
@@ -21,6 +22,12 @@ while flg_salir:
                     name = input("Usename:\n")
                 else:
                     break
+            passw = input("Password:\n")
+            while True:
+                if not checkPassword(passw):
+                    passw = input("Password:\n")
+                break
+            insertUser(name,passw)
             menu_general = "Play"
         elif opc == 3:
             print("Replay Adventure")

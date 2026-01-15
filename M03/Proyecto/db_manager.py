@@ -1,7 +1,7 @@
 import pymysql
 
 def connect_to_db():
-    host = "192.168.20.166"
+    host = "192.168.23.36"
     user = 'pyuserremote'
     password = '1234567890'
     database = 'choose_your_story'
