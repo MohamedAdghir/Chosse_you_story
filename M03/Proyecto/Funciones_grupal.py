@@ -213,7 +213,7 @@ def user_exist(lista,usuario):
     else:
         return False
 
-print(user_exist(lista,usario))
+#print(user_exist(lista,usario))
 
 
 
@@ -221,11 +221,11 @@ def getFormatedAdventures():
     adventures = get_adventures_with_chars()
     cadena = ""
     for key in adventures:
-        cadena += "{:<30}{:<30}{:<70}".format(key,adventures[key]["name"],adventures[key]["Description"]) + "\n\n"
+        cadena += "{:<30}{:<30}{:<70}".format(key,adventures[key]["Name"],adventures[key]["Description"]) + "\n\n"
     getHeadeForTableFromTuples(("Id Adventure", "Adventure", "Description"), (30, 30, 70), "Adventures")
     print(cadena)
 
-#getFormatedAdventures()
+getFormatedAdventures()
 
 
 

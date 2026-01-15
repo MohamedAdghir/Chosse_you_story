@@ -2,7 +2,7 @@ import pymysql
 from Funciones_grupal import *
 
 def connect_to_db():
-    host = "192.168.20.166"
+    host = "localhost"
     user = 'ibtipyuser'
     password = '1234567890'
     database = 'choose_your_story'
@@ -174,7 +174,7 @@ def get_first_step_adventure(adventure_id):
     finally:
         connection.close()
 
-#print(get_first_step_adventure(1))
+print(get_first_step_adventure(1))
     
         
 def get_answers_bystep_adventure(adventure_id_step):
