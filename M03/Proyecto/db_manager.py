@@ -142,7 +142,7 @@ def get_id_bystep_adventure():
         connection.close()
        
 
-print(get_id_bystep_adventure())
+#print(get_id_bystep_adventure())
 def insertUser(user,password):
     connection = connect_to_db()
     try:
