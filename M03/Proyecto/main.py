@@ -1,23 +1,27 @@
 from Funciones_grupal import *
 from  Variables import *
-
+from  db_manager import *
 flg_salir = True
-flg_00 = True
-flg_01 = False
-flg_02 = False
-fgl_03 = False
-fgl_04 = False
 
-menu_state = "principal"
+menu_general = "Principal"
 
 while flg_salir:
-    while menu_state == "principal":
-        opc = getOpt("1)Login\n2)Create user\n3)Replay Adventure\n4)Reports\n5)Exit","\nElige tu opción:",[1, 2, 3, 4,5],[],{})
+    while menu_general == "Principal":
+        opc = getOpt("1)Login\n2)Create user\n3)Replay Adventure\n4)Reports\n5)Exit","\nElige tu opción:\n",[1, 2, 3, 4,5],[],{})
         opc = int(opc)
+        print(get_users())
         if opc == 1:
-            print("Login")
-            login_name = input("Username")
-            menu_general = "Play"
+            for i in range(3,0,-1):
+                login_name = input("Username:\n")
+                login_passw = input("Password:\n")
+                opc = checkUserbdd(login_name, login_passw)
+                if opc == 0:
+                    print("The user does not exist. You have {} more attempts.".format(i))
+                elif opc == -1:
+                    print("The password is incorrect, please try again.You have {} more attempts.".format(i))
+                else:
+                    menu_general = "Play"
+                    break
         elif opc == 2:
             print("Create User")
             name = input("Usename:\n")
