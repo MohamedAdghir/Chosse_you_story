@@ -2,7 +2,7 @@ import pymysql
 from Funciones_grupal import *
 
 def connect_to_db():
-    host = "localhost"
+    host = "127.0.0.1"
     user = 'ibtipyuser'
     password = '1234567890'
     database = 'choose_your_story'
