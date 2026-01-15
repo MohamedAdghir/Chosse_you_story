@@ -1,18 +1,24 @@
 from Funciones_grupal import *
 from  Variables import *
 
+flg_salir = True
+flg_00 = True
+flg_01 = False
+flg_02 = False
+fgl_03 = False
+fgl_04 = False
+
+menu_state = "principal"
 
 while flg_salir:
-    while flg_00:
+    while menu_state == "principal":
         opc = getOpt("1)Login\n2)Create user\n3)Replay Adventure\n4)Reports\n5)Exit","\nElige tu opción:",[1, 2, 3, 4,5],[],{})
         if opc == 1:
             print("Login")
-            flg_01 = True
-            flg_00 = False
+            menu_state = "user_manager"
         elif opc == 2:
             print("Create User")
-            flg_01 = True
-            flg_00 = False
+            menu_state = "user_manager"
         elif opc == 3:
             print("Replay Adventure")
         elif opc == 4:
