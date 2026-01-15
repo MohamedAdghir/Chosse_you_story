@@ -225,7 +225,7 @@ def getFormatedAdventures():
     getHeadeForTableFromTuples(("Id Adventure", "Adventure", "Description"), (30, 30, 70), "Adventures")
     print(cadena)
 
-getFormatedAdventures()
+#getFormatedAdventures()
 
 
 

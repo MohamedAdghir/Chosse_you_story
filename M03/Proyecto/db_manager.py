@@ -3,14 +3,16 @@ from Funciones_grupal import *
 
 def connect_to_db():
     host = "127.0.0.1"
+    port = 3307
     user = 'ibtipyuser'
     password = '1234567890'
-    database = 'Choose_your_story'
+    database = 'choose_your_story'
 
     try:
         connection = pymysql.connect(
             host=host,
             user=user,
+            port=port,
             password=password,
             database=database,
             cursorclass=pymysql.cursors.DictCursor
@@ -38,6 +40,7 @@ def get_characters():
     finally:
         connection.close()
 
+print(get_characters())
 def get_users():
     connection = connect_to_db()
     try:
@@ -143,7 +146,7 @@ def get_id_bystep_adventure():
         connection.close()
        
 
-print(get_id_bystep_adventure())
+#print(get_id_bystep_adventure())
 def insertUser(user,password):
     connection = connect_to_db()
     try:
@@ -174,7 +177,7 @@ def get_first_step_adventure(adventure_id):
     finally:
         connection.close()
 
-print(get_first_step_adventure(1))
+#print(get_first_step_adventure(1))
     
         
 def get_answers_bystep_adventure(adventure_id_step):
