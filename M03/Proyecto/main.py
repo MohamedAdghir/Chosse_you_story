@@ -8,10 +8,10 @@ flg_02 = False
 fgl_03 = False
 fgl_04 = False
 
-menu_state = "principal"
+menu_general = "principal"
 
 while flg_salir:
-    while menu_state == "principal":
+    while menu_general == "principal":
         opc = getOpt("1)Login\n2)Create user\n3)Replay Adventure\n4)Reports\n5)Exit","\nElige tu opción:",[1, 2, 3, 4,5],[],{})
         opc = int(opc)
         if opc == 1:
@@ -46,6 +46,7 @@ while flg_salir:
             flg_salir = False
 
             menu_general = ""
+
     while menu_general == "Play":
         opc = getOpt("\n1)Logout\n2)Play\n3)Replay Adventure\n4)Reports\n5)Exit", "\nElige tu opción:",
                      [1, 2, 3, 4, 5], [], {})
@@ -65,6 +66,7 @@ while flg_salir:
             print("Exit")
             flg_salir = False
             menu_general = ""
+
     while menu_general == "Reports":
         opc = getOpt("\n1)Most used answer\n2)PLayer with more games played\n3)Games played by user\n4)Back", "\nElige tu opción:",
                      [1, 2, 3, 4], [], {})

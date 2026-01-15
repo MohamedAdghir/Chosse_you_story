@@ -1,14 +1,16 @@
 import pymysql
 
 def connect_to_db():
-    host = "localhost"
-    user = 'pyuser'
+    host = '127.0.0.1'  # localhost
+    port = 3307          # puerto del túnel
+    user = 'mohapyuser'
     password = '1234567890'
     database = 'choose_your_story'
 
     try:
         connection = pymysql.connect(
             host=host,
+            port=port,
             user=user,
             password=password,
             database=database,
@@ -202,3 +204,5 @@ def checkUserbdd(user,password):
         return -1
     else:
         return 1
+
+print(get_characters())
