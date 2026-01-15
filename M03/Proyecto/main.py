@@ -9,7 +9,7 @@ while flg_salir:
         opc = int(opc)
         if opc == 1:
             print("Login")
-            login_name = input("")
+            login_name = input("Username")
             menu_general = "Play"
         elif opc == 2:
             print("Create User")
