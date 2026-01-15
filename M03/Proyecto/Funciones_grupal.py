@@ -2,6 +2,13 @@ import  datetime
 import time
 from  db_manager import *
 
+flg_salir = True
+flg_00 = True
+flg_01 = False
+flg_02 = False
+fgl_03 = False
+fgl_04 = False
+
 # Funcion para formatear texto
 def formatText(text, lenLine, split):
     formatedText = ""
@@ -207,3 +214,18 @@ def user_exist(lista,usuario):
         return False
 
 print(user_exist(lista,usario))
+
+
+
+def getFormatedAdventures():
+    adventures = get_adventures_with_chars()
+    cadena = ""
+    for key in adventures:
+        cadena += "{:<30}{:<30}{:<70}".format(key,adventures[key]["name"],adventures[key]["Description"]) + "\n\n"
+    getHeadeForTableFromTuples(("Id Adventure", "Adventure", "Description"), (30, 30, 70), "Adventures")
+    print(cadena)
+
+#getFormatedAdventures()
+
+
+

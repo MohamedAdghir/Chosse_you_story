@@ -1,4 +1,5 @@
 import pymysql
+from Funciones_grupal import *
 
 def connect_to_db():
     host = "192.168.20.166"
@@ -202,3 +203,4 @@ def checkUserbdd(user,password):
         return -1
     else:
         return 1
+    
