@@ -5,7 +5,7 @@ def connect_to_db():
     host = "127.0.0.1"
     user = 'ibtipyuser'
     password = '1234567890'
-    database = 'choose_your_story'
+    database = 'Choose_your_story'
 
     try:
         connection = pymysql.connect(
