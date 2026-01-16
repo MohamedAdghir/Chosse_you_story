@@ -1,7 +1,14 @@
 import  datetime
 import time
+import os
 from db_manager import *
 
+# Funciones chidas
+def limpiar_terminal():
+    if os.name == 'nt':  # Windows
+        os.system('cls')
+    else:  # Linux y macOS
+        os.system('clear')
 
 flg_salir = True
 flg_00 = True
@@ -73,12 +80,19 @@ def getFormatedBodyColumns(texts,lenLines,margin=2):
 #Funcion de las opciones del menu
 def getOpt(textOpts="",inputOptText="",rangeList=[],exceptions=[],dictionary={}):
     while True:
+        limpiar_terminal()
         print(textOpts)
         opc = input(inputOptText)
         if opc in str(rangeList) or opc in exceptions or opc in dictionary.keys():
             return opc
         else:
             print("Invalid Options")
+        opc = input(inputOptText).strip()
+        if opc in opciones_validas:
+            return opc
+
+        print("Opción inválida. Intenta de nuevo.\n")
+        input("Enter para continuar")
 
 #Funcion de comprobar que la contraseña cumpla con los parametros
 def checkPassword(password):
@@ -138,8 +152,8 @@ def getHeadeForTableFromTuples(t_name_columns,t_size_columns,title=""):
 
 # Funcion que crea un header
 def getHeader(text):
-    texto = "".center(120,"*") + "\n" + text.center(120,"=") + "\n" + "".center(120,"*")
-    print(texto)
+    texto = "".center(105,"*") + "\n" + text.center(105,"=") + "\n" + "".center(105,"*")
+    return texto
 
 texto = "Escoge el camino mas seguro para poder escapar del hombre lobo y luego poder ir a la  casa de abuela a cuidarla"
 def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
@@ -203,13 +217,10 @@ def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
 
 #getTableFromDict(tuple_of_keys,weigth_of_columns,diccionari)
 
-<<<<<<< HEAD
 #lista = get_users()
 #usario = "Tester"
 #print(lista)
-=======
 
->>>>>>> Adghir
 def user_exist(lista,usuario):
     lista = list(lista)
     if usuario in lista:
@@ -238,4 +249,4 @@ def getFormatedAdventures():
 
 
 
-#print(getFormatedBodyColumns("fdgdf",[9,4]))
+#print(user_exist(lista,usario))
