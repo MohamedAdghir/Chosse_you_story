@@ -88,12 +88,12 @@ while flg_salir:
 
     while menu_general == "game_loop":
 
-        # ----- Aquí tendrás que elegir la aventura -----
-
         # Supondremos que ya hemos elegido la aventura...
         adventures = get_adventures_with_chars()
         characters = get_characters()
-        selectedAdventure = 1
+
+        opc = getOpt(getFormatedAdventures(), "Selecciona una aventura (0 para volver atrás): ", adventures,[0])
+        selectedAdventure = int(opc)
 
         # ----- Elegir el personaje para la aventura: -----
         characterSelectorDisplay = getHeader(adventures[selectedAdventure]["Name"]) + "\n"
@@ -104,3 +104,4 @@ while flg_salir:
             characterSelectorDisplay += "{:3}) {:50}\n".format(character,characters[character])
         opc = getOpt(characterSelectorDisplay, "Selecciona un personaje (0 para volver atrás): ", adventures[selectedAdventure]["Characters"],[0])
         opc = int(opc)
+        

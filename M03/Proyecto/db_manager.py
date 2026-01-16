@@ -1,5 +1,4 @@
 import pymysql
-from Funciones_grupal import *
 
 def connect_to_db():
     host = "127.0.0.1"
@@ -178,7 +177,6 @@ def get_first_step_adventure(adventure_id):
         connection.close()
 
 #print(get_first_step_adventure(1))
-    
         
 def get_answers_bystep_adventure(adventure_id_step):
     connection = connect_to_db()
