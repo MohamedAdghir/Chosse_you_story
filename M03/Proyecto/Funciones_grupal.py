@@ -152,7 +152,7 @@ def getHeader(text):
 
 texto = "Escoge el camino mas seguro para poder escapar del hombre lobo y luego poder ir a la  casa de abuela a cuidarla"
 def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
-    prefijo = "{} ) ".format(id_respuesta)
+    prefijo = margen_derecho*" "+"{}) ".format(id_respuesta)
     sangria = " " * len(prefijo)
 
     resultado = prefijo
@@ -180,7 +180,7 @@ def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
 
     return resultado
 
-#print(getFormatedAnswers(1,texto,105,2))
+print(getFormatedAnswers(1,texto,105,3))
 def writeText(texto, retraso_base=0.05):
     for caracter in texto:
         print(caracter, end='', flush=True)
