@@ -60,7 +60,6 @@ def getFormatedBodyColumns(texts,lenLines,margin=2):
             if j != len(formatedColumns)-1:
                 finalText += "".ljust(margin," ")
         finalText += "\n"
-
     return finalText
 
 #Funcion de las opciones del menu

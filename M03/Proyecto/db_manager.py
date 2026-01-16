@@ -1,8 +1,9 @@
 import pymysql
 
 def connect_to_db():
-    host = "192.168.23.36"
-    user = 'pyuserremote'
+    host = "127.0.0.1"
+    user = 'mohapyuser'
+    port = 3307
     password = '1234567890'
     database = 'choose_your_story'
 
@@ -10,6 +11,7 @@ def connect_to_db():
         connection = pymysql.connect(
             host=host,
             user=user,
+            port=port,
             password=password,
             database=database,
             cursorclass=pymysql.cursors.DictCursor
