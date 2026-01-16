@@ -3,8 +3,8 @@ from Funciones_grupal import *
 
 def connect_to_db():
     host = "127.0.0.1"
+    user = 'mohapyuser'
     port = 3307
-    user = 'ibtipyuser'
     password = '1234567890'
     database = 'choose_your_story'
 
@@ -165,7 +165,7 @@ def get_first_step_adventure(adventure_id):
     connection = connect_to_db()
     try:
         with connection.cursor() as cursor:
-            sql = "select id_adventure_step from ADVENTURE_STEP where id_adventure = %s and first_step = 1"
+            sql = ""
             cursor.execute(sql,(adventure_id))
             resultado = cursor.fetchone()
             if resultado is None:
@@ -206,3 +206,34 @@ def checkUserbdd(user,password):
         return -1
     else:
         return 1
+
+
+def most_played_player():
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = """
+                     SELECT 
+                       u.username AS "NOMBRE USUARIO", 
+                       COUNT(g.id_game) AS "PARTIDAS JUGADAS"
+                     FROM 
+                        USERS u
+                     JOIN 
+                         GAME g ON u.id_user = g.id_user 
+                     GROUP BY 
+                         u.id_user, u.username, u.created_at
+                     ORDER BY 
+                       "PARTIDAS JUGADAS" DESC, 
+                       u.created_at ASC
+                     LIMIT 1;
+                   """
+            cursor.execute(sql)
+            resultado = cursor.fetchall()
+            answers = {}
+            for fila in resultado:
+                print("hola")
+            return answers
+    except pymysql.MySQLError as e:
+        print("Error:", e)
+    finally:
+        connection.close()
