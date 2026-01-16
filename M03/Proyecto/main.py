@@ -57,7 +57,7 @@ while flg_salir:
 
         if opc == 1:
             print("Logout")
-            menu_general = "Principal"
+            menu_general = "principal"
         elif opc == 2:
             menu_general = "game_loop"
         elif opc == 3:
