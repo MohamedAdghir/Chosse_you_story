@@ -204,5 +204,3 @@ def checkUserbdd(user,password):
         return -1
     else:
         return 1
-
-print(get_characters())

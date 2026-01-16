@@ -1,7 +1,14 @@
 import  datetime
 import time
+import os
 from db_manager import *
 
+# Funciones chidas
+def limpiar_terminal():
+    if os.name == 'nt':  # Windows
+        os.system('cls')
+    else:  # Linux y macOS
+        os.system('clear')
 
 # Funcion para formatear texto
 def formatText(text, lenLine, split):
@@ -76,13 +83,14 @@ def getOpt(textOpts="", inputOptText="", rangeList=[], exceptions=[], dictionary
         opciones_validas.append(str(a))
 
     while True:
+        limpiar_terminal()
         print(textOpts)
         opc = input(inputOptText).strip()
-
         if opc in opciones_validas:
             return opc
 
         print("Opción inválida. Intenta de nuevo.\n")
+        input("Enter para continuar")
 
 #Funcion de comprobar que la contraseña cumpla con los parametros
 def checkPassword(password):
@@ -142,8 +150,8 @@ def getHeadeForTableFromTuples(t_name_columns,t_size_columns,title=""):
 
 # Funcion que crea un header
 def getHeader(text):
-    texto = "".center(120,"*") + "\n" + text.center(120,"=") + "\n" + "".center(120,"*")
-    print(texto)
+    texto = "".center(105,"*") + "\n" + text.center(105,"=") + "\n" + "".center(105,"*")
+    return texto
 
 texto = "Escoge el camino mas seguro para poder escapar del hombre lobo y luego poder ir a la  casa de abuela a cuidarla"
 def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
@@ -216,4 +224,3 @@ def user_exist(lista,usuario):
         return False
 
 #print(user_exist(lista,usario))
-
