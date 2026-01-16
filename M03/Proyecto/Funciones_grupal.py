@@ -10,6 +10,7 @@ def limpiar_terminal():
     else:  # Linux y macOS
         os.system('clear')
 
+
 # Funcion para formatear texto
 def formatText(text, lenLine, split):
     formatedText = ""
@@ -67,7 +68,6 @@ def getFormatedBodyColumns(texts,lenLines,margin=2):
             if j != len(formatedColumns)-1:
                 finalText += "".ljust(margin," ")
         finalText += "\n"
-
     return finalText
 
 #Funcion de las opciones del menu
@@ -151,6 +151,7 @@ def getHeader(text):
     texto = "".center(105,"*") + "\n" + text.center(105,"=") + "\n" + "".center(105,"*")
     return texto
 
+
 texto = "Escoge el camino mas seguro para poder escapar del hombre lobo y luego poder ir a la  casa de abuela a cuidarla"
 def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
     prefijo = "{} ) ".format(id_respuesta)
@@ -181,6 +182,7 @@ def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
 
     return resultado
 
+#print(getFormatedAnswers(1,texto,105,2))
 def writeText(texto, retraso_base=0.05):
     for caracter in texto:
         print(caracter, end='', flush=True)
