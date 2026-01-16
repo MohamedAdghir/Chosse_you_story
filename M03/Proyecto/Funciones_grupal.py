@@ -1,6 +1,6 @@
 import  datetime
 import time
-from  db_manager import *
+from db_manager import *
 
 
 # Funcion para formatear texto
@@ -64,14 +64,25 @@ def getFormatedBodyColumns(texts,lenLines,margin=2):
     return finalText
 
 #Funcion de las opciones del menu
-def getOpt(textOpts="",inputOptText="",rangeList=[],exceptions=[],dictionary={}):
+def getOpt(textOpts="", inputOptText="", rangeList=[], exceptions=[], dictionary={}):
+    opciones_validas = []
+    for a in rangeList:
+        opciones_validas.append(str(a))
+
+    for a in exceptions:
+        opciones_validas.append(str(a))
+
+    for a in dictionary.keys():
+        opciones_validas.append(str(a))
+
     while True:
         print(textOpts)
-        opc = input(inputOptText)
-        if opc in str(rangeList) or opc in exceptions or opc in dictionary.keys():
+        opc = input(inputOptText).strip()
+
+        if opc in opciones_validas:
             return opc
-        else:
-            print("Invalid Options")
+
+        print("Opción inválida. Intenta de nuevo.\n")
 
 #Funcion de comprobar que la contraseña cumpla con los parametros
 def checkPassword(password):
@@ -205,3 +216,4 @@ def user_exist(lista,usuario):
         return False
 
 #print(user_exist(lista,usario))
+
