@@ -10,6 +10,13 @@ def limpiar_terminal():
     else:  # Linux y macOS
         os.system('clear')
 
+flg_salir = True
+flg_00 = True
+flg_01 = False
+flg_02 = False
+fgl_03 = False
+fgl_04 = False
+
 # Funcion para formatear texto
 def formatText(text, lenLine, split):
     formatedText = ""
@@ -71,20 +78,15 @@ def getFormatedBodyColumns(texts,lenLines,margin=2):
     return finalText
 
 #Funcion de las opciones del menu
-def getOpt(textOpts="", inputOptText="", rangeList=[], exceptions=[], dictionary={}):
-    opciones_validas = []
-    for a in rangeList:
-        opciones_validas.append(str(a))
-
-    for a in exceptions:
-        opciones_validas.append(str(a))
-
-    for a in dictionary.keys():
-        opciones_validas.append(str(a))
-
+def getOpt(textOpts="",inputOptText="",rangeList=[],exceptions=[],dictionary={}):
     while True:
         limpiar_terminal()
         print(textOpts)
+        opc = input(inputOptText)
+        if opc in str(rangeList) or opc in exceptions or opc in dictionary.keys():
+            return opc
+        else:
+            print("Invalid Options")
         opc = input(inputOptText).strip()
         if opc in opciones_validas:
             return opc
@@ -215,6 +217,9 @@ def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
 
 #getTableFromDict(tuple_of_keys,weigth_of_columns,diccionari)
 
+#lista = get_users()
+#usario = "Tester"
+#print(lista)
 
 def user_exist(lista,usuario):
     lista = list(lista)
@@ -222,5 +227,26 @@ def user_exist(lista,usuario):
         return True
     else:
         return False
+
+#print(user_exist(lista,usario))
+
+
+
+def getFormatedAdventures():
+    adventures = get_adventures_with_chars()
+    getHeadeForTableFromTuples(("Id Adventure", "Adventure", "Description"), (15, 22, 68), "Adventures")
+    for idAdventure in adventures:
+        texts = [
+            str(idAdventure),
+            adventures[idAdventure]["Name"],
+            adventures[idAdventure]["Description"]]
+        lenLines = [13, 20, 66]
+
+        body = getFormatedBodyColumns(texts, lenLines)
+        print(body)
+
+#getFormatedAdventures()
+
+
 
 #print(user_exist(lista,usario))
