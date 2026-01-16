@@ -203,9 +203,9 @@ def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
 
 #getTableFromDict(tuple_of_keys,weigth_of_columns,diccionari)
 
-lista = get_users()
-usario = "Tester"
-print(lista)
+#lista = get_users()
+#usario = "Tester"
+#print(lista)
 def user_exist(lista,usuario):
     lista = list(lista)
     if usuario in lista:
@@ -219,13 +219,19 @@ def user_exist(lista,usuario):
 
 def getFormatedAdventures():
     adventures = get_adventures_with_chars()
-    cadena = ""
-    for key in adventures:
-        cadena += "{:<30}{:<30}{:<70}".format(key,adventures[key]["Name"],adventures[key]["Description"]) + "\n\n"
-    getHeadeForTableFromTuples(("Id Adventure", "Adventure", "Description"), (30, 30, 70), "Adventures")
-    print(cadena)
+    getHeadeForTableFromTuples(("Id Adventure", "Adventure", "Description"), (15, 22, 68), "Adventures")
+    for idAdventure in adventures:
+        texts = [
+            str(idAdventure),
+            adventures[idAdventure]["Name"],
+            adventures[idAdventure]["Description"]]
+        lenLines = [13, 20, 66]
+
+        body = getFormatedBodyColumns(texts, lenLines)
+        print(body)
 
 #getFormatedAdventures()
 
 
 
+#print(getFormatedBodyColumns("fdgdf",[9,4]))

@@ -40,7 +40,7 @@ def get_characters():
     finally:
         connection.close()
 
-print(get_characters())
+#print(get_characters())
 def get_users():
     connection = connect_to_db()
     try:
