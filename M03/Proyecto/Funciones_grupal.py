@@ -195,6 +195,7 @@ def writeText(texto, retraso_base=0.05):
 
 #print(getFormatedAnswers("1",texto,0,120))
 
+"""
 diccionari = {4: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'Este muerto esta muy vivo',
 'date': datetime.datetime(2021, 11, 28, 18, 17, 20), 'idCharacter': 1, 'CharacterName':
 'Beowulf'}, 5: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'Este muerto esta muy vivo',
@@ -202,6 +203,7 @@ diccionari = {4: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'E
 'CharacterName': 'Beowulf'}}
 tuple_of_keys = ("Username","Name","CharacterName","date")
 weigth_of_columns = (20, 20,30, 20)
+"""
 def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
     lista = list(dict_of_data)
     for i in range(len(lista)):
