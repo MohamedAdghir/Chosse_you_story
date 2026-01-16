@@ -94,3 +94,24 @@
     animation-delay: 0.9s;
   }
 }
+@supports (animation-timeline: view()) {
+  .scan-lines line {
+    animation: scanDraw 1.6s ease forwards;
+    animation-timeline: view();
+    animation-range: entry 0% exit 40%;
+  }
+
+  .scan-lines line:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .scan-lines line:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes scanDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
