@@ -57,7 +57,7 @@ while flg_salir:
 
         if opc == 1:
             print("Logout")
-            menu_general = "Principal"
+            menu_general = "principal"
         elif opc == 2:
             menu_general = "game_loop"
         elif opc == 3:
@@ -88,12 +88,19 @@ while flg_salir:
 
     while menu_general == "game_loop":
 
-        # Supondremos que ya hemos elegido la aventura...
+        # Exportacion de datos que necesitamos para settear la aventura
         adventures = get_adventures_with_chars()
         characters = get_characters()
 
+        # Eleccion de la aventura
         opc = getOpt(getFormatedAdventures(), "Selecciona una aventura (0 para volver atrás): ", adventures,[0])
+        if int(opc) == 0:
+            menu_general = "Play"
+            break
         selectedAdventure = int(opc)
+
+        # Obtener los pasos de la aventura
+        adventure_steps = get_id_bystep_adventure()
 
         # ----- Elegir el personaje para la aventura: -----
         characterSelectorDisplay = getHeader(adventures[selectedAdventure]["Name"]) + "\n"
@@ -104,4 +111,22 @@ while flg_salir:
             characterSelectorDisplay += "{:3}) {:50}\n".format(character,characters[character])
         opc = getOpt(characterSelectorDisplay, "Selecciona un personaje (0 para volver atrás): ", adventures[selectedAdventure]["Characters"],[0])
         opc = int(opc)
-        
+        if opc == 0:
+            break
+        characterSelected = characters[opc]
+        print("Has seleccionado al personaje {}!\n".format(characterSelected))
+        input("Enter para continuar")
+
+        first_step = get_first_step_adventure(selectedAdventure)
+        current_step = first_step
+
+        game_finished = False
+        while not game_finished:
+            limpiar_terminal()
+            stepDisplay = getHeader(adventures[selectedAdventure]["Name"]) + "\n"
+            stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected) + "\n"
+            answers = get_answers_bystep_adventure(current_step)
+            for answer in answers:
+                stepDisplay += getFormatedAnswers(answer[0], answers[answer]["Description"], 99, 3) + "\n"
+            opc = getOpt(stepDisplay, "Selecciona una opción: ", adventures[selectedAdventure]["Characters"],[0])
+            input()
