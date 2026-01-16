@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="css/animations.css">
 </head>
 
-<body>
+<body >
 
   <!-- HEADER -->
     <header class="main-header">
@@ -38,67 +38,132 @@
     </header>
 
   <!-- MAIN CONTENT -->
-  <main>
-    <section class="instructions-intro">
-        <h1 class="section-title">Cómo se juega</h1>
-        <p class="section-subtitle">
-            Aprende a navegar entre realidades y descubrir cómo cada decisión cambia la historia.
+  <main class="system-bg system-particles">
+
+  <!-- SYSTEM INTRO -->
+    <section class="instructions-briefing">
+        <svg class="scan-lines" viewBox="0 0 1000 300" preserveAspectRatio="none">
+        <line x1="0" y1="60" x2="1000" y2="60" />
+        <line x1="0" y1="140" x2="1000" y2="140" />
+        <line x1="0" y1="220" x2="1000" y2="220" />
+        </svg>
+
+        <div class="briefing-content reveal-step">
+        <span class="briefing-tag">SISTEMA</span>
+        <h1>Protocolo de Juego</h1>
+        <p>
+            El sistema observa. Cada elección altera el equilibrio de la realidad.
+            No existen decisiones neutras. Avanza sabiendo que el mundo recordará
+            tus actos.
         </p>
+        </div>
     </section>
 
+    <!-- HOW TO PLAY -->
     <section class="instructions">
-       
+        <div class="instructions-steps">
 
-        <section class="instructions-steps">
+        <article class="instruction-step reveal-step">
+            <div class="step-image hover-glow">
+            <img src="assets/images/step1-user.png" alt="Selección de usuario">
+            </div>
+            <div class="step-text">
+            <h2>Elección de identidad</h2>
+            <p>
+                Al iniciar el protocolo deberás escoger un personaje.
+                Cada identidad existe en una línea temporal distinta,
+                con información limitada y conflictos propios.
+            </p>
+            </div>
+        </article>
 
-            <article class="instruction-step reveal">
-                <div class="step-image">
-                    <img src="assets/images/step1-user.png" alt="Selección de usuario">
-                </div>
-                <div class="step-text">
-                    <h2>Selecciona un personaje</h2>
-                    <p>
-                        Cada personaje comienza la historia desde una realidad distinta,
-                        con decisiones y caminos únicos.
-                    </p>
-                </div>
-            </article>
+        <article class="instruction-step reveal-step">
+            <div class="step-image hover-glow">
+            <img src="assets/images/step2-adv.png" alt="Decisiones">
+            </div>
+            <div class="step-text">
+            <h2>Decisiones críticas</h2>
+            <p>
+                Las decisiones no solo alteran la historia,
+                sino también la percepción del mundo y de otros personajes.
+                Algunas consecuencias no son inmediatas.
+            </p>
+            </div>
+        </article>
 
-            <article class="instruction-step reveal">
-                <div class="step-image">
-                    <img src="assets/images/step2-adv.png" alt="Toma decisiones">
-                </div>
-                <div class="step-text">
-                    <h2>Toma decisiones</h2>
-                    <p>
-                        Durante la aventura deberás elegir entre diferentes opciones
-                        que alteran el desarrollo de la historia.
-                    </p>
-                </div>
-            </article>
+        <article class="instruction-step reveal-step">
+            <div class="step-image hover-glow">
+            <img src="assets/images/step3-ending.png" alt="Finales">
+            </div>
+            <div class="step-text">
+            <h2>Resultados variables</h2>
+            <p>
+                El sistema calcula el impacto acumulado de tus acciones.
+                El final no se elige: se construye.
+            </p>
+            </div>
+        </article>
 
-            <article class="instruction-step reveal">
-                <div class="step-image">
-                    <img src="assets/images/step3-ending.png" alt="Resultados y consecuencias">
-                </div>
-                <div class="step-text">
-                    <h2>Descubre las consecuencias</h2>
-                    <p>
-                        Cada decisión conduce a caminos y finales distintos.
-                        No hay dos historias iguales.
-                    </p>
-                </div>
-            </article>
-
-        </section>
+        </div>
     </section>
 
+    <!-- GAME MECHANICS -->
+    <section class="mechanics">
+        <h2 class="section-title">Mecánicas del sistema</h2>
 
-        
+        <div class="mechanics-grid">
+
+        <div class="mechanic-card">
+            <span class="material-icons">timeline</span>
+            <h3>Ramificación narrativa</h3>
+            <p>
+            Cada decisión abre o cierra líneas temporales alternativas,
+            afectando eventos futuros.
+            </p>
+        </div>
+
+        <div class="mechanic-card">
+            <span class="material-icons">visibility</span>
+            <h3>Información parcial</h3>
+            <p>
+            El jugador nunca posee el contexto completo.
+            La verdad depende del punto de vista.
+            </p>
+        </div>
+
+        <div class="mechanic-card">
+            <span class="material-icons">psychology</span>
+            <h3>Consecuencia acumulativa</h3>
+            <p>
+            El sistema evalúa patrones de conducta,
+            no decisiones aisladas.
+            </p>
+        </div>
+
+        </div>
+    </section>
+    <section class="system-log system-bg">
+  <div class="system-log-content reveal-step">
+
+    <span class="log-tag">ARCHIVO DEL SISTEMA</span>
+
+    <h2>Fragmentos de una historia rota</h2>
+
+    <p class="log-text">
+      Las realidades no se fracturaron por azar.
+      Hubo un origen. Un error. Una decisión inicial
+      que dividió el mundo en múltiples líneas temporales.
+    </p>
+
+    <p class="log-text muted">
+      Algunos personajes recuerdan el evento.
+      Otros solo sienten sus consecuencias.
+    </p>
+    </div></section>
 
 
+ </main>
 
-  </main>
 
 
   <!-- FOOTER -->

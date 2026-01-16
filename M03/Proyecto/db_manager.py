@@ -1,4 +1,5 @@
 import pymysql
+from Funciones_grupal import *
 
 def connect_to_db():
     host = "127.0.0.1"
@@ -39,6 +40,7 @@ def get_characters():
     finally:
         connection.close()
 
+#print(get_characters())
 def get_users():
     connection = connect_to_db()
     try:

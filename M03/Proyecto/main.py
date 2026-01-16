@@ -3,13 +3,12 @@ from  Variables import *
 from  db_manager import *
 flg_salir = True
 
-menu_general = "principal"
+menu_general = "game_loop"
 
 while flg_salir:
     while menu_general == "principal":
         opc = getOpt("1)Login\n2)Create user\n3)Replay Adventure\n4)Reports\n5)Exit","\nElige tu opción:",[1, 2, 3, 4,5],[],{})
         opc = int(opc)
-        print(get_users())
         if opc == 1:
             for i in range(3,0,-1):
                 login_name = input("Username:\n")
@@ -60,7 +59,7 @@ while flg_salir:
             print("Logout")
             menu_general = "Principal"
         elif opc == 2:
-            print("Play")
+            menu_general = "game_loop"
         elif opc == 3:
             print("Replay Adventure")
         elif opc == 4:
@@ -87,7 +86,21 @@ while flg_salir:
             flg_salir = False
             menu_general = ""
 
+    while menu_general == "game_loop":
 
+        # ----- Aquí tendrás que elegir la aventura -----
 
+        # Supondremos que ya hemos elegido la aventura...
+        adventures = get_adventures_with_chars()
+        characters = get_characters()
+        selectedAdventure = 1
 
-
+        # ----- Elegir el personaje para la aventura: -----
+        characterSelectorDisplay = getHeader(adventures[selectedAdventure]["Name"]) + "\n"
+        characterSelectorDisplay += getFormatedBodyColumns(("Aventura:", adventures[selectedAdventure]["Name"]),(20,85),0) + "\n"
+        characterSelectorDisplay += getFormatedBodyColumns(("Descripción:", adventures[selectedAdventure]["Description"]),(20,85),0) + "\n"
+        characterSelectorDisplay += "Personajes disponibles".center(45,"=") + "\n"
+        for character in adventures[selectedAdventure]["Characters"]:
+            characterSelectorDisplay += "{:3}) {:50}\n".format(character,characters[character])
+        opc = getOpt(characterSelectorDisplay, "Selecciona un personaje (0 para volver atrás): ", adventures[selectedAdventure]["Characters"],[0])
+        opc = int(opc)
