@@ -141,8 +141,9 @@ def getHeadeForTableFromTuples(t_name_columns,t_size_columns,title=""):
 
 # Funcion que crea un header
 def getHeader(text):
-    texto = "".center(120,"*") + "\n" + text.center(120,"=") + "\n" + "".center(120,"*")
+    texto = "".center(105,"*") + "\n" + text.center(105,"=") + "\n" + "".center(105,"*")
     print(texto)
+
 
 texto = "Escoge el camino mas seguro para poder escapar del hombre lobo y luego poder ir a la  casa de abuela a cuidarla"
 def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
@@ -174,6 +175,7 @@ def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
 
     return resultado
 
+#print(getFormatedAnswers(1,texto,105,2))
 def writeText(texto, retraso_base=0.05):
     for caracter in texto:
         print(caracter, end='', flush=True)
