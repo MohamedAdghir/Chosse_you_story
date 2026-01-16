@@ -209,7 +209,7 @@ def checkUserbdd(user,password):
 def most_played_player():
     connection = connect_to_db()
     try:
-        with connection.cursor() as cursor:
+        with connection.cursor(pymysql.cursors.DictCursor)as cursor:
             sql = """
                      SELECT 
                        u.username AS "NOMBRE USUARIO", 
@@ -226,12 +226,12 @@ def most_played_player():
                      LIMIT 1;
                    """
             cursor.execute(sql)
-            resultado = cursor.fetchall()
-            answers = {}
-            for fila in resultado:
-                print("hola")
-            return answers
+            resultado = cursor.fetcone()
+            if resultado:
+                return  resultado["NOMBRE USUARIO"], resultado["PARTIDAS JUGADAS"]
+            return None
     except pymysql.MySQLError as e:
         print("Error:", e)
     finally:
         connection.close()
+
