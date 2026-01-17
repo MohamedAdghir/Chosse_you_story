@@ -2,8 +2,8 @@ import pymysql
 
 def connect_to_db():
     host = "127.0.0.1"
-    user = 'mohapyuser'
     port = 3307
+    user = 'ibtipyuser'
     password = '1234567890'
     database = 'choose_your_story'
 
@@ -164,7 +164,7 @@ def get_first_step_adventure(adventure_id):
     connection = connect_to_db()
     try:
         with connection.cursor() as cursor:
-            sql = ""
+            sql = "select id_adventure_step from ADVENTURE_STEP where id_adventure = %s and first_step = 1"
             cursor.execute(sql,(adventure_id))
             resultado = cursor.fetchone()
             if resultado is None:
@@ -204,7 +204,6 @@ def checkUserbdd(user,password):
         return -1
     else:
         return 1
-
 
 def most_played_player():
     connection = connect_to_db()
