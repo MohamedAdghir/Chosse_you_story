@@ -99,9 +99,6 @@ while flg_salir:
             break
         selectedAdventure = int(opc)
 
-        # Obtener los pasos de la aventura
-        adventure_steps = get_id_bystep_adventure()
-
         # ----- Elegir el personaje para la aventura: -----
         characterSelectorDisplay = getHeader(adventures[selectedAdventure]["Name"]) + "\n"
         characterSelectorDisplay += getFormatedBodyColumns(("Aventura:", adventures[selectedAdventure]["Name"]),(20,85),0) + "\n"
@@ -117,6 +114,14 @@ while flg_salir:
         print("Has seleccionado al personaje {}!\n".format(characterSelected))
         input("Enter para continuar")
 
+        # Obtener los pasos de la aventura
+        adventure_steps = get_id_bystep_adventure()
+        final_steps = []
+        for step in adventure_steps:
+            print(adventure_steps[step])
+            if adventure_steps[step]["Final_Step"] == 1:
+                final_steps.append(step)
+
         first_step = get_first_step_adventure(selectedAdventure)
         current_step = first_step
 
@@ -126,7 +131,14 @@ while flg_salir:
             stepDisplay = getHeader(adventures[selectedAdventure]["Name"]) + "\n"
             stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected) + "\n"
             answers = get_answers_bystep_adventure(current_step)
-            for answer in answers:
-                stepDisplay += getFormatedAnswers(answer[0], answers[answer]["Description"], 99, 3) + "\n"
-            opc = getOpt(stepDisplay, "Selecciona una opción: ", adventures[selectedAdventure]["Characters"],[0])
+            print(answers)
             input()
+            possibleAnswers = []
+            for answer in answers:
+                possibleAnswers.append(answer[0])
+                stepDisplay += getFormatedAnswers(answer[0], answers[answer]["Description"], 99, 3) + "\n"
+            opc = getOpt(stepDisplay, "Selecciona una opción: ", possibleAnswers)
+            resolution = "\n" + formatText(answers[(int(opc), current_step)]["Resolution_Answer"],105,"\n").replace("$NAME",characterSelected)
+            print(resolution)
+            input("Enter para continuar")
+            current_step = answers[(int(opc), current_step)]["NextStep_Adventure"]
