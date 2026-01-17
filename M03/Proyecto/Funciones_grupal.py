@@ -139,12 +139,10 @@ def getHeadeForTableFromTuples(t_name_columns,t_size_columns,title=""):
     texto = ""
     for a in t_size_columns:
         suma = suma + a
-    texto = title.center(suma,"=") + "\n"
+    print(title.center(suma,"="))
     for i in range(len(t_name_columns)):
-        texto += t_name_columns[i].ljust(t_size_columns[i])
-    
-    texto += "\n" + "".center(suma,"*") + "\n"
-    return texto
+        texto = texto + t_name_columns[i].ljust(t_size_columns[i])
+    print(texto+ "\n" + "".center(suma,"*"))
 
 # Funcion que crea un header
 def getHeader(text):
@@ -195,7 +193,6 @@ def writeText(texto, retraso_base=0.05):
 
 #print(getFormatedAnswers("1",texto,0,120))
 
-"""
 diccionari = {4: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'Este muerto esta muy vivo',
 'date': datetime.datetime(2021, 11, 28, 18, 17, 20), 'idCharacter': 1, 'CharacterName':
 'Beowulf'}, 5: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'Este muerto esta muy vivo',
@@ -203,7 +200,6 @@ diccionari = {4: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'E
 'CharacterName': 'Beowulf'}}
 tuple_of_keys = ("Username","Name","CharacterName","date")
 weigth_of_columns = (20, 20,30, 20)
-"""
 def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
     lista = list(dict_of_data)
     for i in range(len(lista)):
@@ -228,9 +224,11 @@ def user_exist(lista,usuario):
 
 #print(user_exist(lista,usario))
 
+
+
 def getFormatedAdventures():
     adventures = get_adventures_with_chars()
-    body = getHeadeForTableFromTuples(("Id Adventure", "Adventure", "Description"), (15, 22, 68), "Adventures")
+    getHeadeForTableFromTuples(("Id Adventure", "Adventure", "Description"), (15, 22, 68), "Adventures")
     for idAdventure in adventures:
         texts = [
             str(idAdventure),
@@ -238,7 +236,11 @@ def getFormatedAdventures():
             adventures[idAdventure]["Description"]]
         lenLines = [13, 20, 66]
 
-        body += getFormatedBodyColumns(texts, lenLines) + "\n"
-    return body
+        body = getFormatedBodyColumns(texts, lenLines)
+        print(body)
 
-#print(getFormatedAdventures())
+#getFormatedAdventures()
+
+
+
+#print(user_exist(lista,usario))
