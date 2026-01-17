@@ -208,7 +208,7 @@ def checkUserbdd(user,password):
 def most_played_player():
     connection = connect_to_db()
     try:
-        with connection.cursor(pymysql.cursors.DictCursor)as cursor:
+        with connection.cursor() as cursor:
             sql = """
                      SELECT 
                        u.username AS "NOMBRE USUARIO", 
@@ -225,41 +225,11 @@ def most_played_player():
                      LIMIT 1;
                    """
             cursor.execute(sql)
-            resultado = cursor.fetcone()
-            if resultado:
-                return  resultado["NOMBRE USUARIO"], resultado["PARTIDAS JUGADAS"]
-            return None
-    except pymysql.MySQLError as e:
-        print("Error:", e)
-    finally:
-        connection.close()
-
-def GetPlayerAdventureLog():
-    connection = connect_to_db()
-    try:
-        with  connection.cursor() as cursor:
-            sql = """
-                        SELECT 
-                            a.id_adventure AS idadventure, 
-                            a.name AS Name, 
-                            g.playing_date AS date
-                        FROM 
-                            GAME g
-                        JOIN 
-                            USERS u ON g.id_user = u.id_user
-                        JOIN 
-                            ADVENTURE a ON g.id_adventure = a.id_adventure
-                        WHERE 
-                            u.username = %s
-                        ORDER BY 
-                            g.playing_date DESC;
-                        """
-            cursor.execute(sql)
-            resultado = cursor.fetcall()
-            for row in resultado:
+            resultado = cursor.fetchall()
+            answers = {}
+            for fila in resultado:
                 print("hola")
-            else:
-              return None
+            return answers
     except pymysql.MySQLError as e:
         print("Error:", e)
     finally:
