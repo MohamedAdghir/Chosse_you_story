@@ -2,9 +2,10 @@
 
 .main-header {
     width: 100%;
-    background: rgba(0, 10, 15, 0.55);
-    backdrop-filter: blur(5px);
-    border-bottom: 1px solid #00ffea;
+    background: linear-gradient(
+    to bottom,rgba(3, 20, 42, 0.9),rgba(5, 11, 18, 0.85));
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(0,255,255,0.35);
     position: relative;
     z-index: 10;
 }
@@ -64,18 +65,61 @@
 .menu a.active {
     text-shadow: 0 0 6px rgba(0,255,255,0.6),0 0 12px rgba(0,255,255,0.3);
 }
+.dropdown {
+  position: relative;
+}
 
+.dropdown-menu {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  background: rgba(5, 15, 20, 0.95);
+  border: 1px solid rgba(0,255,255,0.25);
+  list-style: none;
+  padding: 6px 0;
+  min-width: 200px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 6px 16px;
+  color: #9ffcff;
+  text-decoration: none;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-menu li a:hover {
+  background: rgba(0,255,255,0.1);
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
 
 
 /* FOOTER */
 .main-footer {
     position: relative;
     width: 100%;
-    background: rgba(0, 10, 15, 0.55);
+    background: linear-gradient(
+    to top,
+    rgba(3, 20, 42, 0.9),
+    rgba(5, 11, 18, 0.85));
     backdrop-filter: blur(5px);
     padding: 20px 0;
     margin-top: 120px;
-    box-shadow: 0 -10px 40px rgba(0, 255, 255, 0.08);
+    box-shadow: 0 -10px 40px rgba(0, 255, 255, 0.12);
     z-index: 20;
 }
 
@@ -246,7 +290,11 @@
   box-shadow:
     0 0 30px rgba(0,255,255,0.35);
 }
-
+.x {
+  background:
+    radial-gradient(circle at top, rgba(0,255,255,0.08), transparent 60%),
+    linear-gradient(to bottom, #050b12, #03142a);
+}
 .mechanic-card span {
   font-size: 2.4rem;
   color: #00ffee;
@@ -302,7 +350,7 @@
   font-size: 2.6rem;
   color: #00ffee;
   margin-bottom: 20px;
-  padding-top: 80px;
+  padding-top: 20px;
 }
 
 .instructions-briefing p {
@@ -416,4 +464,86 @@
     rgba(0,255,255,0.6),
     transparent
   );
+}
+.history-intro {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 140px 20px 80px;
+}
+
+.history-intro h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  color: #00ffee;
+  margin-bottom: 30px;
+}
+
+.history-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 120px auto;
+  padding: 0 20px;
+}
+
+.history-block.reverse {
+  direction: rtl;
+}
+
+.history-block.reverse * {
+  direction: ltr;
+}
+
+.history-block .history-text h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: #00ffee;
+  margin-bottom: 20px;
+}
+
+.history-block .history-text p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #c0f0ff;
+  margin-bottom: 20px;
+}
+
+.history-block .btn-secondary {
+  background: transparent;
+  color: #00ffee;
+  border: 2px solid #00ffee;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.history-block .btn-secondary:hover {
+  background: #00ffee;
+  color: #001f2f;
+}
+.history-block .history-image img {
+  width: 100%;           /* fills the container column */
+  max-width: 400px;      /* prevents them from being huge */
+  max-height: 300px;     /* keeps them balanced with text */
+  object-fit: cover;     /* crops nicely if tall */
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+  margin: 0 auto;        /* centers image in column */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.history-block .history-image img:hover {
+  transform: scale(1.05);
+}
+.aventura {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
