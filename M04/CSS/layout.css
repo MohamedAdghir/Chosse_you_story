@@ -825,112 +825,106 @@
 /* =============================
    USUARIOS PAGE
 ============================= */
+.usuarios-hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+}
 
-.usuarios-section {
+.usuarios-hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    color: #00ffee;
+    margin-bottom: 16px;
+}
+
+.usuarios-hero p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.85);
+}
+
+/* Usuarios Cards */
+.usuarios-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
     max-width: 1200px;
-    margin: 80px auto;
+    margin: 40px auto;
     padding: 0 20px;
+}
+
+.usuario-card {
+    background: rgba(0,10,15,0.7);
+    border: 1px solid #00ffee;
+    border-radius: 12px;
+    width: 320px;
+    padding: 20px;
+    padding-right: 80px;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
-    gap: 60px;
-}
-
-/* Intro text */
-.usuarios-intro {
-    text-align: center;
-    color: #00ffee;
-}
-
-.usuarios-intro p {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.85);
-    max-width: 700px;
-    margin: 10px auto 0 auto;
-}
-
-.usuarios-tag {
-    display: inline-block;
-    font-family: 'Cinzel', serif;
-    font-size: 1.2rem;
-    color: #00ffee;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-}
-
-/* Character block */
-.usuario-block {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    background: rgba(0, 10, 15, 0.5);
-    backdrop-filter: blur(5px);
-    padding: 20px 30px;
-    border-radius: 16px;
-    border: 1px solid #00ffee;
+    gap: 16px;
+    box-shadow: 0 0 20px rgba(0,255,255,0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.usuario-block:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 18px rgba(0, 255, 255, 0.5);
+.usuario-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 40px rgba(0,255,255,0.4);
 }
 
-/* Reverse flex for alternating layout */
-.usuario-block.reverse {
-    flex-direction: row-reverse;
+.usuario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Character image */
-.usuario-image img {
-    width: 180px;
-    height: auto;
-    border-radius: 12px;
-    border: 1px solid #00ffee;
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
-}
-
-/* Character text */
-.usuario-text h3 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    color: #00ffee;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.usuario-text p {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.5;
-}
-
-/* Action text */
-.usuario-action {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 6px 18px;
+.usuario-header h2 {
     font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+}
+
+.estado {
     font-size: 0.9rem;
-    color: #001414;
-    background: linear-gradient(135deg, #00ffee, #007c7c);
-    border-radius: 4px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 6px;
+    color: #fff;
+}
+
+.estado.activo { background: #00ffea; color: #001414; }
+
+/* Character selection */
+.character-options {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.character-options img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    border: 2px solid #00ffee;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.usuario-action:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.3);
+.character-options img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 12px #00ffee;
 }
 
-/* Scroll reveal animation */
-.reveal-step {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1s ease forwards;
-    animation-delay: 0.3s;
+/* Button */
+.usuario-actions {
+    display: flex;
+    justify-content: center;
 }
+
+.usuario-actions .btn-primary {
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
