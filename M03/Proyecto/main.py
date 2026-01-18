@@ -118,7 +118,6 @@ while flg_salir:
         adventure_steps = get_id_bystep_adventure()
         final_steps = []
         for step in adventure_steps:
-            print(adventure_steps[step])
             if adventure_steps[step]["Final_Step"] == 1:
                 final_steps.append(step)
 
@@ -129,16 +128,25 @@ while flg_salir:
         while not game_finished:
             limpiar_terminal()
             stepDisplay = getHeader(adventures[selectedAdventure]["Name"]) + "\n"
-            stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected) + "\n"
             answers = get_answers_bystep_adventure(current_step)
-            print(answers)
-            input()
-            possibleAnswers = []
-            for answer in answers:
-                possibleAnswers.append(answer[0])
-                stepDisplay += getFormatedAnswers(answer[0], answers[answer]["Description"], 99, 3) + "\n"
-            opc = getOpt(stepDisplay, "Selecciona una opción: ", possibleAnswers)
-            resolution = "\n" + formatText(answers[(int(opc), current_step)]["Resolution_Answer"],105,"\n").replace("$NAME",characterSelected)
-            print(resolution)
+            if current_step in final_steps: # Es un final?
+                stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected)
+                print(stepDisplay)
+                print("Se acabo\n")
+                game_finished = True
+                menu_general = "Play"
+            elif answers: # Tiene opciones?
+                stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected) + "\n"
+                possibleAnswers = []
+                for answer in answers:
+                    possibleAnswers.append(answer[0])
+                    stepDisplay += getFormatedAnswers(answer[0], answers[answer]["Description"], 99, 3) + "\n"
+                opc = getOpt(stepDisplay, "Selecciona una opción: ", possibleAnswers)
+                resolution = "\n" + formatText(answers[(int(opc), current_step)]["Resolution_Answer"],105,"\n").replace("$NAME",characterSelected)
+                print(resolution)
+            else: # No es final ni tiene opciones, un paso intermedio -hector: jejegod
+                stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected)
+                print(stepDisplay)
+                print("paso intermedio\n")
             input("Enter para continuar")
             current_step = answers[(int(opc), current_step)]["NextStep_Adventure"]
