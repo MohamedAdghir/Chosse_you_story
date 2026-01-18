@@ -153,18 +153,15 @@
     color: #00ffee;
     margin-left: 18px;
     font-size: 1.3rem;
-    transition: 
-        transform 0.3s ease,
-        text-shadow 0.3s ease,
-        color 0.3s ease;
+    text-shadow:
+        0 0 6px rgba(0,255,255,0.7),
+        0 0 14px rgba(0,255,255,0.4);
+    text-decoration: none;
 }
 
 .footer-container .material-icons a:hover {
     color: #9ffcff;
     transform: translateY(-3px);
-    text-shadow:
-        0 0 6px rgba(0,255,255,0.7),
-        0 0 14px rgba(0,255,255,0.4);
 }
 
 
@@ -543,7 +540,125 @@
 .history-block .history-image img:hover {
   transform: scale(1.05);
 }
-.aventura {
+.archive-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 6rem 0;
+}
+
+.vampire-archive-vertical {
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(
+    180deg,
+    #2b0000 0%,
+    #130000 60%,
+    #070000 100%
+  );
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  box-shadow:
+    0 0 40px rgba(120,0,0,0.45),
+    inset 0 0 60px rgba(0,0,0,0.7);
+  position: relative;
+  color: #e6dada;
+}
+
+.vampire-archive-vertical::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255,0,0,0.25), transparent 50%),
+    radial-gradient(circle at top, rgba(255,0,0,0.15), transparent 60%);
+  pointer-events: none;
+}
+
+.vampire-archive-vertical h2 {
+  font-size: 2.1rem;
+  color: #ff4a4a;
+  margin-bottom: 1.8rem;
+  letter-spacing: 0.05em;
+}
+
+.vampire-archive-vertical p {
+  line-height: 1.65;
+  margin-bottom: 1.4rem;
+  color: #dfcfcf;
+}
+
+
+.vampire-images {
+  margin-top: 2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.vampire-images img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 10px;
+  max-height: 140px;
+
+  box-shadow:
+    0 0 12px rgba(120,0,0,0.35),
+    inset 0 0 18px rgba(0,0,0,0.6);
+
+  opacity: 0.9;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.vampire-images img:hover {
+  transform: scale(1.04);
+  opacity: 1;
+}
+.office-archive-vertical {
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(
+    180deg,
+    #f2f2f2 0%,
+    #e6e6e6 60%,
+    #dcdcdc 100%
+  );
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  box-shadow:
+    0 0 40px rgba(0,0,0,0.15),
+    inset 0 0 30px rgba(174, 187, 39, 0.6);
+  position: relative;
+  color: #2a2a2a;
+}
+
+.office-archive-vertical::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.6), transparent 50%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,0,0,0.02),
+      rgba(0,0,0,0.02) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+  pointer-events: none;
+}
+
+.office-archive-vertical h2 {
+  font-size: 2.1rem;
+  color: #1f1f1f;
+  margin-bottom: 1.8rem;
+  letter-spacing: 0.04em;
+}
+
+.office-archive-vertical p {
+  line-height: 1.65;
+  margin-bottom: 1.4rem;
+  color: #333333;
 }
