@@ -121,3 +121,10 @@
   to { transform: translateX(-60%); }
 }
 
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
