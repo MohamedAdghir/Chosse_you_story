@@ -270,3 +270,45 @@ def GetPlayerAdventureLog(username):
         return None
     finally:
         connection.close()
+
+def GetMostUsedAnswersReport():
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = """
+                SELECT 
+                    CONCAT(a.id_adventure, ' - ', a.name) AS "ID AVENTURA - NOMBRE",
+                    CONCAT(s.id_adventure_step, ' - ', s.description) AS "ID PASO - DESCRIPCION",
+                    CONCAT(ans.id_adventure_step_answer, ' - ', ans.description) AS "ID RESPUESTA - DESCRIPCION",
+                    COUNT(c.id_adventure_step_answer) AS "NUMERO VECES SELECCIONADA"
+                FROM 
+                    ADVENTURE a
+                JOIN 
+                    ADVENTURE_STEP s ON a.id_adventure = s.id_adventure
+                JOIN 
+                    ADVENTURE_STEP_ANSWER ans ON s.id_adventure_step = ans.id_adventure_step
+                LEFT JOIN 
+                    CHOICE c ON ans.id_adventure_step_answer = c.id_adventure_step_answer
+                GROUP BY 
+                    a.id_adventure, a.name, 
+                    s.id_adventure_step, s.description, 
+                    ans.id_adventure_step_answer, ans.description
+                ORDER BY 
+                    a.id_adventure ASC, 
+                    s.id_adventure_step ASC, 
+                    COUNT(c.id_adventure_step_answer) DESC;
+            """
+            cursor.execute(sql)
+
+            resultado = cursor.fetchall()
+
+            if resultado:
+                return resultado
+            else:
+                print("No se encontraron datos para el informe de respuestas.")
+                return []
+    except pymysql.MySQLError as e:
+        print("Error en la base de datos:", e)
+        return None
+    finally:
+        connection.close()
