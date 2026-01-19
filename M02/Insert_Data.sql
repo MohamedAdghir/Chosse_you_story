@@ -66,6 +66,12 @@ VALUES
 (1, '*Eres traído de vuelta al momento en el que estabas en la cinta transportadora de antes. Está todo como comenzó, dirigiéndote hacia la prensa mecánica lentamente.*', FALSE, FALSE, 39, CURRENT_USER()),
 (1, 'Narradora: Haz Ctrl+C y detén el programa. No hay otra forma de ganar este juego. Mientras sigas adelante, estarás recorriendo el camino de otra persona. Detente ahora, y esa será tu única opción verdadera. *Te acercas cada vez más a la prensa.* Hagas lo que hagas, ¡elige! ¡No dejes que el tiempo elija por ti! No dejes que el tiempo eli-', FALSE, FALSE, 40, CURRENT_USER()),
 (1, '[Mueres aplastado brutalmente por la prensa mecánica]', FALSE, TRUE, 0, CURRENT_USER()),
+(1, 'Narrador: ¿Qué horrible secreto escondía este lugar?, pensó $NAME para sí mismo. ¿Tenía la fuerza necesaria para descubrirlo?', FALSE, FALSE, 0, CURRENT_USER()),
+(1, 'Narrador: Cada uno llevaba el número de un empleado del edificio: los compañeros de trabajo de $NAME. Las vidas de tantas personas reducidas a imágenes en una pantalla, y $NAME era una de ellas, vigilado eternamente en este lugar donde la libertad no significaba nada.', FALSE, FALSE, 0, CURRENT_USER()),
+(1, 'Narrador: ¿$NAME había estado realmente bajo el control de alguien todo este tiempo? ¿Era esa la única razón por la que estaba contento con su aburrido trabajo? ¿Que sus emociones habían sido manipuladas para aceptarlo ciegamente?', FALSE, FALSE, 0, CURRENT_USER()),
+(1, 'Narrador: ¿Su propia vida controlada por otra persona? ¡Nunca! Era impensable, ¿verdad? ¿Era siquiera posible? ¿Realmente había pasado toda su vida completamente ciego al mundo?', FALSE, FALSE, 0, CURRENT_USER()),
+(1, 'Narrador: Controles etiquetados con emociones: feliz, triste o satisfecho. Caminar, comer, trabajar; todo ello supervisado y controlado desde este mismo lugar. Y a medida que la fría realidad de su pasado comenzaba a calar en él, $NAME decidió que esta maquinaria nunca volvería a ejercer su terrible poder sobre otra vida humana. Porque él desmantelaría los controles de una vez por todas.', FALSE, FALSE, 0, CURRENT_USER()),
+(1, 'En una gran pantalla se lee: CONTROL MENTAL INACTIVO... A LA ESPERA DE ENTRADA...', FALSE, FALSE, 0, CURRENT_USER()),
 
 /* (1, 'description', FALSE, FALSE, next_step, CURRENT_USER()), */
 
@@ -92,11 +98,16 @@ VALUES
 (24, 'Probar otra combinación antes de que diga nada', 'Narrador: $NAME, sin esperar ningún tipo de orientación narrativa, introdujo con confianza un código que era, en todos los sentidos imaginables, incorrecto. $NAME, me pregunto qué crees que estás tratando de lograr aquí.', 25, CURRENT_USER()),
 (25, 'Dejar que el narrador acabe de hablar', '', 21, CURRENT_USER()),
 (25, 'Empezar a apretar todos los botones como loco', 'Narrador: $NAME. Escúchame. Esto no está funcionando. Mira, ¿sabes qué? Aquí está la puerta, vete ya.', 27, CURRENT_USER()),
-/* --- */ (28, 'Avanzar por la puerta', 'resolution', next_step, CURRENT_USER()),
+(28, 'Avanzar por la puerta', 'Narrador: Las luces se encendieron en una enorme sala repleta de pantallas de televisión.', 41, CURRENT_USER()),
 (28, 'Desviarse por un pasillo que pone: ESCAPA', 'Narrador: Aunque en este pasillo había escrita la palabra ESCAPA, la verdad era que, al final de este pasillo, $NAME encontraría una muerte violenta.', 29, CURRENT_USER()),
 (29, 'Continuar por el pasillo', 'Narrador: En ese momento, $NAME estaba haciendo un esfuerzo consciente y concertado por seguir adelante y afrontar voluntariamente su muerte.', 31, CURRENT_USER()),
 (29, 'Salir del pasillo', 'Narrador: Pero, por supuesto, $NAME lo pensó mejor y se dio cuenta de que tenía demasiado por lo que vivir.', 30, CURRENT_USER()),
-/* --- */ (30, 'Avanzar por la puerta', 'resolution', next_step, CURRENT_USER()),
+(30, 'Avanzar por la puerta', 'Narrador: Las luces se encendieron en una enorme sala repleta de pantallas de televisión.', 41, CURRENT_USER()),
 (30, 'Volver al pasillo donde ponía ESCAPA', 'Narrador: Nope, sigue apostando por la muerte.', 31, CURRENT_USER()),
+(41, 'Pulsar un botón con el símbolo de una cámara de vigilancia', 'Narrador: Ahora los monitores cobraron vida, revelando su verdadera naturaleza.', 42, CURRENT_USER()),
+(42, 'Pulsar un botón con el símbolo de un ascensor', 'Narrador: Esta instalación de control mental... era demasiado horrible para creerlo. No podía ser verdad.', 43, CURRENT_USER()),
+(43, 'Subir al ascensor que había bajado a la plataforma', 'Narrador: ¡No! Se negaba a creerlo. No podía aceptarlo.', 44, CURRENT_USER()),
+(44, 'Salir del ascensor', 'Narrador: Pero aquí estaba la prueba. El corazón de la operación.', 45, CURRENT_USER()),
+(45, 'Seguir explorando las instalaciones', 'Narrador: Y cuando por fin encontró la fuente del poder de la habitación, supo que era su deber, su obligación, acabar con ese horrible lugar y con todo lo que representaba.', 46, CURRENT_USER()),
 
 /* (step_id, 'description', 'resolution', next_step, CURRENT_USER()), */
