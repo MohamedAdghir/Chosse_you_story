@@ -181,6 +181,8 @@ def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
 
     return resultado
 
+print(getFormatedAnswers(1, texto, 99, 3))
+
 def writeText(texto, retraso_base=0.05):
     for caracter in texto:
         print(caracter, end='', flush=True)
