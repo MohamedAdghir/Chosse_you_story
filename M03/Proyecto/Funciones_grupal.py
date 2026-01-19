@@ -242,3 +242,28 @@ def getFormatedAdventures():
     return body
 
 #print(getFormatedAdventures())
+
+
+def replay(choices):
+    adventure_steps = get_id_bystep_adventure()
+
+    for step_id, answer_id in choices:
+        limpiar_terminal()
+
+        #mostrar la description del paso
+        step_text = adventure_steps[step_id]["description"]
+        print(formatText(step_text, 105, "\n"))
+        input("Enter to continue")
+
+        # mostrar la opcion seleccionada y resolution
+        answers = get_answers_bystep_adventure(step_id)
+        print("\nOption selected")
+        resolution = answers[(answer_id, step_id)]["resolution"]
+        print(formatText(resolution, 105, "\n"))
+        input("Enter to continue")
+
+    limpiar_terminal()
+    print(getHeader("FIN"))
+    input("Enter to continue")
+
+

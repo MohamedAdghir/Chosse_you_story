@@ -311,3 +311,94 @@ def GetMostUsedAnswersReport():
         return None
     finally:
         connection.close()
+
+def getIdGames():
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = "SELECT id_game FROM GAME"
+            cursor.execute(sql)
+            resultado = cursor.fetchall()
+
+            ids = []
+            for fila in resultado:
+                ids.append(fila["id_game"])
+            return tuple(ids)
+    except pymysql.MySQLError as e:
+        print("Error:", e)
+        return ()
+    finally:
+        connection.close()
+
+
+def getReplayAdventures():
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = """
+                SELECT 
+                    g.id_game,
+                    u.id_user,
+                    u.username,
+                    a.id_adventure,
+                    a.name AS adventure_name,
+                    g.playing_date,
+                    c.id_character,
+                    c.name AS character_name
+                FROM GAME g
+                JOIN USERS u ON g.id_user = u.id_user
+                JOIN ADVENTURE a ON g.id_adventure = a.id_adventure
+                JOIN CHARACTERS c ON g.id_character = c.id_character
+                ORDER BY g.playing_date DESC
+            """
+            cursor.execute(sql)
+            resultado = cursor.fetchall()
+
+            replayAdventures = {}
+
+            for fila in resultado:
+                replayAdventures[fila["id_game"]] = {
+                    "idUser": fila["id_user"],
+                    "Username": fila["username"],
+                    "idAdventure": fila["id_adventure"],
+                    "Name": fila["adventure_name"],
+                    "date": fila["playing_date"],
+                    "idCharacter": fila["id_character"],
+                    "CharacterName": fila["character_name"]
+                }
+
+            return replayAdventures
+    except pymysql.MySQLError as e:
+        print("Error:", e)
+        return {}
+    finally:
+        connection.close()
+
+
+def getChoices(idGame):
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = """
+                SELECT 
+                    id_adventure_step,
+                    id_adventure_step_answer
+                FROM CHOICE
+                WHERE id_game = %s
+                ORDER BY id_adventure_step ASC
+            """
+            cursor.execute(sql, (idGame,))
+            resultado = cursor.fetchall()
+
+            choices = []
+            for fila in resultado:
+                choices.append(
+                    (fila["id_adventure_step"], fila["id_adventure_step_answer"])
+                )
+
+            return tuple(choices)
+    except pymysql.MySQLError as e:
+        print("Error:", e)
+        return ()
+    finally:
+        connection.close()

@@ -41,6 +41,7 @@ while flg_salir:
             menu_general = "Play"
         elif opc == 3:
             print("Replay Adventure")
+            menu_general = "Replay"
         elif opc == 4:
             print("Reports")
             menu_general = "Reports"
@@ -85,6 +86,10 @@ while flg_salir:
             print("Salir")
             flg_salir = False
             menu_general = ""
+    
+    while menu_general == "Replay":
+                print("")
+
 
     while menu_general == "game_loop":
 

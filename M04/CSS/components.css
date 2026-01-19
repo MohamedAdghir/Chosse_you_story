@@ -140,19 +140,19 @@
   margin-top: 20px;
 }
 .bg-user {
-  background-image: url('../assets/images/how-user.png');
+  background-image: url('../images/how-user.png');
   background-size: cover;
   background-position: center;
 }
 
 .bg-decision {
-  background-image: url('../assets/images/how-decision.jpg');
+  background-image: url('../images/how-decision.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .bg-ending {
-  background-image: url('../assets/images/how-ending.png');
+  background-image: url('../images/how-ending.png');
   background-size: cover;
   background-position: center;
 }
