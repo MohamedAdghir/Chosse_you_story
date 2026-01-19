@@ -115,3 +115,16 @@
     stroke-dashoffset: 0;
   }
 }
+
+@keyframes carouselScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-60%); }
+}
+
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

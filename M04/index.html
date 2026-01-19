@@ -28,7 +28,14 @@
                 <ul>
                     <li><a href="index.html" class="active">Inicio</a></li>
                     <li><a href="instrucciones.html">Instrucciones</a></li>
-                    <li><a href="historia.html">Historia</a></li>
+                    <li class="dropdown">
+                        <a href="historia.html">Historia</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="historia.html">Historia general</a></li>
+                            <li><a href="historia-vampiros.html">Ecos de Sangre</a></li>
+                            <li><a href="historia-stanley.html">La Oficina Infinita</a></li>
+                        </ul>
+                    </li>
                     <li><a href="contacto.html">Contacto</a></li>
                     <li><a href="about.html">About us</a></li>
                     <li><a href="usuarios.html">Usuarios</a></li>
@@ -40,15 +47,15 @@
   <!-- MAIN CONTENT -->
   <main>
 
-        <!-- HERO SECTION -->
         <section class="hero">
             <div class="hero-content">
 
                 <h1>Realidades Fracturadas</h1>
 
                 <p class="hero-subtitle">
-                    Cada decisión abre un camino.  
-                    Cada camino cambia tu destino.
+                    Entra en la cueva.
+                    Dentro te esperan múltiples realidades,
+                    cada una con sus propias reglas y consecuencias.
                 </p>
 
                 <div class="hero-actions">
@@ -64,43 +71,62 @@
         </section>
         <section class="section section-intro">
             <div class="intro-content">
-                <h2>Un juego de decisiones</h2>
+                <h2>El núcleo de las realidades</h2>
                 <div class="text">
                     <p>
-                    Realidades Fracturadas es una aventura narrativa donde cada personaje
-                    vive una experiencia distinta.
+                        Realidades Fracturadas es un juego de aventuras narrativas
+                        ambientado dentro de una cueva que actúa como núcleo del sistema.
+                        Desde este espacio, los jugadores acceden a diferentes aventuras
+                        conocidos como <strong>realidades fracturadas</strong>.
                     </p>
 
                     <p>
-                    Las decisiones que tomas durante la historia modifican el desarrollo
-                    de los acontecimientos y conducen a diferentes finales.
+                        El usuario no vive la historia directamente,
+                        sino que observa y decide a través de los personajes.
                     </p>
+
+                    <p>
+                        Cada realidad contiene su propia historia y decisiones.
+                        No existe una única aventura, sino múltiples caminos que se activan
+                        según el personaje y las elecciones realizadas.
+                    </p>
+
+                    
                 </div>
             </div>
         </section>
+
         <section class="section scroll-reveal-game">
             <div class="reveal-step">
-                <h3>Elige tu personaje</h3>
-                <p>Cada personaje comienza la historia desde una realidad distinta.</p>
-            </div>
-
-            <div class="reveal-step">
-                <h3>Toma decisiones</h3>
+                <h3>Acceso al sistema</h3>
                 <p>
-                Durante la aventura deberás elegir entre diferentes opciones que alteran
-                el desarrollo de la historia.
+                    El jugador accede al sistema creando un usuario.
+                    Este usuario representa a la persona que explora la cueva
+                    y gestiona las decisiones realizadas.
                 </p>
             </div>
 
             <div class="reveal-step">
-                <h3>Descubre las consecuencias</h3>
+                <h3>Selección de personaje</h3>
                 <p>
-                Cada decisión conduce a caminos y finales diferentes.
+                    Dentro de la cueva, el usuario elige uno de los personajes disponibles.
+                    Cada personaje tiene su propio contexto, información y forma
+                    de interactuar con las realidades.
+                </p>
+            </div>
+
+            <div class="reveal-step">
+                <h3>Exploración de realidades</h3>
+                <p>
+                    Un mismo personaje puede acceder a distintas aventuras.
+                    Según el personaje elegido, las opciones, eventos
+                    y finales de cada realidad pueden variar.
                 </p>
             </div>
         </section>
+
         <section class="svg-story">
-            <h2>Las realidades se fracturan</h2>
+            <h2>Un sistema de caminos ramificados</h2>
 
             <svg class="paths-svg" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
                 <path d="M300 20 L300 140" />
@@ -110,7 +136,8 @@
             </svg>
 
             <p>
-                Cada elección divide el camino y construye una realidad distinta.
+                El sistema registra cada decisión y genera nuevas bifurcaciones.
+                No todos los caminos están disponibles para todos los personajes.
             </p>
         </section>
 
@@ -119,14 +146,14 @@
 
             <div class="how-grid">
                 <div class="how-item bg-user">
-                    <h3>Elije peronaje</h3>
+                    <h3>Personaje y aventura</h3>
                     <p>
-                        Elige uno de los personajes disponibles para comenzar una aventura.
+                        Elige uno de los personajes disponibles para comenzar la aventura escogida. 
                     </p>
                 </div>
 
                 <div class="how-item bg-decision">
-                    <h3>Lee y decide</h3>
+                    <h3>Explora realidades</h3>
                     <p>
                         A lo largo de la historia se te presentarán diferentes opciones.
                     </p>
@@ -135,7 +162,7 @@
                 <div class="how-item bg-ending">
                     <h3>Explora finales</h3>
                     <p>
-                        Las decisiones afectan el desarrollo y el desenlace de la historia.
+                        Las decisiones acumuladas determinan el desarrollo y el final de cada aventura.
                     </p>
                 </div>
             </div>
@@ -145,13 +172,8 @@
                 Ver instrucciones completas
                 </a>
             </div>
+
         </section>
-
-
-
-        
-
-
 
     </main>
 

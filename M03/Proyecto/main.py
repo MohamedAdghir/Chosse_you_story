@@ -88,11 +88,15 @@ while flg_salir:
 
     while menu_general == "game_loop":
 
-        # Supondremos que ya hemos elegido la aventura...
+        # Exportacion de datos que necesitamos para settear la aventura
         adventures = get_adventures_with_chars()
         characters = get_characters()
 
+        # Eleccion de la aventura
         opc = getOpt(getFormatedAdventures(), "Selecciona una aventura (0 para volver atrás): ", adventures,[0])
+        if int(opc) == 0:
+            menu_general = "Play"
+            break
         selectedAdventure = int(opc)
 
         # ----- Elegir el personaje para la aventura: -----
@@ -104,4 +108,45 @@ while flg_salir:
             characterSelectorDisplay += "{:3}) {:50}\n".format(character,characters[character])
         opc = getOpt(characterSelectorDisplay, "Selecciona un personaje (0 para volver atrás): ", adventures[selectedAdventure]["Characters"],[0])
         opc = int(opc)
-        
+        if opc == 0:
+            break
+        characterSelected = characters[opc]
+        print("Has seleccionado al personaje {}!\n".format(characterSelected))
+        input("Enter para continuar")
+
+        # Obtener los pasos de la aventura
+        adventure_steps = get_id_bystep_adventure()
+        final_steps = []
+        for step in adventure_steps:
+            if adventure_steps[step]["Final_Step"] == 1:
+                final_steps.append(step)
+
+        first_step = get_first_step_adventure(selectedAdventure)
+        current_step = first_step
+
+        game_finished = False
+        while not game_finished:
+            limpiar_terminal()
+            stepDisplay = getHeader(adventures[selectedAdventure]["Name"]) + "\n"
+            answers = get_answers_bystep_adventure(current_step)
+            if current_step in final_steps: # Es un final?
+                stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected)
+                print(stepDisplay)
+                print("Se acabo\n")
+                game_finished = True
+                menu_general = "Play"
+            elif answers: # Tiene opciones?
+                stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected) + "\n"
+                possibleAnswers = []
+                for answer in answers:
+                    possibleAnswers.append(answer[0])
+                    stepDisplay += getFormatedAnswers(answer[0], answers[answer]["Description"], 99, 3) + "\n"
+                opc = getOpt(stepDisplay, "Selecciona una opción: ", possibleAnswers)
+                resolution = "\n" + formatText(answers[(int(opc), current_step)]["Resolution_Answer"],105,"\n").replace("$NAME",characterSelected)
+                print(resolution)
+            else: # No es final ni tiene opciones, un paso intermedio -hector: jejegod
+                stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected)
+                print(stepDisplay)
+                print("paso intermedio\n")
+            input("Enter para continuar")
+            current_step = answers[(int(opc), current_step)]["NextStep_Adventure"]

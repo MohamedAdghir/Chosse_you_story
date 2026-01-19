@@ -10,7 +10,6 @@ def limpiar_terminal():
     else:  # Linux y macOS
         os.system('clear')
 
-
 # Funcion para formatear texto
 def formatText(text, lenLine, split):
     formatedText = ""
@@ -68,6 +67,7 @@ def getFormatedBodyColumns(texts,lenLines,margin=2):
             if j != len(formatedColumns)-1:
                 finalText += "".ljust(margin," ")
         finalText += "\n"
+
     return finalText
 
 #Funcion de las opciones del menu
@@ -139,20 +139,21 @@ def getHeadeForTableFromTuples(t_name_columns,t_size_columns,title=""):
     texto = ""
     for a in t_size_columns:
         suma = suma + a
-    print(title.center(suma,"="))
+    texto = title.center(suma,"=") + "\n"
     for i in range(len(t_name_columns)):
-        texto = texto + t_name_columns[i].ljust(t_size_columns[i])
-    print(texto+ "\n" + "".center(suma,"*"))
+        texto += t_name_columns[i].ljust(t_size_columns[i])
+    
+    texto += "\n" + "".center(suma,"*") + "\n"
+    return texto
 
 # Funcion que crea un header
 def getHeader(text):
     texto = "".center(105,"*") + "\n" + text.center(105,"=") + "\n" + "".center(105,"*")
     return texto
 
-
-texto = "Escoge el camino mas seguro para poder escapar del hombre lobo y luego poder ir a la  casa de abuela a cuidarla"
+texto = "Escoge el camino mas seguro para poder escapar del hombre lobo y luego poder ir a la  casa de abuela a cuidarla, en un dia tan lluvioso que mi paraguas ni se abria del viento que hacia no pude ir a recoger las manzanas que le prometi a mi abuela, la verdad me senti un poco decepcionado con el manzanero porque se cayo del sexto piso y se fue a por leña en un dia tan malo como este"
 def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
-    prefijo = margen_derecho*" "+"{}) ".format(id_respuesta)
+    prefijo = margen_derecho * " " + "{}) ".format(id_respuesta)
     sangria = " " * len(prefijo)
 
     resultado = prefijo
@@ -180,7 +181,6 @@ def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
 
     return resultado
 
-print(getFormatedAnswers(1,texto,105,3))
 def writeText(texto, retraso_base=0.05):
     for caracter in texto:
         print(caracter, end='', flush=True)
@@ -195,6 +195,7 @@ def writeText(texto, retraso_base=0.05):
 
 #print(getFormatedAnswers("1",texto,0,120))
 
+"""
 diccionari = {4: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'Este muerto esta muy vivo',
 'date': datetime.datetime(2021, 11, 28, 18, 17, 20), 'idCharacter': 1, 'CharacterName':
 'Beowulf'}, 5: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'Este muerto esta muy vivo',
@@ -202,6 +203,7 @@ diccionari = {4: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'E
 'CharacterName': 'Beowulf'}}
 tuple_of_keys = ("Username","Name","CharacterName","date")
 weigth_of_columns = (20, 20,30, 20)
+"""
 def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
     lista = list(dict_of_data)
     for i in range(len(lista)):
@@ -226,11 +228,9 @@ def user_exist(lista,usuario):
 
 #print(user_exist(lista,usario))
 
-
-
 def getFormatedAdventures():
     adventures = get_adventures_with_chars()
-    getHeadeForTableFromTuples(("Id Adventure", "Adventure", "Description"), (15, 22, 68), "Adventures")
+    body = getHeadeForTableFromTuples(("Id Adventure", "Adventure", "Description"), (15, 22, 68), "Adventures")
     for idAdventure in adventures:
         texts = [
             str(idAdventure),
@@ -238,11 +238,7 @@ def getFormatedAdventures():
             adventures[idAdventure]["Description"]]
         lenLines = [13, 20, 66]
 
-        body = getFormatedBodyColumns(texts, lenLines)
-        print(body)
+        body += getFormatedBodyColumns(texts, lenLines) + "\n"
+    return body
 
-#getFormatedAdventures()
-
-
-
-#print(user_exist(lista,usario))
+#print(getFormatedAdventures())

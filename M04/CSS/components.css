@@ -169,3 +169,31 @@
   z-index: 0;
 }
 
+.history-carousel {
+  overflow: hidden;
+  margin: 100px auto;
+  max-width: 900px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 40px;
+  animation: carouselScroll 20s linear infinite;
+}
+
+.carousel-item {
+  min-width: 280px;
+  text-align: center;
+}
+
+.carousel-item img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.carousel-item p {
+  margin-top: 15px;
+  font-family: 'Cinzel', serif;
+  color: #00ffee;
+}
