@@ -134,9 +134,7 @@ while flg_salir:
                 input("Usuario no existe")
 
         else:
-            print("Salir")
-            flg_salir = False
-            menu_general = ""
+            menu_general = "principal"
 
     while menu_general == "config":
         opc = getOpt("Velocidad de escritura de los textos:\n1)Instantaneo\n2)Rápido\n3)Normal\n4)Lento\n5)Back", "\nElige tu opción:",
