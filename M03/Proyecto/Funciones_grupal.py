@@ -248,19 +248,42 @@ def getFormatedAdventures():
 
 #print(getFormatedAdventures())
 
+def replay(idAdventure,choices):
+    adventure_steps = get_id_bystep_adventure(idAdventure)
+
+    for step_id, answer_id in choices:
+        limpiar_terminal()
+
+        #mostrar la description del paso
+        step_text = adventure_steps[step_id]["Description"]
+        print(formatText(step_text, 105, "\n"))
+        input("Enter to continue")
+
+        # mostrar la opcion seleccionada y resolution
+        answers = get_answers_bystep_adventure(step_id)
+        print("\nOption selected")
+        resolution = answers[(answer_id, step_id)]["resolution"]
+        print(formatText(resolution, 105, "\n"))
+        input("Enter to continue")
+
+    limpiar_terminal()
+    print(show_fin())
+    input("Enter to continue")
+
+
 def show_relive_adventure():
     limpiar_terminal()
     print("""_/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\_
 \\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /
 /_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\_
 
-     ____  _____ _      _____ __      ________
-    |  _ \\| ____| |    |_   _|\\ \\    / /  ____|
-    | |_) |  _| | |      | |   \\ \\  / /| |__
-    |  _ <| |___| |___   | |    \\ \\/ / | |____
-    |_| \\_\\_____|_____|  |_|     \\__/  |______|
+     ____  _____ _  ________ __ ________ ________
+    |  _ \\| ____| |     | |   \\ \\    / / ____|
+    | |_) |  _| | |      | |    \\ \\  / /| |___
+    |  _ <| |___| |___ __| |____ \\ \\/ / | |____
+    |_| \\_\\_____|_____|__|____  \\___/  |______|
 
-            YOUR ADVENTURE
+                YOUR ADVENTURE
 
 _/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\_
 \\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /
@@ -290,26 +313,5 @@ _/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\_
 """)
     input("Enter to continue")
 
-def replay(idAdventure,choices):
-    adventure_steps = get_id_bystep_adventure(idAdventure)
-
-    for step_id, answer_id in choices:
-        limpiar_terminal()
-
-        #mostrar la description del paso
-        step_text = adventure_steps[step_id]["Description"]
-        print(formatText(step_text, 105, "\n"))
-        input("Enter to continue")
-
-        # mostrar la opcion seleccionada y resolution
-        answers = get_answers_bystep_adventure(step_id)
-        print("\nOption selected")
-        resolution = answers[(answer_id, step_id)]["resolution"]
-        print(formatText(resolution, 105, "\n"))
-        input("Enter to continue")
-
-    limpiar_terminal()
-    print(show_fin())
-    input("Enter to continue")
 
 

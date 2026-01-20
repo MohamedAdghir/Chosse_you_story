@@ -323,6 +323,15 @@ def getIdGames():
             ids = []
             for fila in resultado:
                 ids.append(fila["id_game"])
+            n=len(ids)
+            for i in range(n):
+                cambios = False
+                for j in range (0,n - i - 1):
+                    if ids[j] > ids[j+1]:
+                        ids[j],ids[j+1] = ids[j+1],ids[j]
+                        cambios = True
+                if not cambios:
+                    break
             return tuple(ids)
     except pymysql.MySQLError as e:
         print("Error:", e)
