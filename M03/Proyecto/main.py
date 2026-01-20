@@ -88,7 +88,26 @@ while flg_salir:
             menu_general = ""
     
     while menu_general == "Replay":
-                print("")
+        replayAdventures = getReplayAdventures()
+        if not replayAdventures:
+            print("No adventures to replay.")
+            input("Enter to continue")
+            menu_general = "principal"
+            break
+
+        header = getHeadeForTableFromTuples(("Id", "Username", "Name", "CharacterName", "date"),(6, 15, 35, 20, 25),"Relive your adventure")
+        print(header)
+        getTableFromDict(("Username", "Name", "CharacterName", "date"),(6, 15, 35, 20, 25),replayAdventures)
+        print("\n0) Go back")
+        opc = getOpt(inputOptText="Which adventure do you want to replay?: ",dictionary=replayAdventures)
+        if opc == "0":
+            menu_general = "principal"
+            break
+        else:
+            idGame = int(opc)
+            choices = getChoices(idGame)
+            replay(idGame,choices)
+            menu_general = "principal"
 
 
     while menu_general == "game_loop":
@@ -120,7 +139,7 @@ while flg_salir:
         input("Enter para continuar")
 
         # Obtener los pasos de la aventura
-        adventure_steps = get_id_bystep_adventure()
+        adventure_steps = get_id_bystep_adventure(selectedAdventure)
         final_steps = []
         for step in adventure_steps:
             if adventure_steps[step]["Final_Step"] == 1:

@@ -181,7 +181,7 @@ def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
 
     return resultado
 
-print(getFormatedAnswers(1, texto, 99, 3))
+#print(getFormatedAnswers(1, texto, 99, 3))
 
 def writeText(texto, retraso_base=0.05):
     for caracter in texto:
@@ -246,14 +246,14 @@ def getFormatedAdventures():
 #print(getFormatedAdventures())
 
 
-def replay(choices):
-    adventure_steps = get_id_bystep_adventure()
+def replay(idAdventure,choices):
+    adventure_steps = get_id_bystep_adventure(idAdventure)
 
     for step_id, answer_id in choices:
         limpiar_terminal()
 
         #mostrar la description del paso
-        step_text = adventure_steps[step_id]["description"]
+        step_text = adventure_steps[step_id]["Description"]
         print(formatText(step_text, 105, "\n"))
         input("Enter to continue")
 

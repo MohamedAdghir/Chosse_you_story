@@ -145,7 +145,7 @@ def get_id_bystep_adventure(id_adventure):
     finally:
         connection.close()
 
-print(get_id_bystep_adventure(1))
+#print(get_id_bystep_adventure(1))
 def insertUser(user,password):
     connection = connect_to_db()
     try:
@@ -330,6 +330,7 @@ def getIdGames():
     finally:
         connection.close()
 
+#print(getIdGames())
 
 def getReplayAdventures():
     connection = connect_to_db()
@@ -374,6 +375,7 @@ def getReplayAdventures():
     finally:
         connection.close()
 
+#print(getReplayAdventures())
 
 def getChoices(idGame):
     connection = connect_to_db()
@@ -402,3 +404,5 @@ def getChoices(idGame):
         return ()
     finally:
         connection.close()
+
+#print(getChoices(1))
