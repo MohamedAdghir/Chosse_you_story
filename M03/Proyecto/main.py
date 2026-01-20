@@ -115,7 +115,7 @@ while flg_salir:
         input("Enter para continuar")
 
         # Obtener los pasos de la aventura
-        adventure_steps = get_id_bystep_adventure()
+        adventure_steps = get_id_bystep_adventure() # Me acabo de dar cuenta, que aventura??? Xdd
         final_steps = []
         for step in adventure_steps:
             if adventure_steps[step]["Final_Step"] == 1:
