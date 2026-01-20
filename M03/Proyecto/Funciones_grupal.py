@@ -139,11 +139,11 @@ def getHeadeForTableFromTuples(t_name_columns,t_size_columns,title=""):
     texto = ""
     for a in t_size_columns:
         suma = suma + a
-    texto = title.center(suma,"=") + "\n"
+    texto = title.center(suma,"*") + "\n"
     for i in range(len(t_name_columns)):
         texto += t_name_columns[i].ljust(t_size_columns[i])
     
-    texto += "\n" + "".center(suma,"*") + "\n"
+    texto += "\n" + "".center(suma,"*")
     return texto
 
 # Funcion que crea un header
@@ -197,7 +197,7 @@ def writeText(texto, retraso_base=0.05):
 
 #writeText(formatText(texto, 105, "\n"),0.025)
 
-"""
+
 diccionari = {4: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'Este muerto esta muy vivo',
 'date': datetime.datetime(2021, 11, 28, 18, 17, 20), 'idCharacter': 1, 'CharacterName':
 'Beowulf'}, 5: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'Este muerto esta muy vivo',
@@ -205,9 +205,17 @@ diccionari = {4: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'E
 'CharacterName': 'Beowulf'}}
 tuple_of_keys = ("Username","Name","CharacterName","date")
 weigth_of_columns = (20, 20,30, 20)
-"""
+
 def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
     lista = list(dict_of_data)
+    for pasada in range(len(lista) - 1):
+        cambios = False
+        for i in range(len(lista) - 1 - pasada):
+             if lista[i] > lista[i + 1]:
+                lista[i], lista[i + 1] = lista[i + 1], lista[i]
+                cambios = True
+        if not cambios:
+            break
     for i in range(len(lista)):
         texto = str(lista[i]).ljust(weigth_of_columns[0])
         for j in range(len(tuple_of_keys)-1):
@@ -215,7 +223,7 @@ def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
         texto = texto + str(dict_of_data[lista[i]][tuple_of_keys[len(tuple_of_keys)-1]])
         print(texto)
 
-#getTableFromDict(tuple_of_keys,weigth_of_columns,diccionari)
+getTableFromDict(tuple_of_keys,weigth_of_columns,diccionari)
 
 #lista = get_users()
 #usario = "Tester"

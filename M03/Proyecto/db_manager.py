@@ -277,12 +277,13 @@ def most_played_player():
                      LIMIT 1;
                    """
             cursor.execute(sql)
-            resultado = cursor.fetcone()
+            resultado = cursor.fetchone()
             if resultado:
                 return  resultado["NOMBRE USUARIO"], resultado["PARTIDAS JUGADAS"]
-            return None
+            return None, None
     except pymysql.MySQLError as e:
         print("Error:", e)
+        return None, None
     finally:
         connection.close()
 

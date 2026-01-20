@@ -9,7 +9,6 @@ current_user = 0
 userList = get_user_ids()
 
 textVel = 0.05
-
 while flg_salir:
     while menu_general == "principal":
         opc = getOpt("1)Login\n2)Create user\n3)Replay Adventure\n4)Reports\n5)Exit","\nElige tu opción:",[1, 2, 3, 4,5],[],{})
@@ -89,16 +88,33 @@ while flg_salir:
             print("Most used answer")
             print(getHeadeForTableFromTuples(("ID AVENTURA - NOMBRE","ID PASO-DESCRIPCION","ID RESPUESTA - DESCRIPCION","NUMERO VECES SELECCIONADA"),(30,30,30,30), title="Most used answer"))
         elif opc == 2:
-            print(getHeadeForTableFromTuples(("NOMBRE USUARIO","PARTIDAS JUGADAS"),(60,60), title="Player with more games played"))
-            usuario,partidas =most_played_player
-            print("{:60}{:60}".format(usuario,partidas))
+            usuario,partidas = most_played_player()
+            print(getHeadeForTableFromTuples(("NOMBRE USUARIO", "PARTIDAS JUGADAS"), (60, 60),
+                                             title="Player with more games played"))
+            if usuario is not None:
+                print("{:<60}{:<60}".format(str(usuario), str(partidas)))
+            else:
+                print("No se encontraron datos")
+            input("Continue")
+            limpiar_terminal()
         elif opc == 3:
             name = input("What user do you want to see?")
             if checkUserbdd(name,"hola") == -1:
-                print(getHeadeForTableFromTuples(("Id_Adventure","Name","Date"), (40,40,40),
-                                                 title="Games played by {}").format(name))
+                aventuras = GetPlayerAdventureLog(name)
+
+                if aventuras:
+                    print(getHeadeForTableFromTuples(("Id_Adventure", "Name", "Date"), (40, 40, 40),
+                                                     title="Games played by "+name))
+                    for fila in aventuras:
+                        print("{:<40}{:<40}{:<40}".format(
+                            str(fila["idadventure"]),
+                            str(fila["Name"]),
+                            str(fila["date"])))
+                else:
+                    print("El usuario no ha hecho ninguna aventura")
             else:
                 input("Usuario no existe")
+
         else:
             print("Salir")
             flg_salir = False
