@@ -147,7 +147,7 @@ while flg_salir:
         input("Enter para continuar")
 
         # Obtener los pasos de la aventura
-        adventure_steps = get_id_bystep_adventure(1) # Me acabo de dar cuenta, que aventura??? Xdd
+        adventure_steps = get_id_bystep_adventure(1)
         final_steps = []
         for step in adventure_steps:
             if adventure_steps[step]["Final_Step"] == 1:
@@ -170,17 +170,20 @@ while flg_salir:
                 selectedOptions.append((current_step,None))
                 game_finished = True
                 menu_general = "Play"
+            # ----------------------------------------------------
             elif answers: # Tiene opciones?
                 stepDisplay += formatText(adventure_steps[current_step]["Description"].replace("$NAME",characterSelected),105,"\n") + "\n"
                 possibleAnswers = []
                 for answer in answers:
                     possibleAnswers.append(answer[0])
-                    stepDisplay += getFormatedAnswers(answer[0], answers[answer]["Description"], 99, 3) + "\n"
-                opc = getOpt(stepDisplay, "Selecciona una opción: ", possibleAnswers)
+                    stepDisplay += getFormatedAnswers(len(possibleAnswers), answers[answer]["Description"], 99, 3) + "\n"
+                opc = getOpt(stepDisplay, "Selecciona una opción: ", range(1,len(possibleAnswers)+1))
+                opc = possibleAnswers[int(opc)-1]
                 resolution = "\n" + formatText(answers[(int(opc), current_step)]["Resolution_Answer"].replace("$NAME",characterSelected),105,"\n")
                 print(resolution)
                 selectedOptions.append((current_step,int(opc)))
                 current_step = answers[(int(opc), current_step)]["NextStep_Adventure"]
+            # ----------------------------------------------------
             else: # No es final ni tiene opciones, un paso intermedio
                 stepDisplay += formatText(adventure_steps[current_step]["Description"].replace("$NAME",characterSelected),105,"\n")
                 print(stepDisplay)
