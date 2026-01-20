@@ -10,6 +10,7 @@ def limpiar_terminal():
     else:  # Linux y macOS
         os.system('clear')
 
+
 # Funcion para formatear texto
 def formatText(text, lenLine, split):
     formatedText = ""
@@ -244,3 +245,6 @@ def getFormatedAdventures():
     return body
 
 #print(getFormatedAdventures())
+
+
+
