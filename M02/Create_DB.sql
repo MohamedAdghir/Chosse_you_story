@@ -19,7 +19,6 @@ CREATE TABLE USERS (
 CREATE TABLE CHARACTERS (
     id_character INT,
     name VARCHAR(20),
-    description TEXT, /* PREGUNTAR QUE PASA CON LA DESCRIPCIÓN <------------------------ */
     created_at TIMESTAMP,
     created_by VARCHAR(50),
     updated_at TIMESTAMP,
@@ -51,6 +50,7 @@ CREATE TABLE ADVENTURE_STEP (
     description TEXT,
     first_step BOOLEAN,
     final_step BOOLEAN,
+    next_step INT,
     created_at TIMESTAMP,
     created_by VARCHAR(50),
     updated_at TIMESTAMP,
@@ -78,6 +78,7 @@ CREATE TABLE GAME (
 );
 
 CREATE TABLE CHOICE (
+    id_choice INT,
     id_game INT,
     id_adventure_step INT,
     id_adventure_step_answer INT

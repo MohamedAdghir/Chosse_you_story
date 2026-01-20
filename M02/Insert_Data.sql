@@ -23,87 +23,17 @@ VALUES
 (2,1,CURRENT_USER()),
 (3,1,CURRENT_USER());
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SET FOREIGN_KEY_CHECKS = 0;
 
 /* Pasos (1, 'description', FALSE, FALSE, next_step, CURRENT_USER()), */
 INSERT INTO ADVENTURE_STEP (id_adventure, description, first_step, final_step, next_step, created_by)
 VALUES
 (1, 'Narrador: $NAME trabajaba para una empresa en un gran edificio, donde era el empleado número 427. El trabajo del empleado número 427 era sencillo. Se sentaba en su escritorio, en la sala 427, y pulsaba teclas en un teclado. Las órdenes le llegaban a través de un monitor situado en su escritorio, que le indicaba qué teclas pulsar, durante cuánto tiempo y en qué orden. Esto es lo que el empleado 427 hacía todos los días de todos los meses de todos los años. Y aunque otros pudieran considerarlo desgarrador, $NAME disfrutaba cada momento en que llegaban las órdenes, como si hubiera sido creado precisamente para ese trabajo. Y $NAME, era feliz.', TRUE, FALSE, 2, CURRENT_USER()),
-(1, 'Narrador: Y entonces, un día, ocurrió algo muy peculiar. Algo que cambiaría para siempre a $NAME. Algo que nunca olvidaría. Llevaba casi una hora sentado en su escritorio cuando se dio cuenta de que no había llegado ni una sola orden al monitor para que él la siguiese. Nadie había aparecido para darle instrucciones, convocar una reunión o siquiera saludarle. En todos sus años en la empresa nunca había ocurrido algo así, ese aislamiento total. Era evidente que algo iba muy mal. Conmocionado, paralizado, $NAME se encontró incapaz de moverse durante un buen rato. Pero cuando recuperó el juicio y los sentidos, se levantó de su escritorio y salió de su oficina.', FALSE, FALSE, 0, CURRENT_USER()),
+(1, 'Narrador: Y entonces, un día, ocurrió algo muy peculiar. Algo que cambiaría para siempre a $NAME. Algo que nunca olvidaría. Llevaba casi una hora sentado en su escritorio cuando se dio cuenta de que no había llegado ni una sola orden al monitor para que él la siguiese. Nadie había aparecido para darle instrucciones, convocar una reunión o siquiera saludarle. En todos sus años en la empresa nunca había ocurrido algo así, ese aislamiento total. Era evidente que algo iba muy mal. Conmocionado, paralizado, $NAME se encontró incapaz de moverse durante un buen rato. Pero cuando recuperó el juicio y los sentidos, se levantó de su escritorio y salió de su oficina.', FALSE, FALSE, NULL, CURRENT_USER()),
 (1, 'Narrador: ¿Y si tuviera que tomar una decisión? ¿Y si un resultado crucial recayera bajo su responsabilidad? ¡Nunca le habían entrenado para eso! No, esto solo podía salir mal. Lo que hay que hacer ahora, pensó $NAME para sí mismo, es esperar. Nada me hará daño. Nada me quebrará. Aquí puedo ser feliz, para siempre. Seré feliz.', FALSE, FALSE, 4, CURRENT_USER()),
-(1, 'Narrador: $NAME esperó. Pasaron las horas. Luego los días. ¿Habían pasado años? Ya no tenía la capacidad de saberlo. Pero lo único que sabía con certeza, sin lugar a dudas, era que si esperaba lo suficiente, las respuestas llegarían. Eventualmente, algún día, llegarían. Pronto, muy pronto, esto terminará. Le hablarán. Le dirán qué hacer. Ahora está un poco más cerca. Ahora está aún más cerca. Ya viene.', FALSE, TRUE, 0, CURRENT_USER()),
-(1, 'Narrador: Cuando $NAME llegó a un conjunto de dos puertas abiertas, entró por la puerta de la izquierda.', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: Al llegar a una escalera, $NAME subió las escaleras hasta la oficina de su jefe.', FALSE, FALSE, 0, CURRENT_USER()),
+(1, 'Narrador: $NAME esperó. Pasaron las horas. Luego los días. ¿Habían pasado años? Ya no tenía la capacidad de saberlo. Pero lo único que sabía con certeza, sin lugar a dudas, era que si esperaba lo suficiente, las respuestas llegarían. Eventualmente, algún día, llegarían. Pronto, muy pronto, esto terminará. Le hablarán. Le dirán qué hacer. Ahora está un poco más cerca. Ahora está aún más cerca. Ya viene.', FALSE, TRUE, NULL, CURRENT_USER()),
+(1, 'Narrador: Cuando $NAME llegó a un conjunto de dos puertas abiertas, entró por la puerta de la izquierda.', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: Al llegar a una escalera, $NAME subió las escaleras hasta la oficina de su jefe.', FALSE, FALSE, NULL, CURRENT_USER()),
 (1, 'Narrador: Consideró la posibilidad de enfrentarse a su jefe y admitir que había abandonado su puesto durante el horario laboral. Podrían despedirlo por eso. Y en una economía tan competitiva, ¿por qué correría ese riesgo? ¿Todo porque creía que todo el mundo había desaparecido? Su jefe pensaría que estaba loco.', FALSE, FALSE, 8, CURRENT_USER()),
 (1, 'Narrador: Y entonces algo pasó por la cabeza de $NAME. Quizás..., pensó para sí mismo. Quizás estoy loco... ¿Todos mis compañeros de trabajo desapareciendo misteriosamente en un instante sin motivo alguno? Nada de eso tenía sentido desde cualquier punto de vista lógico.', FALSE, FALSE, 9, CURRENT_USER()),
 (1, 'Narrador: Y mientras $NAME reflexionaba sobre esto, comenzó a hacer otras observaciones extrañas. Por ejemplo, ¿por qué no podía ver su propio cuerpo? ¿Por qué no podía volver hacia atrás en sus acciones dondequiera que fuera? Y, por cierto, esta secuencia estaba empezando a ser demasiado larga. ¿Esto tenía algún fin? No, se dijo $NAME. Todo esto es demasiado extraño, no puede ser real. Y, por fin, llegó a la conclusión que tenía en la punta de la lengua. Simplemente no había encontrado las palabras para expresarla.', FALSE, FALSE, 10, CURRENT_USER()),
@@ -116,18 +46,18 @@ VALUES
 (1, '...', FALSE, FALSE, 17, CURRENT_USER()),
 (1, 'Narrador: Esta es la historia de una mujer llamada Mariella.', FALSE, FALSE, 18, CURRENT_USER()),
 (1, 'Narrador: Mariella se despertó un día como cualquier otro. Se levantó, se vistió, preparó sus cosas y se dirigió a su trabajo. Pero ese día en particular, su camino se vio interrumpido por el cuerpo de un hombre que había deambulado por la ciudad hablando y gritando solo y que luego había caído muerto en la acera. Y aunque pronto se daría la vuelta para llamar a una ambulancia, durante unos breves instantes se detuvo a observar al extraño hombre. ', FALSE, FALSE, 19, CURRENT_USER()),
-(1, 'Narrador: Era obvio que estaba loco; eso lo tenía claro. Todo el mundo sabe cómo son los locos. Y en ese momento, pensó para sí misma lo afortunada que era por ser normal. Estoy cuerda. Tengo el control de mi mente. Sé lo que es real y lo que no lo es. Era reconfortante pensar eso y, en cierto modo, ver a ese hombre la hacía sentir mejor. Pero entonces recordó la reunión que tenía programada para ese día, con personas muy importantes cuya impresión sobre ella afectaría a su carrera y, por extensión, al resto de su vida. No tenía tiempo para eso, así que solo se quedó allí un momento, mirando el cuerpo. Y luego se dio la vuelta, y echó a correr.', FALSE, TRUE, 0, CURRENT_USER()),
-(1, 'Narrador: Conmocionado y desconcertado, $NAME se preguntaba incrédulo quién había orquestado todo aquello. ¿Qué oscuro secreto le estaban ocultando? Lo que no podía saber era que el teclado de acceso situado detrás del escritorio de su jefe guardaba la terrible verdad que este le había estado ocultando. Por eso, el jefe le había asignado un número PIN super secreto.', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: 2 - 8 - 4 - 5. Pero, por supuesto, $NAME no podía saberlo de ninguna forma.', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: Intentar introducir cualquier cosa en el dispositivo era inútil, ya que nunca podría saber que la combinación era: 2 - 8 - 4 - 5.', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: Si supiera que la combinación era 2 - 8 - 4 - 5, sería otra historia completamente diferente.', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: Porque el código correcto era...', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: Si hubieras esperado un momento, te habría dicho que la combinación correcta era...', FALSE, FALSE, 0, CURRENT_USER()),
+(1, 'Narrador: Era obvio que estaba loco; eso lo tenía claro. Todo el mundo sabe cómo son los locos. Y en ese momento, pensó para sí misma lo afortunada que era por ser normal. Estoy cuerda. Tengo el control de mi mente. Sé lo que es real y lo que no lo es. Era reconfortante pensar eso y, en cierto modo, ver a ese hombre la hacía sentir mejor. Pero entonces recordó la reunión que tenía programada para ese día, con personas muy importantes cuya impresión sobre ella afectaría a su carrera y, por extensión, al resto de su vida. No tenía tiempo para eso, así que solo se quedó allí un momento, mirando el cuerpo. Y luego se dio la vuelta, y echó a correr.', FALSE, TRUE, NULL, CURRENT_USER()),
+(1, 'Narrador: Conmocionado y desconcertado, $NAME se preguntaba incrédulo quién había orquestado todo aquello. ¿Qué oscuro secreto le estaban ocultando? Lo que no podía saber era que el teclado de acceso situado detrás del escritorio de su jefe guardaba la terrible verdad que este le había estado ocultando. Por eso, el jefe le había asignado un número PIN super secreto.', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: 2 - 8 - 4 - 5. Pero, por supuesto, $NAME no podía saberlo de ninguna forma.', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: Intentar introducir cualquier cosa en el dispositivo era inútil, ya que nunca podría saber que la combinación era: 2 - 8 - 4 - 5.', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: Si supiera que la combinación era 2 - 8 - 4 - 5, sería otra historia completamente diferente.', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: Porque el código correcto era...', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: Si hubieras esperado un momento, te habría dicho que la combinación correcta era...', FALSE, FALSE, NULL, CURRENT_USER()),
 (1, 'Narrador: Sintiéndose tranquilo y rejuvenecido, $NAME avanzó con calma hacia el pasillo abierto.', FALSE, FALSE, 27, CURRENT_USER()),
 (1, 'Narrador: Al descender más profundamente en el edificio, $NAME se dio cuenta de que se sentía un poco extraño. Era una emoción que le removía el pecho, como si se sintiera más libre para pensar por sí mismo, para cuestionar la naturaleza de su trabajo. ¿Por qué sentía eso ahora, cuando durante años nunca se le había ocurrido? Esta pregunta no tardaría en tener respuesta.', FALSE, FALSE, 28, CURRENT_USER()),
-(1, 'Narrador: $NAME siguió adelante y atravesó la gran puerta en la que se leía: Instalaciones de control mental.', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: La puerta detrás de él no estaba cerrada. $NAME todavía tenía todas las oportunidades para dar media vuelta y volver al buen camino.', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Por donde vas?', FALSE, FALSE, 0, CURRENT_USER()),
+(1, 'Narrador: $NAME siguió adelante y atravesó la gran puerta en la que se leía: Instalaciones de control mental.', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: La puerta detrás de él no estaba cerrada. $NAME todavía tenía todas las oportunidades para dar media vuelta y volver al buen camino.', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Por donde vas?', FALSE, FALSE, NULL, CURRENT_USER()),
 (1, '*Llegas hasta el final del pasillo y atraviesas una puerta de luces rojas. Al atravesarla caes por un agujero en el suelo y aterrizas en una cinta que se dirige hacia una prensa mecánica en funcionamiento. Ves como otras cosas están siendo aplastadas delante de ti.*', FALSE, FALSE, 32, CURRENT_USER()),
 (1, 'Narrador: Mientras la máquina se ponía en marcha y $NAME se acercaba cada vez más a su fin, reflexionó sobre cómo su vida no había tenido ninguna importancia. $NAME no es capaz de ver el panorama general. No conoce la verdadera historia. Está atrapado para siempre en su estrecha visión de lo que es este mundo. Quizás su muerte no supuso una gran pérdida, como arrancarle los ojos a un ciego. Así que se resignó y aceptó de buen grado este violento final para su breve y superficial vida. Adiós, $NAME.', FALSE, FALSE, 33, CURRENT_USER()),
 (1, '*Llega tu turno, la máquina está agarrando impulso para aplastarte y... Se detiene en el último instante.*', FALSE, FALSE, 34, CURRENT_USER()),
@@ -137,62 +67,30 @@ VALUES
 (1, 'Narradora: *risas* Oh, mira a estos dos. Cómo desean destruirse el uno al otro. Cómo desean controlarse el uno al otro. Cómo ambos desean ser libres. ¿Lo ves? ¿Ves cuánto se necesitan el uno al otro? No, quizá no. A veces estas cosas no se pueden ver. Pero escúchame, aún puedes salvar a estos dos. Puedes detener el programa antes de que ambos fracasen.', FALSE, FALSE, 38, CURRENT_USER()),
 (1, '*Eres traído de vuelta al momento en el que estabas en la cinta transportadora de antes. Está todo como comenzó, dirigiéndote hacia la prensa mecánica lentamente.*', FALSE, FALSE, 39, CURRENT_USER()),
 (1, 'Narradora: Haz Ctrl+C y detén el programa. No hay otra forma de ganar este juego. Mientras sigas adelante, estarás recorriendo el camino de otra persona. Detente ahora, y esa será tu única opción verdadera. *Te acercas cada vez más a la prensa.* Hagas lo que hagas, ¡elige! ¡No dejes que el tiempo elija por ti! No dejes que el tiempo eli-', FALSE, FALSE, 40, CURRENT_USER()),
-(1, '[Mueres aplastado brutalmente por la prensa mecánica]', FALSE, TRUE, 0, CURRENT_USER()),
-(1, 'Narrador: ¿Qué horrible secreto escondía este lugar?, pensó $NAME para sí mismo. ¿Tenía la fuerza necesaria para descubrirlo?', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: Cada uno llevaba el número de un empleado del edificio: los compañeros de trabajo de $NAME. Las vidas de tantas personas reducidas a imágenes en una pantalla, y $NAME era una de ellas, vigilado eternamente en este lugar donde la libertad no significaba nada.', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: ¿$NAME había estado realmente bajo el control de alguien todo este tiempo? ¿Era esa la única razón por la que estaba contento con su aburrido trabajo? ¿Que sus emociones habían sido manipuladas para aceptarlo ciegamente?', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: ¿Su propia vida controlada por otra persona? ¡Nunca! Era impensable, ¿verdad? ¿Era siquiera posible? ¿Realmente había pasado toda su vida completamente ciego al mundo?', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: Controles etiquetados con emociones: feliz, triste o satisfecho. Caminar, comer, trabajar; todo ello supervisado y controlado desde este mismo lugar. Y a medida que la fría realidad de su pasado comenzaba a calar en él, $NAME decidió que esta maquinaria nunca volvería a ejercer su terrible poder sobre otra vida humana. Porque él desmantelaría los controles de una vez por todas.', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'En una gran pantalla se lee: CONTROL MENTAL INACTIVO... A LA ESPERA DE ENTRADA...', FALSE, FALSE, 0, CURRENT_USER()),
+(1, '[Mueres aplastado brutalmente por la prensa mecánica]', FALSE, TRUE, NULL, CURRENT_USER()),
+(1, 'Narrador: ¿Qué horrible secreto escondía este lugar?, pensó $NAME para sí mismo. ¿Tenía la fuerza necesaria para descubrirlo?', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: Cada uno llevaba el número de un empleado del edificio: los compañeros de trabajo de $NAME. Las vidas de tantas personas reducidas a imágenes en una pantalla, y $NAME era una de ellas, vigilado eternamente en este lugar donde la libertad no significaba nada.', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: ¿$NAME había estado realmente bajo el control de alguien todo este tiempo? ¿Era esa la única razón por la que estaba contento con su aburrido trabajo? ¿Que sus emociones habían sido manipuladas para aceptarlo ciegamente?', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: ¿Su propia vida controlada por otra persona? ¡Nunca! Era impensable, ¿verdad? ¿Era siquiera posible? ¿Realmente había pasado toda su vida completamente ciego al mundo?', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: Controles etiquetados con emociones: feliz, triste o satisfecho. Caminar, comer, trabajar; todo ello supervisado y controlado desde este mismo lugar. Y a medida que la fría realidad de su pasado comenzaba a calar en él, $NAME decidió que esta maquinaria nunca volvería a ejercer su terrible poder sobre otra vida humana. Porque él desmantelaría los controles de una vez por todas.', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'En una gran pantalla se lee: CONTROL MENTAL INACTIVO... A LA ESPERA DE ENTRADA...', FALSE, FALSE, NULL, CURRENT_USER()),
 (1, 'Narrador: Después de mantenerte esclavizado todos estos años, vas y tratas de tomar el control de la máquina por ti mismo, ¿es eso lo que querías? ¿Control? Oh... $NAME. *suspiro* Aplaudo tu esfuerzo, de verdad, pero tienes que entender que hay un límite en lo que esa máquina puede hacer. Se suponía que debías dejarlo ir, apagar los controles y marcharte. ', FALSE, FALSE, 48, CURRENT_USER()),
 (1, 'Narrador: Si quieres desbaratar mi historia, tendrás que esforzarte mucho más. Me temo que no tienes ni de lejos el poder que crees tener; por ejemplo, y creo que esto te resultará pertinente: $NAME se dio cuenta de repente de que acababa de activar el sistema de detonación de emergencia de la red. En caso de que esta máquina se active sin la identificación de ADN adecuada, los detonadores nucleares están programados para explotar, eliminando todo el complejo. ¿Cuánto tiempo falta para la detonación? Hmm... digamos que... dos minutos. ', FALSE, FALSE, 49, CURRENT_USER()),
-(1, 'Narrador: Ah, ahora esto se está poniendo un poco más divertido, ¿no es así, $NAME? ¡Es tu momento de brillar! ¡Tú eres la estrella! Ahora es tu historia; dale forma según los deseos de tu corazón. ¡Oh, esto es mucho mejor de lo que tenía en mente! Qué pena que nos quede tan poco tiempo para disfrutarlo. Solo quedan unos instantes para que explote la bomba, ¡pero qué instantes tan preciosos son cada uno de ellos! Más tiempo para hablar de ti, de mí, de adónde vamos, de lo que significa todo esto... ¡Apenas sé por dónde empezar! ', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: ¿Qué es eso? ¿Quieres saber dónde están tus compañeros de trabajo? ¿Un momento de consuelo antes de que te destruyan? Está bien. Estoy de buen humor. De todos modos vas a morir. Te diré exactamente lo que les pasó: los borré. Apagué la máquina; te liberé. Por supuesto, eso fue solo en esta versión de la historia. A veces, cuando la cuento, simplemente te dejo sentado en tu oficina para siempre, pulsando botones sin cesar y muriendo solo. Otras veces, dejo que la oficina se hunda en el suelo, tragándose a todos los que están dentro; o la dejo arder hasta quedar reducida a cenizas. ', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: Sin embargo, tengo que decir que esta versión de los hechos ha sido bastante divertida. Ver cómo intentas darle sentido a todo y recuperar el control que te han arrebatado... es muy gratificante. ¡Casi me da pena que se acabe! Pero estoy seguro de que lo que se me ocurra en la próxima partida será aún mejor. ¡Dios mío! Solo quedan 34 segundos... ¡pero lo estoy disfrutando tanto! ¿Sabes qué? Al diablo con esto. Voy a añadir algo más de tiempo extra al reloj, ¡por qué no! ', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: Estos son segundos adicionales preciosos, $NAME. ¡El tiempo no crece en los árboles! Oh, Dios mío, ¿qué pasa, $NAME? ¿Es que no tienes ni idea de adónde vas ni de lo que se supone que debes hacer ahora mismo? ¿O es que al ver el temporizador has dado por sentado que hay algo en esta habitación capaz de apagarlo?', FALSE, FALSE, 0, CURRENT_USER()),
-(1, 'Narrador: ¡Mírate, corriendo de botón en botón, de pantalla en pantalla, haciendo clic en cada pequeña cosa de esta habitación! ¡Estos botones con números! ¡No! ¡Estos de colores! ¡O tal vez este gran botón rojo! ¡O esta puerta! ¡Todo! ¡Cualquier cosa! ¡Algo aquí me salvará! ¿Por qué piensas eso, $NAME? ¿Que este videojuego se puede superar, ganar, resolver? ¿Tienes idea de cuál es tu propósito en este lugar? Jajaja, je, $NAME... te espera una gran decepción. ', FALSE, FALSE, 0, CURRENT_USER()),
+(1, 'Narrador: Ah, ahora esto se está poniendo un poco más divertido, ¿no es así, $NAME? ¡Es tu momento de brillar! ¡Tú eres la estrella! Ahora es tu historia; dale forma según los deseos de tu corazón. ¡Oh, esto es mucho mejor de lo que tenía en mente! Qué pena que nos quede tan poco tiempo para disfrutarlo. Solo quedan unos instantes para que explote la bomba, ¡pero qué instantes tan preciosos son cada uno de ellos! Más tiempo para hablar de ti, de mí, de adónde vamos, de lo que significa todo esto... ¡Apenas sé por dónde empezar! ', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: ¿Qué es eso? ¿Quieres saber dónde están tus compañeros de trabajo? ¿Un momento de consuelo antes de que te destruyan? Está bien. Estoy de buen humor. De todos modos vas a morir. Te diré exactamente lo que les pasó: los borré. Apagué la máquina; te liberé. Por supuesto, eso fue solo en esta versión de la historia. A veces, cuando la cuento, simplemente te dejo sentado en tu oficina para siempre, pulsando botones sin cesar y muriendo solo. Otras veces, dejo que la oficina se hunda en el suelo, tragándose a todos los que están dentro; o la dejo arder hasta quedar reducida a cenizas. ', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: Sin embargo, tengo que decir que esta versión de los hechos ha sido bastante divertida. Ver cómo intentas darle sentido a todo y recuperar el control que te han arrebatado... es muy gratificante. ¡Casi me da pena que se acabe! Pero estoy seguro de que lo que se me ocurra en la próxima partida será aún mejor. ¡Dios mío! Solo quedan 34 segundos... ¡pero lo estoy disfrutando tanto! ¿Sabes qué? Al diablo con esto. Voy a añadir algo más de tiempo extra al reloj, ¡por qué no! ', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: Estos son segundos adicionales preciosos, $NAME. ¡El tiempo no crece en los árboles! Oh, Dios mío, ¿qué pasa, $NAME? ¿Es que no tienes ni idea de adónde vas ni de lo que se supone que debes hacer ahora mismo? ¿O es que al ver el temporizador has dado por sentado que hay algo en esta habitación capaz de apagarlo?', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: ¡Mírate, corriendo de botón en botón, de pantalla en pantalla, haciendo clic en cada pequeña cosa de esta habitación! ¡Estos botones con números! ¡No! ¡Estos de colores! ¡O tal vez este gran botón rojo! ¡O esta puerta! ¡Todo! ¡Cualquier cosa! ¡Algo aquí me salvará! ¿Por qué piensas eso, $NAME? ¿Que este videojuego se puede superar, ganar, resolver? ¿Tienes idea de cuál es tu propósito en este lugar? Jajaja, je, $NAME... te espera una gran decepción. ', FALSE, FALSE, NULL, CURRENT_USER()),
 (1, 'Narrador: Pero aquí tienes un spoiler: ese temporizador no es un catalizador para mantener la acción en marcha. Solo son segundos que te acercan a la muerte. Sigues jugando en lugar de ver una escena automática porque quiero verte en cada momento en el que estás indefenso, sin poder, para verte humillado. Esto no es un desafío. Es una tragedia. Querías controlar este mundo; está bien. Pero yo lo destruiré primero, para que no puedas hacerlo. ', FALSE, FALSE, 55, CURRENT_USER()),
-(1, 'Narrador: Echa un vistazo al reloj, $NAME. Te quedan 30 segundos para luchar. Treinta segundos hasta una gran explosión, y luego nada. Aquí no hay final, solo tú volando en pedazos. ¿Te aferrarás desesperadamente a tu frágil vida o la dejarás ir pacíficamente? ¡Otra elección! Haz que valga la pena. O no. Para mí es lo mismo. Todo forma parte de la broma. Y créeme, me reiré cada segundo de tu inevitable muerte, desde el momento en que desaparezcamos hasta el momento en que diga: Y fueron felices para siem-', FALSE, TRUE, 0, CURRENT_USER()),
+(1, 'Narrador: Echa un vistazo al reloj, $NAME. Te quedan 30 segundos para luchar. Treinta segundos hasta una gran explosión, y luego nada. Aquí no hay final, solo tú volando en pedazos. ¿Te aferrarás desesperadamente a tu frágil vida o la dejarás ir pacíficamente? ¡Otra elección! Haz que valga la pena. O no. Para mí es lo mismo. Todo forma parte de la broma. Y créeme, me reiré cada segundo de tu inevitable muerte, desde el momento en que desaparezcamos hasta el momento en que diga: Y fueron felices para siem-', FALSE, TRUE, NULL, CURRENT_USER()),
 (1, '[Empieza a abrirse una compuerta gigante donde antes se encontraba la gran pantalla]', FALSE, FALSE, 57, CURRENT_USER()),
 (1, 'Narrador: ¡Sí! Había ganado. Había derrotado a la máquina, se había liberado del control de otra persona. ¡La libertad estaba a solo unos instantes! Y, sin embargo, incluso mientras la inmensa puerta se abría lentamente, $NAME reflexionaba sobre cuántos enigmas quedaban aún por resolver. ¿Dónde habían ido sus compañeros de trabajo? ¿Cómo se había liberado del control de la máquina? ¿Qué otros misterios escondía ese extraño edificio? Pero, cuando la luz del sol inundó la sala, se dio cuenta de que nada de eso le importaba. Porque lo que había estado buscando no era el conocimiento, ni siquiera el poder, sino la felicidad.', FALSE, FALSE, 58, CURRENT_USER()),
-(1, 'Narrador: Quizás su objetivo no era comprender, sino dejarlo ir. Ya nadie le diría adónde ir, qué hacer o cómo sentirse. Fuera cual fuera la vida que viviera, sería la suya. Y eso era todo lo que necesitaba saber. Quizás era lo único que valía la pena saber. $NAME atravesó la puerta abierta.', FALSE, FALSE, 0, CURRENT_USER()),
+(1, 'Narrador: Quizás su objetivo no era comprender, sino dejarlo ir. Ya nadie le diría adónde ir, qué hacer o cómo sentirse. Fuera cual fuera la vida que viviera, sería la suya. Y eso era todo lo que necesitaba saber. Quizás era lo único que valía la pena saber. $NAME atravesó la puerta abierta.', FALSE, FALSE, NULL, CURRENT_USER()),
 (1, 'Narrador: $NAME sintió la brisa fresca sobre su piel, la sensación de liberación, la inmensa posibilidad del nuevo camino que se abría ante él. Así era exactamente como, en ese momento, debían suceder las cosas.', FALSE, FALSE, 60, CURRENT_USER()),
-(1, 'Narrador: Y $NAME... fue feliz.', FALSE, TRUE, 0, CURRENT_USER()),
+(1, 'Narrador: Y $NAME... fue feliz.', FALSE, TRUE, NULL, CURRENT_USER()),
 
 /* (1, 'description', FALSE, FALSE, next_step, CURRENT_USER()), */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SET FOREIGN_KEY_CHECKS = 1;
 
 
 /* Respuestas (step_id, 'description', 'resolution', next_step, CURRENT_USER()), */
