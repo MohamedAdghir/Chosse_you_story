@@ -1,6 +1,6 @@
 from Funciones_grupal import *
-from  Variables import *
 from  db_manager import *
+from Variables import *
 flg_salir = True
 
 menu_general = "principal"
@@ -84,13 +84,20 @@ while flg_salir:
         opc = getOpt("\n1)Most used answer\n2)PLayer with more games played\n3)Games played by user\n4)Back", "\nElige tu opción:",
                      [1, 2, 3, 4], [], {})
         opc = int(opc)
-
         if opc == 1:
             print("Most used answer")
+            print(getHeadeForTableFromTuples(("ID AVENTURA - NOMBRE","ID PASO-DESCRIPCION","ID RESPUESTA - DESCRIPCION","NUMERO VECES SELECCIONADA"),(30,30,30,30), title="Most used answer"))
         elif opc == 2:
-            print("PLayer with more games played")
+            print(getHeadeForTableFromTuples(("NOMBRE USUARIO","PARTIDAS JUGADAS"),(60,60), title="Player with more games played"))
+            usuario,partidas =most_played_player
+            print("{:60}{:60}".format(usuario,partidas))
         elif opc == 3:
-            print("Games played by user")
+            name = input("What user do you want to see?")
+            if checkUserbdd(name,"hola") == -1:
+                print(getHeadeForTableFromTuples(("Id_Adventure","Name","Date"), (40,40,40),
+                                                 title="Games played by {}").format(name))
+            else:
+                input("Usuario no existe")
         else:
             print("Salir")
             flg_salir = False
@@ -138,11 +145,9 @@ while flg_salir:
             menu_general = "Play"
 
     while menu_general == "game_loop":
-
         # Exportacion de datos que necesitamos para settear la aventura
         adventures = get_adventures_with_chars()
         characters = get_characters()
-
         # Eleccion de la aventura
         opc = getOpt(getFormatedAdventures(), "Selecciona una aventura (0 para volver atrás): ", adventures,[0])
         if int(opc) == 0:
@@ -211,4 +216,4 @@ while flg_salir:
         gameList = getIdGames()
         lastGame = gameList[len(gameList)-1]
         for choice in selectedOptions:
-            insertChoice(lastGame,choice[0],choice[1]) 
+            insertChoice(lastGame,choice[0],choice[1])
