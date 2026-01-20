@@ -101,22 +101,22 @@ def get_adventures_with_chars():
 
 #print(get_adventures_with_chars())
 
-
-def get_id_bystep_adventure():
+def get_id_bystep_adventure(id_adventure):
     connection = connect_to_db()
     try:
         with connection.cursor() as cursor:
             sql = """
                 SELECT as_step.id_adventure_step, 
-                    as_step.description, 
-                    as_step.final_step,
-                    as_step.next_step,
-                    asw.id_adventure_step_answer
+                       as_step.description, 
+                       as_step.final_step, 
+                       as_step.next_step,
+                       asw.id_adventure_step_answer
                 FROM ADVENTURE_STEP as_step
                 LEFT JOIN ADVENTURE_STEP_ANSWER asw 
-                ON as_step.id_adventure_step = asw.id_adventure_step
+                       ON as_step.id_adventure_step = asw.id_adventure_step
+                WHERE as_step.id_adventure = %s
             """
-            cursor.execute(sql)
+            cursor.execute(sql, (id_adventure,))
             resultados = cursor.fetchall()
 
             id_by_steps = {}
