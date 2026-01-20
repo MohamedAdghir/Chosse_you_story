@@ -234,12 +234,13 @@ def get_answers_bystep_adventure(adventure_id_step):
     try:
         with connection.cursor() as cursor:
             sql = "select id_adventure_step_answer,id_adventure_step,description,resolution,next_step from ADVENTURE_STEP_ANSWER where id_adventure_step =  %s "
-            cursor.execute(sql,(adventure_id_step))
+            cursor.execute(sql,(adventure_id_step,))
             resultado = cursor.fetchall()
             answers = {}
             for fila in resultado:
                 clave = (fila["id_adventure_step_answer"],fila["id_adventure_step"])
-                answers[clave] = {"Description": fila["description"],"Resolution_Answer": fila["resolution"],"NextStep_Adventure": fila["next_step"]}
+                answers[clave] = {"Description": fila["description"],"Resolution_Answer": fila["resolution"],
+                                  "NextStep_Adventure": fila["next_step"]}
             return answers
     except pymysql.MySQLError as e:
         print("Error:", e)
@@ -405,6 +406,7 @@ def getReplayAdventures():
                     g.playing_date,
                     c.id_character,
                     c.name AS character_name
+
                 FROM GAME g
                 JOIN USERS u ON g.id_user = u.id_user
                 JOIN ADVENTURE a ON g.id_adventure = a.id_adventure
@@ -465,3 +467,4 @@ def getChoices(idGame):
         connection.close()
 
 #print(getChoices(1))
+

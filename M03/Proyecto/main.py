@@ -126,7 +126,9 @@ while flg_salir:
         idGame = int(opc)
         id_adventure = replayAdventures[idGame]["idAdventure"]
         choices = getChoices(idGame)
-        replay(id_adventure,choices)
+        #characterlista = get_characters()
+        characterName = replayAdventures[idGame]["CharacterName"]
+        replay(id_adventure,choices,characterName)
         menu_general = "principal"
 
 

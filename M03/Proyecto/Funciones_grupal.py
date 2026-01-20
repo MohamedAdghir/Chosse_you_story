@@ -211,6 +211,14 @@ weigth_of_columns = (20, 20,30, 20)
 def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
     lista = list(dict_of_data)
     resultText = ""
+    for pasada in range(len(lista) - 1):
+        cambios = False
+        for i in range(len(lista) - 1 - pasada):
+             if lista[i] > lista[i + 1]:
+                lista[i], lista[i + 1] = lista[i + 1], lista[i]
+                cambios = True
+        if not cambios:
+            break
     for i in range(len(lista)):
         texto = str(lista[i]).ljust(weigth_of_columns[0])
         for j in range(len(tuple_of_keys)-1):
@@ -248,48 +256,56 @@ def getFormatedAdventures():
     return body
 
 
-#print(getFormatedAdventures())
-
-def replay(idAdventure,choices):
+def replay(idAdventure,choices,characterName):
     adventure_steps = get_id_bystep_adventure(idAdventure)
 
     for step_id, answer_id in choices:
         limpiar_terminal()
+    
 
         #mostrar la description del paso
         step_text = adventure_steps[step_id]["Description"]
+        step_text = step_text.replace("$NAME",characterName)
         print(formatText(step_text, 105, "\n"))
         input("Enter to continue")
 
         # mostrar la opcion seleccionada y resolution
         answers = get_answers_bystep_adventure(step_id)
-        print("\nOption selected")
-        resolution = answers[(answer_id, step_id)]["resolution"]
-        print(formatText(resolution, 105, "\n"))
-        input("Enter to continue")
-
-    limpiar_terminal()
+        if not answers:
+            print("\nOption selected")
+            continue
+        else:
+            resolution = answers[(answer_id, step_id)]["Resolution_Answer"]
+            resolution = resolution.replace("$NAME",characterName)
+            print(formatText(resolution, 105, "\n"))
+            input("Enter to continue")
     print(show_fin())
     input("Enter to continue")
+
+#print(getFormatedAdventures())
 
 
 def show_relive_adventure():
     limpiar_terminal()
-    print("""_/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\_
-\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /
-/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\_
-
-     ____  _____ _  ________ __ ________ ________
-    |  _ \\| ____| |     | |   \\ \\    / / ____|
-    | |_) |  _| | |      | |    \\ \\  / /| |___
-    |  _ <| |___| |___ __| |____ \\ \\/ / | |____
-    |_| \\_\\_____|_____|__|____  \\___/  |______|
-
-                YOUR ADVENTURE
-
-_/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\_
-\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /
-/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\_
+    print("""
+     ____        ____        ____        ____        ____        ____        ____        ____        ____        ____    
+    / /\ \      / /\ \      / /\ \      / /\ \      / /\ \      / /\ \      / /\ \      / /\ \      / /\ \      / /\ \   
+   / /  \ \    / /  \ \    / /  \ \    / /  \ \    / /  \ \    / /  \ \    / /  \ \    / /  \ \    / /  \ \    / /  \ \  
+  / /    \ \  / /    \ \  / /    \ \  / /    \ \  / /    \ \  / /    \ \  / /    \ \  / /    \ \  / /    \ \  / /    \ \ 
+ /_/      \_\/_/      \_\/_/      \_\/_/      \_\/_/      \_\/_/      \_\/_/      \_\/_/      \_\/_/      \_\/_/      \_\
+                                                                                                                         
+  ____  _____ _     _____     _______   __   _____  _   _ ____       _    ______     _______ _   _ _____ _   _ ____  _____ 
+ |  _ \| ____| |   |_ _\ \   / / ____|  \ \ / / _ \| | | |  _ \     / \  |  _ \ \   / / ____| \ | |_   _| | | |  _ \| ____|
+ | |_) |  _| | |    | | \ \ / /|  _|     \ V / | | | | | | |_) |   / _ \ | | | \ \ / /|  _| |  \| | | | | | | | |_) |  _|  
+ |  _ <| |___| |___ | |  \ V / | |___     | || |_| | |_| |  _ <   / ___ \| |_| |\ V / | |___| |\  | | | | |_| |  _ <| |___ 
+ |_| \_\_____|_____|___|  \_/  |_____|    |_| \___/ \___/|_| \_\ /_/   \_\____/  \_/  |_____|_| \_| |_|  \___/|_| \_\_____|
+                                                                                                                           
+ __           ____           ____           ____           ____           ____           ____           ____           __
+ \ \         / /\ \         / /\ \         / /\ \         / /\ \         / /\ \         / /\ \         / /\ \         / /
+  \ \       / /  \ \       / /  \ \       / /  \ \       / /  \ \       / /  \ \       / /  \ \       / /  \ \       / / 
+   \ \     / /    \ \     / /    \ \     / /    \ \     / /    \ \     / /    \ \     / /    \ \     / /    \ \     / /  
+    \_\___/_/      \_\___/_/      \_\___/_/      \_\___/_/      \_\___/_/      \_\___/_/      \_\___/_/      \_\___/_/   
+     |_____|        |_____|        |_____|        |_____|        |_____|        |_____|        |_____|        |_____|    
 """)
     input("Enter to continue")
 
