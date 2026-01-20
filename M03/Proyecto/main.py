@@ -27,6 +27,7 @@ while flg_salir:
                 else:
                     menu_general = "Play"
                     current_user = userList[1][userList[0].index(login_name)]
+                    userList = get_user_ids()
                     break
         elif opc == 2:
             print("Create User")
@@ -163,25 +164,25 @@ while flg_salir:
             stepDisplay = getHeader(adventures[selectedAdventure]["Name"]) + "\n"
             answers = get_answers_bystep_adventure(current_step)
             if current_step in final_steps: # Es un final?
-                stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected)
+                stepDisplay += formatText(adventure_steps[current_step]["Description"].replace("$NAME",characterSelected),105,"\n")
                 print(stepDisplay)
                 print("Se acabo\n")
                 selectedOptions.append((current_step,None))
                 game_finished = True
                 menu_general = "Play"
             elif answers: # Tiene opciones?
-                stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected) + "\n"
+                stepDisplay += formatText(adventure_steps[current_step]["Description"].replace("$NAME",characterSelected),105,"\n") + "\n"
                 possibleAnswers = []
                 for answer in answers:
                     possibleAnswers.append(answer[0])
                     stepDisplay += getFormatedAnswers(answer[0], answers[answer]["Description"], 99, 3) + "\n"
                 opc = getOpt(stepDisplay, "Selecciona una opción: ", possibleAnswers)
-                resolution = "\n" + formatText(answers[(int(opc), current_step)]["Resolution_Answer"],105,"\n").replace("$NAME",characterSelected)
+                resolution = "\n" + formatText(answers[(int(opc), current_step)]["Resolution_Answer"].replace("$NAME",characterSelected),105,"\n")
                 print(resolution)
                 selectedOptions.append((current_step,int(opc)))
                 current_step = answers[(int(opc), current_step)]["NextStep_Adventure"]
             else: # No es final ni tiene opciones, un paso intermedio
-                stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected)
+                stepDisplay += formatText(adventure_steps[current_step]["Description"].replace("$NAME",characterSelected),105,"\n")
                 print(stepDisplay)
                 selectedOptions.append((current_step,None))
                 current_step = adventure_steps[current_step]["Next_Step"]
