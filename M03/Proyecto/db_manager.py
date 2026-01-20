@@ -319,7 +319,6 @@ def getIdGames():
             sql = "SELECT id_game FROM GAME"
             cursor.execute(sql)
             resultado = cursor.fetchall()
-
             ids = []
             for fila in resultado:
                 ids.append(fila["id_game"])
