@@ -218,7 +218,6 @@ def get_first_step_adventure(adventure_id):
     finally:
         connection.close()
 
-def get
 
 #print(get_first_step_adventure(1))
         
@@ -408,7 +407,6 @@ def getReplayAdventures():
             resultado = cursor.fetchall()
 
             replayAdventures = {}
-
             for fila in resultado:
                 replayAdventures[fila["id_game"]] = {
                     "idUser": fila["id_user"],
@@ -419,7 +417,6 @@ def getReplayAdventures():
                     "idCharacter": fila["id_character"],
                     "CharacterName": fila["character_name"]
                 }
-
             return replayAdventures
     except pymysql.MySQLError as e:
         print("Error:", e)
@@ -459,3 +456,4 @@ def getChoices(idGame):
     finally:
         connection.close()
 
+#print(getChoices(1))

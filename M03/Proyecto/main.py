@@ -9,7 +9,6 @@ current_user = 0
 userList = get_user_ids()
 
 textVel = 0.05
-
 while flg_salir:
     while menu_general == "principal":
         opc = getOpt("1)Login\n2)Create user\n3)Replay Adventure\n4)Reports\n5)Exit","\nElige tu opción:",[1, 2, 3, 4,5],[],{})
@@ -49,7 +48,6 @@ while flg_salir:
             userList = get_user_ids()
             current_user = userList[1][userList[0].index(name)]
         elif opc == 3:
-            print("Replay Adventure")
             menu_general = "Replay"
         elif opc == 4:
             print("Reports")
@@ -99,33 +97,25 @@ while flg_salir:
             menu_general = ""
     
     while menu_general == "Replay":
-        limpiar_terminal()
         replayAdventures = getReplayAdventures()
         if not replayAdventures:
             print("No adventures to replay.")
             input("Enter to continue")
+
             menu_general = "principal"
             break
         header = getHeadeForTableFromTuples(
             ("Id", "Username", "Name", "CharacterName", "date"),
-            (6, 15, 35, 20, 25),"")
-        texto_tabla = show_relive_adventure() + header
-        for idGame in replayAdventures:
-            fila = replayAdventures[idGame]
-            texto_tabla += (
-                str(idGame).ljust(6) +
-                fila["Username"].ljust(15) +
-                fila["Name"].ljust(35) +
-                fila["CharacterName"].ljust(20) +
-                str(fila["date"]) + "\n")
-        getTableFromDict(("Username", "Name", "CharacterName", "date"),(6, 15, 35, 20, 25),replayAdventures)
-        opc = getOpt(inputOptText="Which adventure do you want to replay?: ",dictionary=replayAdventures) 
-        print("\n0) Go back")
+            (6, 15, 40, 20, 24),"")
+        show_relive_adventure()
+        datos = header
+        datos += getTableFromDict(("Username", "Name", "CharacterName", "date"),(6, 15, 40, 20, 24),replayAdventures) + "\n"
+        datos += "Which adventure do you want to replay?(0 Go back): " 
+        opc = getOpt(inputOptText=datos,rangeList=[0,len(replayAdventures)],dictionary=replayAdventures)
         valid_ids = list(replayAdventures.keys())
         if opc == "0":
             menu_general = "principal"
             break
-
         idGame = int(opc)
         id_adventure = replayAdventures[idGame]["idAdventure"]
         choices = getChoices(idGame)
@@ -221,4 +211,4 @@ while flg_salir:
         gameList = getIdGames()
         lastGame = gameList[len(gameList)-1]
         for choice in selectedOptions:
-            insertChoice(lastGame,choice[0],choice[1])
+            insertChoice(lastGame,choice[0],choice[1]) 

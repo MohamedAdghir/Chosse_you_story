@@ -210,12 +210,14 @@ weigth_of_columns = (20, 20,30, 20)
 """
 def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
     lista = list(dict_of_data)
+    resultText = ""
     for i in range(len(lista)):
         texto = str(lista[i]).ljust(weigth_of_columns[0])
         for j in range(len(tuple_of_keys)-1):
             texto = texto +str(dict_of_data[lista[i]][tuple_of_keys[j]]).ljust(weigth_of_columns[j+1])
         texto = texto + str(dict_of_data[lista[i]][tuple_of_keys[len(tuple_of_keys)-1]])
-        print(texto)
+        resultText += texto + "\n"
+    return resultText
 
 #getTableFromDict(tuple_of_keys,weigth_of_columns,diccionari)
 
