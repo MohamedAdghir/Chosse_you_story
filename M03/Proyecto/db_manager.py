@@ -339,7 +339,7 @@ def GetMostUsedAnswersReport():
                     ADVENTURE_STEP s ON a.id_adventure = s.id_adventure
                 JOIN 
                     ADVENTURE_STEP_ANSWER ans ON s.id_adventure_step = ans.id_adventure_step
-                LEFT JOIN 
+                JOIN 
                     CHOICE c ON ans.id_adventure_step_answer = c.id_adventure_step_answer
                 GROUP BY 
                     a.id_adventure, a.name, 

@@ -198,13 +198,6 @@ def writeText(texto, retraso_base=0.05):
 #writeText(formatText(texto, 105, "\n"),0.025)
 
 
-diccionari = {4: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'Este muerto esta muy vivo',
-'date': datetime.datetime(2021, 11, 28, 18, 17, 20), 'idCharacter': 1, 'CharacterName':
-'Beowulf'}, 5: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'Este muerto esta muy vivo',
-'date': datetime.datetime(2021, 11, 26, 13, 28, 36), 'idCharacter': 1,
-'CharacterName': 'Beowulf'}}
-tuple_of_keys = ("Username","Name","CharacterName","date")
-weigth_of_columns = (20, 20,30, 20)
 
 def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
     lista = list(dict_of_data)
@@ -223,7 +216,6 @@ def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
         texto = texto + str(dict_of_data[lista[i]][tuple_of_keys[len(tuple_of_keys)-1]])
         print(texto)
 
-getTableFromDict(tuple_of_keys,weigth_of_columns,diccionari)
 
 #lista = get_users()
 #usario = "Tester"
