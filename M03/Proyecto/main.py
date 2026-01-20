@@ -179,8 +179,9 @@ while flg_salir:
                     stepDisplay += getFormatedAnswers(len(possibleAnswers), answers[answer]["Description"], 99, 3) + "\n"
                 opc = getOpt(stepDisplay, "Selecciona una opción: ", range(1,len(possibleAnswers)+1))
                 opc = possibleAnswers[int(opc)-1]
-                resolution = "\n" + formatText(answers[(int(opc), current_step)]["Resolution_Answer"].replace("$NAME",characterSelected),105,"\n")
-                print(resolution)
+                if formatText(answers[(int(opc), current_step)]["Resolution_Answer"].replace("$NAME",characterSelected),105,"\n") != "":
+                    resolution = "\n" + formatText(answers[(int(opc), current_step)]["Resolution_Answer"].replace("$NAME",characterSelected),105,"\n")
+                    print(resolution)
                 selectedOptions.append((current_step,int(opc)))
                 current_step = answers[(int(opc), current_step)]["NextStep_Adventure"]
             # ----------------------------------------------------
