@@ -125,11 +125,11 @@ def checkPassword(password):
 
 #Funcion de comprobar que el usuario cumpla con los parametros
 def checkUser(user):
-    if len(user) not in range(6,10):
+    if len(user) not in range(6,11):
         print("Invalid range")
         return False
-    elif not user.isalpha():
-        print("Only numers and characters")
+    elif not user.isalnum():
+        print("Only numbers and characters")
         return False
     return True
 
@@ -153,7 +153,7 @@ def getHeader(text):
     texto = "".center(105,"*") + "\n" + text.center(105,"=") + "\n" + "".center(105,"*")
     return texto
 
-texto = "Escoge el camino mas seguro para poder escapar del hombre lobo y luego poder ir a la  casa de abuela a cuidarla, en un dia tan lluvioso que mi paraguas ni se abria del viento que hacia no pude ir a recoger las manzanas que le prometi a mi abuela, la verdad me senti un poco decepcionado con el manzanero porque se cayo del sexto piso y se fue a por leña en un dia tan malo como este"
+texto = "Narrador: Y entonces, un día, ocurrió algo muy peculiar. Algo que cambiaría para siempre a $NAME. Algo que nunca olvidaría. Llevaba casi una hora sentado en su escritorio cuando se dio cuenta de que no había llegado ni una sola orden al monitor para que él la siguiese. Nadie había aparecido para darle instrucciones, convocar una reunión o siquiera saludarle. En todos sus años en la empresa nunca había ocurrido algo así, ese aislamiento total. Era evidente que algo iba muy mal. Conmocionado, paralizado, $NAME se encontró incapaz de moverse durante un buen rato. Pero cuando recuperó el juicio y los sentidos, se levantó de su escritorio y salió de su oficina."
 def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
     prefijo = margen_derecho * " " + "{}) ".format(id_respuesta)
     sangria = " " * len(prefijo)
@@ -197,7 +197,7 @@ def writeText(texto, retraso_base=0.05):
             time.sleep(retraso_base)  # retraso normal
     print()  # salto de línea al final
 
-#print(getFormatedAnswers("1",texto,0,120))
+#writeText(formatText(texto, 105, "\n"),0.025)
 
 """
 diccionari = {4: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'Este muerto esta muy vivo',

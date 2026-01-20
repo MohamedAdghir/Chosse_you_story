@@ -3,7 +3,12 @@ from  Variables import *
 from  db_manager import *
 flg_salir = True
 
-menu_general = "game_loop"
+menu_general = "principal"
+
+current_user = 0
+userList = get_user_ids()
+
+textVel = 0.05
 
 while flg_salir:
     while menu_general == "principal":
@@ -11,6 +16,7 @@ while flg_salir:
         opc = int(opc)
         if opc == 1:
             for i in range(3,0,-1):
+                print(userList)
                 login_name = input("Username:\n")
                 login_passw = input("Password:\n")
                 opc = checkUserbdd(login_name, login_passw)
@@ -20,6 +26,7 @@ while flg_salir:
                     print("The password is incorrect, please try again.You have {} more attempts.".format(i))
                 else:
                     menu_general = "Play"
+                    current_user = userList[1][userList[0].index(login_name)]
                     break
         elif opc == 2:
             print("Create User")
@@ -28,7 +35,7 @@ while flg_salir:
                 if not checkUser(name):
                     name = input("Usename:\n")
                 elif user_exist(get_users(), name):
-                    print("User alredy in use")
+                    print("User already in use")
                     name = input("Usename:\n")
                 else:
                     break
@@ -39,6 +46,8 @@ while flg_salir:
                 break
             insertUser(name,passw)
             menu_general = "Play"
+            userList = get_user_ids()
+            current_user = userList[1][userList[0].index(name)]
         elif opc == 3:
             print("Replay Adventure")
             menu_general = "Replay"
@@ -52,8 +61,8 @@ while flg_salir:
             menu_general = ""
 
     while menu_general == "Play":
-        opc = getOpt("\n1)Logout\n2)Play\n3)Replay Adventure\n4)Reports\n5)Exit", "\nElige tu opción:",
-                     [1, 2, 3, 4, 5], [], {})
+        opc = getOpt("\n1)Logout\n2)Play\n3)Replay Adventure\n4)Reports\n5)Configuración\n6)Exit", "\nElige tu opción:",
+                     [1, 2, 3, 4, 5, 6], [], {})
         opc = int(opc)
 
         if opc == 1:
@@ -66,6 +75,8 @@ while flg_salir:
         elif opc == 4:
             print("Reports")
             menu_general = "Reports"
+        elif opc == 5:
+            menu_general = "config"
         else:
             print("Exit")
             flg_salir = False
@@ -122,6 +133,20 @@ while flg_salir:
         menu_general = "principal"
 
 
+    while menu_general == "config":
+        opc = getOpt("Velocidad de escritura de los textos:\n1)Instantaneo\n2)Rápido\n3)Normal\n4)Lento\n5)Back", "\nElige tu opción:",
+                     [1, 2, 3, 4, 5], [], {})
+        if opc == 1: # Instantaneo
+            textVel = 0
+        elif opc == 2: # Rapido
+            textVel = 0.025
+        elif opc == 3: # Normal
+            textVel = 0.05
+        elif opc == 4: # Lento
+            textVel = 0.065
+        else:
+            menu_general = "Play"
+
     while menu_general == "game_loop":
 
         # Exportacion de datos que necesitamos para settear la aventura
@@ -146,6 +171,7 @@ while flg_salir:
         opc = int(opc)
         if opc == 0:
             break
+        characterID = opc
         characterSelected = characters[opc]
         print("Has seleccionado al personaje {}!\n".format(characterSelected))
         input("Enter para continuar")
@@ -160,6 +186,8 @@ while flg_salir:
         first_step = get_first_step_adventure(selectedAdventure)
         current_step = first_step
 
+        selectedOptions = []
+
         game_finished = False
         while not game_finished:
             limpiar_terminal()
@@ -169,6 +197,7 @@ while flg_salir:
                 stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected)
                 print(stepDisplay)
                 print("Se acabo\n")
+                selectedOptions.append((current_step,None))
                 game_finished = True
                 menu_general = "Play"
             elif answers: # Tiene opciones?
@@ -180,9 +209,16 @@ while flg_salir:
                 opc = getOpt(stepDisplay, "Selecciona una opción: ", possibleAnswers)
                 resolution = "\n" + formatText(answers[(int(opc), current_step)]["Resolution_Answer"],105,"\n").replace("$NAME",characterSelected)
                 print(resolution)
-            else: # No es final ni tiene opciones, un paso intermedio -hector: jejegod
+                selectedOptions.append((current_step,int(opc)))
+                current_step = answers[(int(opc), current_step)]["NextStep_Adventure"]
+            else: # No es final ni tiene opciones, un paso intermedio
                 stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected)
                 print(stepDisplay)
-                print("paso intermedio\n")
+                selectedOptions.append((current_step,None))
+                current_step = adventure_steps[current_step]["Next_Step"]
             input("Enter para continuar")
-            current_step = answers[(int(opc), current_step)]["NextStep_Adventure"]
+        insertGame(current_user,characterID,selectedAdventure)
+        gameList = getIdGames()
+        lastGame = gameList[len(gameList)-1]
+        for choice in selectedOptions:
+            insertChoice(lastGame,choice[0],choice[1])
