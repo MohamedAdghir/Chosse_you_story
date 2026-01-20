@@ -87,7 +87,7 @@ VALUES
 (1, 'Narrador: ¡Sí! Había ganado. Había derrotado a la máquina, se había liberado del control de otra persona. ¡La libertad estaba a solo unos instantes! Y, sin embargo, incluso mientras la inmensa puerta se abría lentamente, $NAME reflexionaba sobre cuántos enigmas quedaban aún por resolver. ¿Dónde habían ido sus compañeros de trabajo? ¿Cómo se había liberado del control de la máquina? ¿Qué otros misterios escondía ese extraño edificio? Pero, cuando la luz del sol inundó la sala, se dio cuenta de que nada de eso le importaba. Porque lo que había estado buscando no era el conocimiento, ni siquiera el poder, sino la felicidad.', FALSE, FALSE, 58, CURRENT_USER()),
 (1, 'Narrador: Quizás su objetivo no era comprender, sino dejarlo ir. Ya nadie le diría adónde ir, qué hacer o cómo sentirse. Fuera cual fuera la vida que viviera, sería la suya. Y eso era todo lo que necesitaba saber. Quizás era lo único que valía la pena saber. $NAME atravesó la puerta abierta.', FALSE, FALSE, NULL, CURRENT_USER()),
 (1, 'Narrador: $NAME sintió la brisa fresca sobre su piel, la sensación de liberación, la inmensa posibilidad del nuevo camino que se abría ante él. Así era exactamente como, en ese momento, debían suceder las cosas.', FALSE, FALSE, 60, CURRENT_USER()),
-(1, 'Narrador: Y $NAME... fue feliz.', FALSE, TRUE, NULL, CURRENT_USER()),
+(1, 'Narrador: Y $NAME... fue feliz.', FALSE, TRUE, NULL, CURRENT_USER());
 
 /* (1, 'description', FALSE, FALSE, next_step, CURRENT_USER()), */
 SET FOREIGN_KEY_CHECKS = 1;
@@ -143,6 +143,6 @@ VALUES
 (53, 'Resignarte', '', 54, CURRENT_USER()),
 (53, 'Empezar a golpear ordenadores y maquinas aleatorias', '', 54, CURRENT_USER()),
 (53, 'Pulsar un botón blanco con el número 5 intentando evitar que explote la bomba', '', 54, CURRENT_USER()),
-(58, 'Atravesar la puerta abierta', '', 59, CURRENT_USER()),
+(58, 'Atravesar la puerta abierta', '', 59, CURRENT_USER());
 
 /* (step_id, 'description', 'resolution', next_step, CURRENT_USER()), */
