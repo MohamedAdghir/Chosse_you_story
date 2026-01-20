@@ -101,7 +101,6 @@ def get_adventures_with_chars():
 
 #print(get_adventures_with_chars())
 
-
 def get_id_bystep_adventure(id_adventure):
     connection = connect_to_db()
     try:
@@ -110,6 +109,7 @@ def get_id_bystep_adventure(id_adventure):
                 SELECT as_step.id_adventure_step, 
                        as_step.description, 
                        as_step.final_step, 
+                       as_step.next_step,
                        asw.id_adventure_step_answer
                 FROM ADVENTURE_STEP as_step
                 LEFT JOIN ADVENTURE_STEP_ANSWER asw 
@@ -128,7 +128,8 @@ def get_id_bystep_adventure(id_adventure):
                     id_by_steps[id_step] = {
                         'Description': row['description'],
                         'answers_in_step': [],
-                        'Final_Step': row['final_step']
+                        'Final_Step': row['final_step'],
+                        'Next_Step': row['next_step']
                     }
 
                 if row['id_adventure_step_answer'] is not None:
@@ -145,7 +146,6 @@ def get_id_bystep_adventure(id_adventure):
     finally:
         connection.close()
 
-#print(get_id_bystep_adventure(1))
 def insertUser(user,password):
     connection = connect_to_db()
     try:
