@@ -88,26 +88,38 @@ while flg_salir:
             menu_general = ""
     
     while menu_general == "Replay":
+        limpiar_terminal()
         replayAdventures = getReplayAdventures()
         if not replayAdventures:
             print("No adventures to replay.")
             input("Enter to continue")
             menu_general = "principal"
             break
-
-        header = getHeadeForTableFromTuples(("Id", "Username", "Name", "CharacterName", "date"),(6, 15, 35, 20, 25),"Relive your adventure")
-        print(header)
+        header = getHeadeForTableFromTuples(
+            ("Id", "Username", "Name", "CharacterName", "date"),
+            (6, 15, 35, 20, 25),"")
+        texto_tabla = show_relive_adventure() + header
+        for idGame in replayAdventures:
+            fila = replayAdventures[idGame]
+            texto_tabla += (
+                str(idGame).ljust(6) +
+                fila["Username"].ljust(15) +
+                fila["Name"].ljust(35) +
+                fila["CharacterName"].ljust(20) +
+                str(fila["date"]) + "\n")
         getTableFromDict(("Username", "Name", "CharacterName", "date"),(6, 15, 35, 20, 25),replayAdventures)
+        opc = getOpt(inputOptText="Which adventure do you want to replay?: ",dictionary=replayAdventures) 
         print("\n0) Go back")
-        opc = getOpt(inputOptText="Which adventure do you want to replay?: ",dictionary=replayAdventures)
+        valid_ids = list(replayAdventures.keys())
         if opc == "0":
             menu_general = "principal"
             break
-        else:
-            idGame = int(opc)
-            choices = getChoices(idGame)
-            replay(idGame,choices)
-            menu_general = "principal"
+
+        idGame = int(opc)
+        id_adventure = replayAdventures[idGame]["idAdventure"]
+        choices = getChoices(idGame)
+        replay(id_adventure,choices)
+        menu_general = "principal"
 
 
     while menu_general == "game_loop":

@@ -377,6 +377,8 @@ def getReplayAdventures():
 
 #print(getReplayAdventures())
 
+
+
 def getChoices(idGame):
     connection = connect_to_db()
     try:
@@ -405,4 +407,3 @@ def getChoices(idGame):
     finally:
         connection.close()
 
-#print(getChoices(1))

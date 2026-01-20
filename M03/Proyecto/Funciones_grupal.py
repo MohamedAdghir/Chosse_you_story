@@ -146,6 +146,8 @@ def getHeadeForTableFromTuples(t_name_columns,t_size_columns,title=""):
     texto += "\n" + "".center(suma,"*") + "\n"
     return texto
 
+#print(getHeadeForTableFromTuples(("Id", "Username", "Name", "CharacterName", "date"),(6, 15, 35, 20, 25),"")))
+
 # Funcion que crea un header
 def getHeader(text):
     texto = "".center(105,"*") + "\n" + text.center(105,"=") + "\n" + "".center(105,"*")
@@ -243,8 +245,50 @@ def getFormatedAdventures():
         body += getFormatedBodyColumns(texts, lenLines) + "\n"
     return body
 
+
 #print(getFormatedAdventures())
 
+def show_relive_adventure():
+    limpiar_terminal()
+    print("""_/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\_
+\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /
+/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\_
+
+     ____  _____ _      _____ __      ________
+    |  _ \\| ____| |    |_   _|\\ \\    / /  ____|
+    | |_) |  _| | |      | |   \\ \\  / /| |__
+    |  _ <| |___| |___   | |    \\ \\/ / | |____
+    |_| \\_\\_____|_____|  |_|     \\__/  |______|
+
+            YOUR ADVENTURE
+
+_/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\_
+\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /
+/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\_
+""")
+    input("Enter to continue")
+
+#replayAdventures = getReplayAdventures()
+#getTableFromDict(("Username", "Name", "CharacterName", "date"),(6, 15, 35, 20, 25),replayAdventures)
+
+def show_fin():
+    print("""
+_/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\_
+\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /
+/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\_
+
+     ______ _____ _   _
+    |  ____|_   _| \\ | |
+    | |__    | | |  \\| |
+    |  __|   | | | . ` |
+    | |     _| |_| |\\  |
+    |_|    |_____|_| \\_|
+
+_/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\_
+\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /
+/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\_
+""")
+    input("Enter to continue")
 
 def replay(idAdventure,choices):
     adventure_steps = get_id_bystep_adventure(idAdventure)
@@ -265,7 +309,7 @@ def replay(idAdventure,choices):
         input("Enter to continue")
 
     limpiar_terminal()
-    print(getHeader("FIN"))
+    print(show_fin())
     input("Enter to continue")
 
 
