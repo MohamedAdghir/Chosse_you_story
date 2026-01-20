@@ -193,6 +193,14 @@ MODIFY first_step BOOLEAN NOT NULL;
 ALTER TABLE ADVENTURE_STEP
 MODIFY final_step BOOLEAN NOT NULL;
 
+/* next_step */
+ALTER TABLE ADVENTURE_STEP
+MODIFY next_step INT UNSIGNED NULL DEFAULT NULL;
+
+ALTER TABLE ADVENTURE_STEP
+ADD CONSTRAINT fk_adventure_step_adventure_step
+FOREIGN KEY (next_step) REFERENCES ADVENTURE_STEP(id_adventure_step);
+
 /* created_at */
 ALTER TABLE ADVENTURE_STEP
 MODIFY created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
@@ -314,15 +322,16 @@ MODIFY playing_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
 /* -------------- Restricciones para la tabla CHOICE ------------- */
 
+/* id_choice */
+ALTER TABLE CHOICE
+MODIFY id_choice INT UNSIGNED NOT NULL AUTO_INCREMENT,
+ADD PRIMARY KEY (id_choice);
+
 /* Reestricciones para las PKFK */
 ALTER TABLE CHOICE
 MODIFY id_game INT UNSIGNED NOT NULL,
 MODIFY id_adventure_step INT UNSIGNED NOT NULL,
-MODIFY id_adventure_step_answer INT UNSIGNED NOT NULL;
-
-/* PK compuesta */
-ALTER TABLE CHOICE
-ADD PRIMARY KEY (id_game, id_adventure_step, id_adventure_step_answer);
+MODIFY id_adventure_step_answer INT UNSIGNED NULL DEFAULT NULL;
 
 /* FK adventure_step */
 ALTER TABLE CHOICE

@@ -110,6 +110,7 @@ def get_id_bystep_adventure(id_adventure):
                 SELECT as_step.id_adventure_step, 
                        as_step.description, 
                        as_step.final_step, 
+                       as_step.next_step,
                        asw.id_adventure_step_answer
                 FROM ADVENTURE_STEP as_step
                 LEFT JOIN ADVENTURE_STEP_ANSWER asw 
@@ -128,7 +129,8 @@ def get_id_bystep_adventure(id_adventure):
                     id_by_steps[id_step] = {
                         'Description': row['description'],
                         'answers_in_step': [],
-                        'Final_Step': row['final_step']
+                        'Final_Step': row['final_step'],
+                        'Next_Step': row['next_step']
                     }
 
                 if row['id_adventure_step_answer'] is not None:
@@ -145,7 +147,6 @@ def get_id_bystep_adventure(id_adventure):
     finally:
         connection.close()
 
-print(get_id_bystep_adventure(1))
 def insertUser(user,password):
     connection = connect_to_db()
     try:
@@ -157,7 +158,58 @@ def insertUser(user,password):
         print("Error al insertar el usuario:", e)
     finally:
         connection.close()
-    
+
+def insertGame(userID,characterID,adventureID):
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = "insert into GAME (id_user,id_character,id_adventure) values (%s, %s, %s)"
+            cursor.execute(sql,(userID,characterID,adventureID))
+            connection.commit()
+    except pymysql.MySQLError as e:
+        print("Error al insertar el usuario:", e)
+    finally:
+        connection.close()
+
+def insertChoice(gameID,stepID,answerID):
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = "insert into CHOICE (id_game,id_adventure_step,id_adventure_step_answer) values (%s, %s, %s)"
+            cursor.execute(sql,(gameID,stepID,answerID))
+            connection.commit()
+    except pymysql.MySQLError as e:
+        print("Error al insertar el usuario:", e)
+    finally:
+        connection.close()
+
+def getIdGames():
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = "SELECT id_game FROM GAME"
+            cursor.execute(sql)
+            resultado = cursor.fetchall()
+
+            ids = []
+            for fila in resultado:
+                ids.append(fila["id_game"])
+            n=len(ids)
+            for i in range(n):
+                cambios = False
+                for j in range (0,n - i - 1):
+                    if ids[j] > ids[j+1]:
+                        ids[j],ids[j+1] = ids[j+1],ids[j]
+                        cambios = True
+                if not cambios:
+                    break
+            return tuple(ids)
+    except pymysql.MySQLError as e:
+        print("Error:", e)
+        return ()
+    finally:
+        connection.close()
+
 #insertUser("jeffrey","Phreth!1")
 
 def get_first_step_adventure(adventure_id):
