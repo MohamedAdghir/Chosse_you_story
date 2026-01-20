@@ -125,11 +125,11 @@ def checkPassword(password):
 
 #Funcion de comprobar que el usuario cumpla con los parametros
 def checkUser(user):
-    if len(user) not in range(6,10):
+    if len(user) not in range(6,11):
         print("Invalid range")
         return False
-    elif not user.isalpha():
-        print("Only numers and characters")
+    elif not user.isalnum():
+        print("Only numbers and characters")
         return False
     return True
 

@@ -331,7 +331,7 @@ ADD PRIMARY KEY (id_choice);
 ALTER TABLE CHOICE
 MODIFY id_game INT UNSIGNED NOT NULL,
 MODIFY id_adventure_step INT UNSIGNED NOT NULL,
-MODIFY id_adventure_step_answer INT UNSIGNED NOT NULL;
+MODIFY id_adventure_step_answer INT UNSIGNED NULL DEFAULT NULL;
 
 /* FK adventure_step */
 ALTER TABLE CHOICE

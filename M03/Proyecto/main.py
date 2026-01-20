@@ -3,7 +3,11 @@ from  Variables import *
 from  db_manager import *
 flg_salir = True
 
-menu_general = "game_loop"
+menu_general = "principal"
+
+current_user = 0
+userList = get_user_ids()
+
 textVel = 0.05
 
 while flg_salir:
@@ -12,6 +16,7 @@ while flg_salir:
         opc = int(opc)
         if opc == 1:
             for i in range(3,0,-1):
+                print(userList)
                 login_name = input("Username:\n")
                 login_passw = input("Password:\n")
                 opc = checkUserbdd(login_name, login_passw)
@@ -21,6 +26,7 @@ while flg_salir:
                     print("The password is incorrect, please try again.You have {} more attempts.".format(i))
                 else:
                     menu_general = "Play"
+                    current_user = userList[1][userList[0].index(login_name)]
                     break
         elif opc == 2:
             print("Create User")
@@ -29,7 +35,7 @@ while flg_salir:
                 if not checkUser(name):
                     name = input("Usename:\n")
                 elif user_exist(get_users(), name):
-                    print("User alredy in use")
+                    print("User already in use")
                     name = input("Usename:\n")
                 else:
                     break
@@ -40,6 +46,8 @@ while flg_salir:
                 break
             insertUser(name,passw)
             menu_general = "Play"
+            userList = get_user_ids()
+            current_user = userList[1][userList[0].index(name)]
         elif opc == 3:
             print("Replay Adventure")
         elif opc == 4:
@@ -127,6 +135,7 @@ while flg_salir:
         opc = int(opc)
         if opc == 0:
             break
+        characterID = opc
         characterSelected = characters[opc]
         print("Has seleccionado al personaje {}!\n".format(characterSelected))
         input("Enter para continuar")
@@ -141,6 +150,8 @@ while flg_salir:
         first_step = get_first_step_adventure(selectedAdventure)
         current_step = first_step
 
+        selectedOptions = []
+
         game_finished = False
         while not game_finished:
             limpiar_terminal()
@@ -150,6 +161,7 @@ while flg_salir:
                 stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected)
                 print(stepDisplay)
                 print("Se acabo\n")
+                selectedOptions.append((current_step,None))
                 game_finished = True
                 menu_general = "Play"
             elif answers: # Tiene opciones?
@@ -161,9 +173,16 @@ while flg_salir:
                 opc = getOpt(stepDisplay, "Selecciona una opción: ", possibleAnswers)
                 resolution = "\n" + formatText(answers[(int(opc), current_step)]["Resolution_Answer"],105,"\n").replace("$NAME",characterSelected)
                 print(resolution)
+                selectedOptions.append((current_step,int(opc)))
                 current_step = answers[(int(opc), current_step)]["NextStep_Adventure"]
             else: # No es final ni tiene opciones, un paso intermedio
                 stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected)
                 print(stepDisplay)
+                selectedOptions.append((current_step,None))
                 current_step = adventure_steps[current_step]["Next_Step"]
             input("Enter para continuar")
+        insertGame(current_user,characterID,selectedAdventure)
+        gameList = getIdGames()
+        lastGame = gameList[len(gameList)-1]
+        for choice in selectedOptions:
+            insertChoice(lastGame,choice[0],choice[1])
