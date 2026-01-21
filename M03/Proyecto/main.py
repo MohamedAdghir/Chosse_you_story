@@ -86,19 +86,54 @@ while flg_salir:
                      [1, 2, 3, 4], [], {})
         opc = int(opc)
         if opc == 1:
-            print("Most used answer")
-            print(getHeadeForTableFromTuples(("ID AVENTURA - NOMBRE","ID PASO-DESCRIPCION","ID RESPUESTA - DESCRIPCION","NUMERO VECES SELECCIONADA"),(30,30,30,30), title="Most used answer"))
+            reporte = GetMostUsedAnswersReport()
+
+            if reporte:
+
+                print(getHeadeForTableFromTuples(
+                    ("ID AVENTURA - NOMBRE", "ID PASO-DESCRIPCION", "ID RESPUESTA - DESCRIPCION",
+                     "NUMERO VECES SELECCIONADA"),
+                    (30, 30, 30, 30),
+                    title="Most used answer"
+                ))
+                for fila in reporte:
+                    datos_fila = (
+                        str(fila["ID AVENTURA - NOMBRE"]),
+                        str(fila["ID PASO - DESCRIPCION"]),
+                        str(fila["ID RESPUESTA - DESCRIPCION"]),
+                        str(fila["NUMERO VECES SELECCIONADA"])
+                    )
+                    print(getFormatedBodyColumns(datos_fila, (28, 28, 28, 28)))
+            else:
+                print("No hay datos para mostrar.")
         elif opc == 2:
-            print(getHeadeForTableFromTuples(("NOMBRE USUARIO","PARTIDAS JUGADAS"),(60,60), title="Player with more games played"))
-            usuario,partidas =most_played_player
-            print("{:60}{:60}".format(usuario,partidas))
+            usuario,partidas = most_played_player()
+            print(getHeadeForTableFromTuples(("NOMBRE USUARIO", "PARTIDAS JUGADAS"), (60, 60),
+                                             title="Player with more games played"))
+            if usuario is not None:
+                print("{:<60}{:<60}".format(str(usuario), str(partidas)))
+            else:
+                print("No se encontraron datos")
+            input("Continue")
+            limpiar_terminal()
         elif opc == 3:
             name = input("What user do you want to see?")
             if checkUserbdd(name,"hola") == -1:
-                print(getHeadeForTableFromTuples(("Id_Adventure","Name","Date"), (40,40,40),
-                                                 title="Games played by {}").format(name))
+                aventuras = GetPlayerAdventureLog(name)
+
+                if aventuras:
+                    print(getHeadeForTableFromTuples(("Id_Adventure", "Name", "Date"), (40, 40, 40),
+                                                     title="Games played by "+name))
+                    for fila in aventuras:
+                        print("{:<40}{:<40}{:<40}".format(
+                            str(fila["idadventure"]),
+                            str(fila["Name"]),
+                            str(fila["date"])))
+                else:
+                    print("El usuario no ha hecho ninguna aventura")
             else:
                 input("Usuario no existe")
+
         else:
             print("Salir")
             flg_salir = False

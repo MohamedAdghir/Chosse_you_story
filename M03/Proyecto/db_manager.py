@@ -277,12 +277,13 @@ def most_played_player():
                      LIMIT 1;
                    """
             cursor.execute(sql)
-            resultado = cursor.fetcone()
+            resultado = cursor.fetchone()
             if resultado:
                 return  resultado["NOMBRE USUARIO"], resultado["PARTIDAS JUGADAS"]
-            return None
+            return None, None
     except pymysql.MySQLError as e:
         print("Error:", e)
+        return None, None
     finally:
         connection.close()
 
@@ -338,7 +339,7 @@ def GetMostUsedAnswersReport():
                     ADVENTURE_STEP s ON a.id_adventure = s.id_adventure
                 JOIN 
                     ADVENTURE_STEP_ANSWER ans ON s.id_adventure_step = ans.id_adventure_step
-                LEFT JOIN 
+                JOIN 
                     CHOICE c ON ans.id_adventure_step_answer = c.id_adventure_step_answer
                 GROUP BY 
                     a.id_adventure, a.name, 

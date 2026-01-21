@@ -139,11 +139,11 @@ def getHeadeForTableFromTuples(t_name_columns,t_size_columns,title=""):
     texto = ""
     for a in t_size_columns:
         suma = suma + a
-    texto = title.center(suma,"=") + "\n"
+    texto = title.center(suma,"*") + "\n"
     for i in range(len(t_name_columns)):
         texto += t_name_columns[i].ljust(t_size_columns[i])
     
-    texto += "\n" + "".center(suma,"*") + "\n"
+    texto += "\n" + "".center(suma,"*")
     return texto
 
 #print(getHeadeForTableFromTuples(("Id", "Username", "Name", "CharacterName", "date"),(6, 15, 35, 20, 25),"")))
@@ -199,15 +199,8 @@ def writeText(texto, retraso_base=0.05):
 
 #writeText(formatText(texto, 105, "\n"),0.025)
 
-"""
-diccionari = {4: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'Este muerto esta muy vivo',
-'date': datetime.datetime(2021, 11, 28, 18, 17, 20), 'idCharacter': 1, 'CharacterName':
-'Beowulf'}, 5: {'idUser': 2, 'Username': 'Jordi', 'idAdventure': 1, 'Name': 'Este muerto esta muy vivo',
-'date': datetime.datetime(2021, 11, 26, 13, 28, 36), 'idCharacter': 1,
-'CharacterName': 'Beowulf'}}
-tuple_of_keys = ("Username","Name","CharacterName","date")
-weigth_of_columns = (20, 20,30, 20)
-"""
+
+
 def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
     lista = list(dict_of_data)
     resultText = ""
@@ -227,7 +220,6 @@ def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
         resultText += texto + "\n"
     return resultText
 
-#getTableFromDict(tuple_of_keys,weigth_of_columns,diccionari)
 
 #lista = get_users()
 #usario = "Tester"
