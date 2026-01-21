@@ -1,9 +1,6 @@
 /* =====================================================
    DISEÑO RESPONSIVE
-   Ajustes exclusivos para pantallas móviles y tablets
-===================================================== */
-/* =====================================================
-   GLOBAL MOBILE RESET
+   Ajustes exclusivos para pantallas móviles
 ===================================================== */
 @media (max-width: 768px) {
 
@@ -36,16 +33,14 @@
   }
 }
 /* =====================================================
-   MOBILE HAMBURGER MENU (NO JS)
+   MOBILE  MENU 
 ===================================================== */
 
-/* hide checkboxes */
 .menu-toggle-checkbox,
 #historia-toggle {
   display: none;
 }
 
-/* hamburger button */
 .menu-toggle-btn {
   display: none;
   flex-direction: column;
@@ -59,26 +54,21 @@
   background: #00ffee;
 }
 
-/* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
-  /* show hamburger */
   .menu-toggle-btn {
     display: flex;
   }
 
-  /* hide menu by default */
   .menu {
     display: none;
     width: 100%;
   }
 
-  /* show menu when hamburger clicked */
   .menu-toggle-checkbox:checked + .menu-toggle-btn + .menu {
     display: block;
   }
 
-  /* vertical menu */
   .menu ul {
     display: flex;
     flex-direction: column;
@@ -96,14 +86,12 @@
     padding: 12px 0;
   }
 
-  /* dropdown closed */
   .dropdown-menu {
     display: none;
     position: static;
     background: transparent;
   }
 
-  /* dropdown open on click */
   #historia-toggle:checked + .historia-link + .dropdown-menu {
     display: block;
   }
@@ -115,7 +103,7 @@
 }
 
 /* =====================================================
-   MOBILE FIX: HISTORIA BUTTONS
+   MOBILE: HISTORIA 
 ===================================================== */
 @media (max-width: 768px) {
 
@@ -127,10 +115,20 @@
     text-align: center;
     white-space: normal;
   }
+  .history-block,
+  .history-block.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .history-image img {
+    max-width: 260px;
+    margin: 0 auto 20px;
+  }
 
 }
 /* =====================================================
-   MOBILE FIX: USUARIOS CHARACTER IMAGES
+   MOBILE : USUARIOS CHARACTER IMAGES
 ===================================================== */
 @media (max-width: 768px) {
 
@@ -180,7 +178,7 @@
 }
 
 /* =====================================================
-   GRIDS (HOW / MECHANICS / USERS / ETC)
+   GRIDS (HOW / MECHANICS /..
 ===================================================== */
 @media (max-width: 768px) {
 
@@ -214,22 +212,7 @@
   }
 }
 
-/* =====================================================
-   HISTORY BLOCKS (ALL HISTORY PAGES)
-===================================================== */
-@media (max-width: 768px) {
 
-  .history-block,
-  .history-block.reverse {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .history-image img {
-    max-width: 260px;
-    margin: 0 auto 20px;
-  }
-}
 
 /* =====================================================
    CAROUSEL (HISTORIA)
@@ -250,7 +233,7 @@
 }
 
 /* =====================================================
-   ARCHIVE PAGES (VAMPIROS & STANLEY)
+   ARCHIVE PAGES (VAMPIROS & empleado 427)
 ===================================================== */
 @media (max-width: 768px) {
 
@@ -317,16 +300,8 @@
 }
 
 
-
-
-
-
-
-
-
-
 /* =====================================================
-   DISABLE PARTICLES ON MOBILE
+   DESACTIVAR PARTICLES en MOBILE
 ===================================================== */
 @media (max-width: 768px) {
 

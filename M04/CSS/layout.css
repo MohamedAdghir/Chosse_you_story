@@ -201,6 +201,7 @@
     z-index: 2;
     animation: heroFadeIn 1.4s ease forwards;
 }
+/* instructions and mechanics section */
 .section-how {
   max-width: 1000px;
   margin: 0 auto;
@@ -252,6 +253,7 @@
   line-height: 1.6;
   color: rgba(255,255,255,0.85);
 }
+/* instructions page */
 .instructions-briefing {
   padding: 120px 20px 80px;
   text-align: center;
@@ -293,8 +295,6 @@
   line-height: 1.7;
   font-size: 1.05rem;
 }
-
-
 .how-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -319,7 +319,6 @@
   position: relative;
   z-index: 1;
 }
-
 .how-item p {
   font-family: 'Inter', sans-serif;
   color: rgba(255,255,255,0.9);
@@ -327,7 +326,6 @@
   position: relative;
   z-index: 1;
 }
-
 .how-action {
   margin-top: 20px;
 }
@@ -430,7 +428,7 @@
     transparent
   );
 }
-
+/* pages historia+dropdown history pages */
 .history-carousel {
   overflow: hidden;
   margin: 100px auto;
@@ -579,7 +577,7 @@
   margin-bottom: 1.4rem;
   color: #333333;
 }
-
+/* contact page */
 .contact-page {
   max-width: 1100px;
   margin: auto;
@@ -669,7 +667,6 @@
     color: rgba(255,255,255,0.85);
 }
 
-/* Usuarios Cards */
 .usuarios-cards {
     display: flex;
     flex-wrap: wrap;
@@ -721,7 +718,6 @@
 
 .estado.activo { background: #00ffea; color: #001414; }
 
-/* Character selection */
 .character-options {
     display: flex;
     gap: 12px;
@@ -742,7 +738,6 @@
     box-shadow: 0 0 12px #00ffee;
 }
 
-/* Button */
 .usuario-actions {
     display: flex;
     justify-content: center;

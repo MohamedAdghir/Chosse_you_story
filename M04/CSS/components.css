@@ -76,34 +76,7 @@
   text-shadow: 0 0 10px rgba(0,255,255,0.3);
 }
 
-.scroll-reveal-game {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-}
 
-.reveal-step {
-  padding: 30px;
-  border-left: 2px solid rgba(0,255,255,0.3);
-  background: rgba(255,255,255,0.02);
-  backdrop-filter: blur(4px);
-  opacity: 0;
-}
-
-.reveal-step h3 {
-  font-family: 'Cinzel', serif;
-  font-size: 1.8rem;
-  color: #00ffee;
-  margin-bottom: 12px;
-}
-
-.reveal-step p {
-  font-family: 'Inter', sans-serif;
-  color: rgba(255,255,255,0.85);
-  line-height: 1.7;
-}
 .section-how h2 {
   font-family: 'Cinzel', serif;
   font-size: 2.4rem;
