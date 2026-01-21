@@ -111,3 +111,42 @@ Para iniciar el juego, deberemos ejecutar el siguiente comando:
 ```bash
 python3 main.py
 ```
+Para utilizar las opciones del programa se tendrán que escribir los números indicados que tengan las opciones para seleccionarlas.
+
+---
+
+## Estructura del proyecto
+```text
+/Choose_your_story
+│── M01                   # Sistemas (Vacía, no la hemos utilizado)
+│── M02                   # Base de datos (Scripts)
+    │── Create_DB.sql
+    │── Alter_Table.sql
+    │── Insert_Data.sql
+│── M03                   # Programación
+    │── Proyecto
+        │── __init__.py
+        │── db_manager.py
+        │── Funciones_grupal.py
+        │── main.py
+        │── Variables.py
+│── M04                   # Lenguaje de marcas (Página web promocional)
+│── M05                   # Entornos de desarrollo
+│── .gitignore
+│── README.md             # Este archivo
+```
+
+---
+
+## Equipo del proyecto
+
+| Integrante | Roles | Contacto |
+|------------|-------|----------|
+| Mohamed Adghir | Programador | madghirettaibi.cf@iesesteveterradas.cat |
+| Héctor González | Programador & Gestor de la BBDD | hgonzalezgarcia.25cf@iesesteveterradas.cat |
+| Ibtissam Ouald Ali | Programadora & Desarrolladora Web | ioualdali.25cf@iesesteveterradas.cat |
+
+## Estado del proyecto
+- Estado: Finalizado
+- Versión: 1.0.0
+- Tipo: Proyecto académico
