@@ -1,3 +1,8 @@
+/* =====================================================
+   ANIMACIONES Y EFECTOS VISUALES
+   Keyframes, partículas, efectos hover y reveal,SVG
+===================================================== */
+
 @keyframes heroFadeIn {
     from {
         opacity: 0;
@@ -44,7 +49,6 @@
     }
   }
 }
-
 @supports not (animation-timeline: view()) {
   .reveal-step {
     animation: revealFallback 1s ease forwards;
@@ -109,7 +113,6 @@
     animation-delay: 0.4s;
   }
 }
-
 @keyframes scanDraw {
   to {
     stroke-dashoffset: 0;
@@ -127,4 +130,39 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+.svg-story {
+  text-align: center;
+  padding: 120px 10% 140px;
+}
+
+.svg-story h2 {
+  color: #00ffee;
+  margin-bottom: 40px;
+}
+.paths-svg {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto 30px;
+  display: block;
+}
+
+.svg-story p {
+  max-width: 500px;
+  margin: 0 auto;
+  opacity: 0.85;
+}
+.scan-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.15;
+}
+.scan-lines line {
+  stroke: #00ffee;
+  stroke-width: 1;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
 }

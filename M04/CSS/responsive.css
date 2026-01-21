@@ -1,106 +1,342 @@
-/*
-   RESPONSIVE : TABLET
-*/
-@media (max-width: 1024px) {
+/* =====================================================
+   DISEÑO RESPONSIVE
+   Ajustes exclusivos para pantallas móviles y tablets
+===================================================== */
+/* =====================================================
+   GLOBAL MOBILE RESET
+===================================================== */
+@media (max-width: 768px) {
 
-  .header-container {
-    padding: 0 20px;
+  body {
+    font-size: 14px;
   }
 
-  .history-block {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  h1 {
+    font-size: 2rem;
     text-align: center;
   }
 
-  .history-block.reverse {
-    direction: ltr;
+  h2 {
+    font-size: 1.6rem;
+    text-align: center;
   }
 
-  .instruction-step {
-    grid-template-columns: 1fr;
+  h3 {
+    font-size: 1.2rem;
   }
+
+  section {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+/* =====================================================
+   MOBILE HAMBURGER MENU (NO JS)
+===================================================== */
+
+/* hide checkboxes */
+.menu-toggle-checkbox,
+#historia-toggle {
+  display: none;
+}
+
+/* hamburger button */
+.menu-toggle-btn {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.menu-toggle-btn span {
+  width: 24px;
+  height: 2px;
+  background: #00ffee;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  /* show hamburger */
+  .menu-toggle-btn {
+    display: flex;
+  }
+
+  /* hide menu by default */
+  .menu {
+    display: none;
+    width: 100%;
+  }
+
+  /* show menu when hamburger clicked */
+  .menu-toggle-checkbox:checked + .menu-toggle-btn + .menu {
+    display: block;
+  }
+
+  /* vertical menu */
+  .menu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu ul li a,
+  .menu ul li label {
+    display: block;
+    padding: 12px 0;
+  }
+
+  /* dropdown closed */
+  .dropdown-menu {
+    display: none;
+    position: static;
+    background: transparent;
+  }
+
+  /* dropdown open on click */
+  #historia-toggle:checked + .historia-link + .dropdown-menu {
+    display: block;
+  }
+
+  .historia-link::after {
+    content: " ▼";
+    font-size: 0.7rem;
+  }
+}
+
+/* =====================================================
+   MOBILE FIX: HISTORIA BUTTONS
+===================================================== */
+@media (max-width: 768px) {
+
+  .history-block .btn-secondary {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    margin: 16px auto 0;
+    text-align: center;
+    white-space: normal;
+  }
+
+}
+/* =====================================================
+   MOBILE FIX: USUARIOS CHARACTER IMAGES
+===================================================== */
+@media (max-width: 768px) {
+
+  .character-options {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+
+}
+
+/* =====================================================
+   HERO (INDEX)
+===================================================== */
+@media (max-width: 768px) {
 
   .hero {
-    padding: 0 6%;
-    min-height: 60vh;
+    min-height: auto;
+    padding: 80px 20px 120px;
+    text-align: center;
+    background-position: top center;
   }
 
   .hero-content {
     max-width: 100%;
+    margin: 0 auto;
+  }
+
+   .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  .hero-actions a {
+    width: 100%;
   }
 }
 
-/*
-   RESPONSIVE : MOBILE
-*/
+/* =====================================================
+   GRIDS (HOW / MECHANICS / USERS / ETC)
+===================================================== */
 @media (max-width: 768px) {
 
-    .header-container {
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 0;
-  }
-
-   .header-container .logo img {
-    height: 70px;
-    transform: scale(1.2);
-    margin-bottom: 10px;
-  }
-
-  .main-header {
-    overflow-x: hidden;
-  }
-
-  .menu ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
-  }
-
-  .menu ul li a {
-    font-size: 0.9rem;
-  }
-
-
-  .hero h1 {
-    font-size: 2.4rem;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .mechanics-grid,
   .how-grid,
+  .mechanics-grid,
   .usuarios-cards {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
-  .history-carousel {
-    max-width: 100%;
+  .how-item,
+  .mechanic-card,
+  .usuario-card {
+    width: 100%;
+  }
+}
+
+/* =====================================================
+   INSTRUCTIONS PAGE
+===================================================== */
+@media (max-width: 768px) {
+
+  .instruction-step {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .step-image img {
+    max-width: 160px;
+    margin-bottom: 20px;
+  }
+}
+
+/* =====================================================
+   HISTORY BLOCKS (ALL HISTORY PAGES)
+===================================================== */
+@media (max-width: 768px) {
+
+  .history-block,
+  .history-block.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .history-image img {
+    max-width: 260px;
+    margin: 0 auto 20px;
+  }
+}
+
+/* =====================================================
+   CAROUSEL (HISTORIA)
+===================================================== */
+@media (max-width: 768px) {
+
+  .carousel-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
   }
 
   .carousel-item {
     min-width: 220px;
+    scroll-snap-align: center;
   }
+}
 
-  .vampire-archive-vertical,
-  .office-archive-vertical {
-    padding: 2.2rem 1.8rem;
-  }
+/* =====================================================
+   ARCHIVE PAGES (VAMPIROS & STANLEY)
+===================================================== */
+@media (max-width: 768px) {
 
   .vampire-images {
-    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
+    gap: 20px;
   }
 
-  .contact-info {
-    grid-template-columns: 1fr;
+  .vampire-images img {
+    width: 100%;
   }
+}
+
+/* =====================================================
+   CONTACT PAGE
+===================================================== */
+@media (max-width: 768px) {
+
+  .contact-info {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .contact-map iframe {
+    width: 100%;
+    height: 260px;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+}
+
+/* =====================================================
+   ABOUT PAGE
+===================================================== */
+@media (max-width: 768px) {
+
+  .video-wrapper iframe {
+    width: 100%;
+    height: 220px;
+  }
+
+  .team-list {
+    text-align: center;
+    padding: 0;
+  }
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+@media (max-width: 768px) {
 
   .footer-container {
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .footer-container .material-icons {
+    margin-top: 10px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   DISABLE PARTICLES ON MOBILE
+===================================================== */
+@media (max-width: 768px) {
+
+  body::before,
+  body::after,
+  main::before,
+  main::after,
+  .particles,
+  .background-particles {
+    display: none !important;
+    content: none !important;
   }
 }

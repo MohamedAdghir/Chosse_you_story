@@ -4,10 +4,8 @@ from Variables import *
 flg_salir = True
 
 menu_general = "principal"
-
 current_user = 0
 userList = get_user_ids()
-
 textVel = 0.05
 while flg_salir:
     while menu_general == "principal":
@@ -26,6 +24,7 @@ while flg_salir:
                 else:
                     menu_general = "Play"
                     current_user = userList[1][userList[0].index(login_name)]
+                    userList = get_user_ids()
                     break
         elif opc == 2:
             print("Create User")
@@ -48,7 +47,7 @@ while flg_salir:
             userList = get_user_ids()
             current_user = userList[1][userList[0].index(name)]
         elif opc == 3:
-            print("Replay Adventure")
+            menu_general = "Replay"
         elif opc == 4:
             print("Reports")
             menu_general = "Reports"
@@ -69,7 +68,7 @@ while flg_salir:
         elif opc == 2:
             menu_general = "game_loop"
         elif opc == 3:
-            print("Replay Adventure")
+            menu_general = "Replay"
         elif opc == 4:
             print("Reports")
             menu_general = "Reports"
@@ -134,7 +133,51 @@ while flg_salir:
                 input("Usuario no existe")
 
         else:
+            print("Salir")
+            flg_salir = False
+            menu_general = ""
+    
+    while menu_general == "Replay":
+        replayAdventures = getReplayAdventures()
+        if not replayAdventures:
+            print("No adventures to replay.")
+            input("Enter to continue")
             menu_general = "principal"
+            break
+        show_relive_adventure()
+        start = 0
+        page_size = 5
+        total = len(replayAdventures)
+        keys = getReplayKeysSortedByDate(replayAdventures)
+        while True:
+            page_dict = getReplayPage(replayAdventures, keys, start, page_size)
+            header = getHeadeForTableFromTuples(
+            ("Id", "Username", "Name", "CharacterName", "date"),
+            (6, 15, 40, 20, 24),"")
+            datos = header + "\n"
+            datos += getTableFromDict(("Username", "Name", "CharacterName", "date"),(6, 15, 40, 20, 24),page_dict) + "\n"
+            datos += "Which adventure do you want to replay?(+ next | - prev | 0 Go back): \n" 
+            opc = input(datos).strip()
+            if opc == "0":
+                menu_general = "principal"
+                break
+            elif opc == "+" or opc == "-":
+                start = ReplayStart(start, page_size, total, opc)
+            elif opc.isdigit() and int(opc) in page_dict:
+                idGame = int(opc)
+                game = replayAdventures[idGame]
+                print("You selected the game", idGame)
+                print("\n")
+                id_adventure = game["idAdventure"]
+                choices = getChoices(idGame)
+                characterName = game["CharacterName"]
+                replay(id_adventure,choices,characterName,game["Name"])
+                menu_general = "principal"
+                start = 0
+                continue
+            else:
+                print("Invalid option")
+                input("Enter to continue")
 
     while menu_general == "config":
         opc = getOpt("Velocidad de escritura de los textos:\n1)Instantaneo\n2)Rápido\n3)Normal\n4)Lento\n5)Back", "\nElige tu opción:",
@@ -178,7 +221,7 @@ while flg_salir:
         input("Enter para continuar")
 
         # Obtener los pasos de la aventura
-        adventure_steps = get_id_bystep_adventure(1) # Me acabo de dar cuenta, que aventura??? Xdd
+        adventure_steps = get_id_bystep_adventure(selectedAdventure)
         final_steps = []
         for step in adventure_steps:
             if adventure_steps[step]["Final_Step"] == 1:
@@ -195,25 +238,29 @@ while flg_salir:
             stepDisplay = getHeader(adventures[selectedAdventure]["Name"]) + "\n"
             answers = get_answers_bystep_adventure(current_step)
             if current_step in final_steps: # Es un final?
-                stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected)
+                stepDisplay += formatText(adventure_steps[current_step]["Description"].replace("$NAME",characterSelected),105,"\n")
                 print(stepDisplay)
                 print("Se acabo\n")
                 selectedOptions.append((current_step,None))
                 game_finished = True
                 menu_general = "Play"
+            # ----------------------------------------------------
             elif answers: # Tiene opciones?
-                stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected) + "\n"
+                stepDisplay += formatText(adventure_steps[current_step]["Description"].replace("$NAME",characterSelected),105,"\n") + "\n"
                 possibleAnswers = []
                 for answer in answers:
                     possibleAnswers.append(answer[0])
-                    stepDisplay += getFormatedAnswers(answer[0], answers[answer]["Description"], 99, 3) + "\n"
-                opc = getOpt(stepDisplay, "Selecciona una opción: ", possibleAnswers)
-                resolution = "\n" + formatText(answers[(int(opc), current_step)]["Resolution_Answer"],105,"\n").replace("$NAME",characterSelected)
-                print(resolution)
+                    stepDisplay += getFormatedAnswers(len(possibleAnswers), answers[answer]["Description"], 99, 3) + "\n"
+                opc = getOpt(stepDisplay, "Selecciona una opción: ", range(1,len(possibleAnswers)+1))
+                opc = possibleAnswers[int(opc)-1]
+                if formatText(answers[(int(opc), current_step)]["Resolution_Answer"].replace("$NAME",characterSelected),105,"\n") != "":
+                    resolution = "\n" + formatText(answers[(int(opc), current_step)]["Resolution_Answer"].replace("$NAME",characterSelected),105,"\n")
+                    print(resolution)
                 selectedOptions.append((current_step,int(opc)))
                 current_step = answers[(int(opc), current_step)]["NextStep_Adventure"]
+            # ----------------------------------------------------
             else: # No es final ni tiene opciones, un paso intermedio
-                stepDisplay += formatText(adventure_steps[current_step]["Description"],105,"\n").replace("$NAME",characterSelected)
+                stepDisplay += formatText(adventure_steps[current_step]["Description"].replace("$NAME",characterSelected),105,"\n")
                 print(stepDisplay)
                 selectedOptions.append((current_step,None))
                 current_step = adventure_steps[current_step]["Next_Step"]

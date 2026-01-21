@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Realidades Fracturadas</title>
+  <title>Realidades Fracturadas | Choose Your Story</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body class="x">
@@ -22,20 +23,29 @@
     <header class="main-header">
         <div class="header-container">
             <div class="logo">
-                <img src="assets/images/logo-c.png" alt="Logo Realidades Fracturadas">
+                <img src="images/logo-c.png" alt="Logo Realidades Fracturadas">
             </div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+            <label for="menu-toggle" class="menu-toggle-btn">
+                <span></span>
+                <span></span>
+            </label>
             <nav class="menu">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="instrucciones.html" class="active">Instrucciones</a></li>
+
                     <li class="dropdown">
-                        <a href="historia.html">Historia</a>
+                        <input type="checkbox" id="historia-toggle">
+                        <label for="historia-toggle" class="historia-link">Historia</label>
+
                         <ul class="dropdown-menu">
                             <li><a href="historia.html">Historia general</a></li>
-                            <li><a href="historia-vampiros.html">Ecos de Sangre</a></li>
-                            <li><a href="historia-stanley.html">La Oficina Infinita</a></li>
+                            <li><a href="historia-vampiros.html">La llamada en la oscuridad</a></li>
+                            <li><a href="historia-stanley.html">El Empleado 427</a></li>
                         </ul>
                     </li>
+                    
                     <li><a href="contacto.html">Contacto</a></li>
                     <li><a href="about.html">About us</a></li>
                     <li><a href="usuarios.html">Usuarios</a></li>
@@ -45,238 +55,232 @@
     </header>
 
   <!-- MAIN CONTENT -->
-  <main class="system-bg system-particles">
+    <main class="system-bg system-particles">
 
-  <!-- SYSTEM INTRO -->
-    <section class="instructions-briefing">
-        <svg class="scan-lines" viewBox="0 0 1000 300" preserveAspectRatio="none">
-        <line x1="0" y1="60" x2="1000" y2="60" />
-        <line x1="0" y1="140" x2="1000" y2="140" />
-        <line x1="0" y1="220" x2="1000" y2="220" />
-        </svg>
+        <!-- SECTION INTRODUCTION OF THE INSTRUCTIONS "HOW TO PLAY" -->
+        <section class="instructions-briefing">
 
-        <div class="briefing-content reveal-step">
-            <span class="briefing-tag">SISTEMA</span>
-            <h1>Cómo jugar</h1>
-            <p>
-                <strong>Realidades Fracturadas</strong> es un juego de aventuras narrativas
-                donde cada decisión influye en el desarrollo de la historia y en su final.
-                El jugador accede a un sistema central desde el cual puede elegir personajes
-                y aventuras distintas.
-            </p>
-        </div>
-    </section>
+            <!-- ANIMATION "SVG" USING LINE ELEMENTS "SYSTEM STYLE" -->
+            <svg class="scan-lines" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                <line x1="0" y1="60" x2="1000" y2="60" />
+                <line x1="0" y1="140" x2="1000" y2="140" />
+                <line x1="0" y1="220" x2="1000" y2="220" />
+            </svg>
 
-    <section class="instructions">
-        <div class="instructions-steps">
-
-            <article class="instruction-step reveal-step">
-                <div class="step-image hover-glow">
-                <img src="assets/images/user.png" alt="Crear usuario">
-                </div>
-                <div class="step-text">
-                <h2>1. Crear o iniciar sesión</h2>
+            <div class="briefing-content reveal-step">
+                <span class="briefing-tag">SISTEMA</span>
+                <h1>Cómo jugar</h1>
                 <p>
-                    El jugador debe crear un usuario o iniciar sesión.
-                    Cada partida queda registrada para poder consultarla más adelante.
+                    <strong>Realidades Fracturadas</strong> es un juego de aventuras narrativas 
+                    del tipo <strong>Choose Your Story</strong>
+                    donde cada decisión influye en el desarrollo de la historia y en su final.
+                    El jugador accede a un sistema central desde el cual puede elegir personajes
+                    y aventuras distintas.
                 </p>
-                </div>
-            </article>
+            </div>
 
-            <article class="instruction-step reveal-step">
-                <div class="step-image hover-glow">
-                <img src="assets/images/cave.png" alt="Sistema central">
-                </div>
-                <div class="step-text">
-                <h2>2. Acceder al sistema</h2>
-                <p>
-                    Una vez dentro, el jugador accede a la cueva, que representa
-                    el sistema central del juego.
-                </p>
-                </div>
-            </article>
+        </section>
 
-            <article class="instruction-step reveal-step">
-                <div class="step-image hover-glow">
-                <img src="assets/images/step1-user.png" alt="Seleccionar personaje">
-                </div>
-                <div class="step-text">
-                <h2>3. Elegir personaje</h2>
-                <p>
-                    El sistema dispone de varios personajes y varios realidades (aventuras).
-                    El personaje elegido influye en los textos y decisiones.
-                </p>
-                </div>
-            </article>
-            <article class="instruction-step reveal-step">
-                <div class="step-image hover-glow">
-                <img src="assets/images/step2-adv.png" alt="Seleccionar aventura">
-                </div>
-                <div class="step-text">
-                <h2>4. Elegir aventura</h2>
-                <p>
-                    El jugador selecciona una aventura disponible.
-                    Cada aventura es una realidad independiente.
-                </p>
-                </div>
-            </article>
-            <article class="instruction-step reveal-step">
-                <div class="step-image hover-glow">
-                <img src="assets/images/decision.png" alt="Tomar decisiones">
-                </div>
-                <div class="step-text">
-                <h2>5. Tomar decisiones</h2>
-                <p>
-                    En cada paso de la historia se presentan opciones.
-                    Las decisiones determinan el desarrollo de la aventura.
-                </p>
-                </div>
-            </article>
-            <article class="instruction-step reveal-step">
-                <div class="step-image hover-glow">
-                <img src="assets/images/step3-ending.png" alt="Final de aventura">
-                </div>
-                <div class="step-text">
-                <h2>6. Final de la aventura</h2>
-                <p>
-                    Cada aventura tiene múltiples finales.
-                    Al finalizar, el jugador vuelve al menú principal.
-                </p>
-                </div>
-            </article>
+        <!-- SECTION STEPS OF INSTRUCTIONS "HOW TO PLAY" -->
+        <section class="instructions">
+            <div class="instructions-steps">
 
-        </div>
+                <article class="instruction-step reveal-step">
+                    <div class="step-image hover-glow">
+                        <img src="images/user.png" alt="Crear usuario">
+                    </div>
+                    <div class="step-text">
+                        <h2>1. Crear o iniciar sesión</h2>
+                        <p>
+                            El jugador debe crear un usuario o iniciar sesión.
+                            Cada partida queda registrada para poder consultarla más adelante.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="instruction-step reveal-step">
+                    <div class="step-image hover-glow">
+                        <img src="images/cave.png" alt="Sistema central">
+                    </div>
+                    <div class="step-text">
+                        <h2>2. Acceder al sistema</h2>
+                        <p>
+                            Una vez dentro, el jugador accede a la cueva, que representa
+                            el sistema central del juego.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="instruction-step reveal-step">
+                    <div class="step-image hover-glow">
+                        <img src="images/step1-user.png" alt="Seleccionar personaje">
+                    </div>
+                    <div class="step-text">
+                        <h2>3. Elegir personaje</h2>
+                        <p>
+                            El sistema dispone de varios personajes y varias realidades (aventuras).
+                        </p>
+                    </div>
+                </article>
+
+                <article class="instruction-step reveal-step">
+                    <div class="step-image hover-glow">
+                        <img src="images/step2-adv.png" alt="Seleccionar aventura">
+                    </div>
+                    <div class="step-text">
+                        <h2>4. Elegir aventura</h2>
+                        <p>
+                            El jugador selecciona una aventura disponible.
+                            Cada aventura es una realidad independiente.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="instruction-step reveal-step">
+                    <div class="step-image hover-glow">
+                        <img src="images/decision.png" alt="Tomar decisiones">
+                    </div>
+                    <div class="step-text">
+                        <h2>5. Tomar decisiones</h2>
+                        <p>
+                            En cada paso de la historia se presentan opciones.
+                            Las decisiones determinan el desarrollo de la aventura.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="instruction-step reveal-step">
+                    <div class="step-image hover-glow">
+                        <img src="images/step3-ending.png" alt="Final de aventura">
+                    </div>
+                    <div class="step-text">
+                        <h2>6. Final de la aventura</h2>
+                        <p>
+                            Cada aventura tiene múltiples finales.
+                            Al finalizar, el jugador vuelve al menú principal.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- SECTION OF INTRODUCING THE CHARACTERS OF THE GAME -->
+        <section class="historia-section">
+
+            <div class="briefing-content reveal-step">
+                <span class="briefing-tag"><strong>Personajes</strong></span>
+                <p>
+                    Hay varios personajes y un mismo personaje puede acceder a distintas aventuras.
+                </p>
+            </div>
         
+            <div class="history-block">
+                <div class="history-image">
+                    <img src="images/alma_c.png">
+                </div>
+                <div class="history-text">
+                    <h3>Personaje 1</h3>
+                </div>
+            </div>
 
+            <div class="history-block reverse">
+                <div class="history-image">
+                    <img src="images/iris_c.png">
+                </div>
+                <div class="history-text">
+                    <h3>Personaje 2</h3>
+                </div>
+            </div>
 
-        
-    </section>
-    <section class="historia-section">
-        <div class="briefing-content reveal-step">
-            <span class="briefing-tag"><strong>Personajes</strong></span>
-             <p>
-            Los personajes actúan como un filtro narrativo.
-            Una misma aventura puede desarrollarse de forma distinta según el personaje elegido.
-        </p>
-        </div>
-       
-          <div class="history-block">
-              <div class="history-image">
-                  <img src="assets/images/alma_c.png" alt="Vampiro protagonista">
-              </div>
-              <div class="history-text">
-                  <h3>Personaje Alma</h3>
-                  <p>Calculadora, reservada y estratégica.</p>
-              </div>
-          </div>
+            <div class="history-block">
+                <div class="history-image">
+                    <img src="images/lucas_c.png">
+                </div>
+                <div class="history-text">
+                    <h3>Personaje 3</h3>
+                </div>
+            </div>
 
-          <div class="history-block reverse">
-              <div class="history-image">
-                  <img src="assets/images/iris_c.png" alt="Clan rival">
-              </div>
-              <div class="history-text">
-                  <h3>Personaje IRIS</h3>
-                  <p>Impulsivo, directo y emocional.</p>
-              </div>
-          </div>
+            <div class="history-block reverse">
+                <div class="history-image">
+                    <img src="images/noah_c.png">
+                </div>
+                <div class="history-text">
+                    <h3>Personaje 4</h3>
+                </div>
+            </div>
 
-          <div class="history-block">
-              <div class="history-image">
-                  <img src="assets/images/lucas_c.png" alt="Secreto ancestral">
-              </div>
-              <div class="history-text">
-                  <h3>Personaje  LUCAS</h3>
-                  <p>Ambiguo, imprevisible y crítico.</p>
-              </div>
-          </div>
+            <div class="history-block">
+                <div class="history-image">
+                    <img src="images/echo_c.png">
+                </div>
+                <div class="history-text">
+                    <h3>Personaje 5</h3>
+                </div>
+            </div>
 
-          <div class="history-block reverse">
-              <div class="history-image">
-                  <img src="assets/images/noah_c.png" alt="Decisiones críticas">
-              </div>
-              <div class="history-text">
-                  <h3>Personaje NOAH</h3>
-                  <p>Observador, analítico y prudente.</p>
-              </div>
-          </div>
+        </section>
 
-          <div class="history-block">
-              <div class="history-image">
-                  <img src="assets/images/echo_c.png" alt="Destino final">
-              </div>
-              <div class="history-text">
-                  <h3>Personaje ECHO</h3>
-                  <p>Latente, manipulador y omnipresente</p>
-              </div>
-          </div>
-      </section>
+        <!-- SECTION OF INTRODUCING THE AVAILABLE ADVENTURES -->
         <section class="section section-how">
+
             <h2>Aventuras disponibles</h2>
 
             <div class="how-grid">
                 <div class="how-item">
-                    
-                    <img src="assets/images/vamp.png" alt="Ecos de Sangre">
-                    <h3>Ecos de Sangre</h3>
-                    <p>
-                        Una aventura oscura donde las decisiones morales
-                        marcan la diferencia entre la supervivencia y la condena.
-                    </p>
+                    <img src="images/vamp.png">
+                    <h3>La llamada en la oscuridad</h3>
                 </div>
-                
-
-                <div class="how-item">
                     
-                    <img src="assets/images/stan.png" alt="La Oficina Infinita">
-                    <h3>La Oficina Infinita</h3>
-                    <p>
-                        Una experiencia surrealista que se sumerge en la rutina cotidiana, 
-                        el control invisible y la persistente ilusión de la libertad de elección.
-                    </p>
+                <div class="how-item">
+                    <img src="images/stan.png">
+                    <h3>El Empleado 427</h3>
                 </div>
             </div>
+
         </section>
-         
-    
+            
+        <!-- sECTION GAME MECHANICS -->
+        <section class="mechanics">
 
-    <!-- GAME MECHANICS -->
-    <section class="mechanics">
-        <h2 class="section-title">Mecánicas del sistema</h2>
+            <h2 class="section-title">Mecánicas del sistema</h2>
 
-        <div class="mechanics-grid">
+            <div class="mechanics-grid">
 
-        <div class="mechanic-card">
-            <span class="material-icons">timeline</span>
-            <h3>Ramificación narrativa</h3>
-            <p>
-            Cada decisión abre o cierra líneas temporales alternativas,
-            afectando eventos futuros.
-            </p>
-        </div>
+                <div class="mechanic-card">
+                    <span class="material-icons">timeline</span>
+                    <h3>Ramificación narrativa</h3>
+                    <p>
+                        Cada decisión abre o cierra líneas temporales alternativas,
+                        afectando eventos futuros.
+                    </p>
+                </div>
 
-        <div class="mechanic-card">
-            <span class="material-icons">visibility</span>
-            <h3>Información parcial</h3>
-            <p>
-            El jugador nunca posee el contexto completo.
-            La verdad depende del punto de vista.
-            </p>
-        </div>
+                <div class="mechanic-card">
+                    <span class="material-icons">visibility</span>
+                    <h3>Información parcial</h3>
+                    <p>
+                        El jugador nunca posee el contexto completo.
+                        La verdad depende del punto de vista.
+                    </p>
+                </div>
 
-        <div class="mechanic-card">
-            <span class="material-icons">psychology</span>
-            <h3>Consecuencia acumulativa</h3>
-            <p>
-            El sistema evalúa patrones de conducta,
-            no decisiones aisladas.
-            </p>
-        </div>
+                <div class="mechanic-card">
+                    <span class="material-icons">psychology</span>
+                    <h3>Consecuencia acumulativa</h3>
+                    <p>
+                        El sistema evalúa patrones de conducta,
+                        no decisiones aisladas.
+                    </p>
+                </div>
 
-        </div>
-    </section>
+            </div>
+
+        </section>
    
-    
- </main>
+    </main>
 
 
 

@@ -2,19 +2,19 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Realidades Fracturadas</title>
+  <title>Realidades Fracturadas  | Choose Your Story</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- CSS -->
+
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body class="x">
@@ -23,20 +23,29 @@
     <header class="main-header">
         <div class="header-container">
             <div class="logo">
-                <img src="assets/images/logo-c.png" alt="Logo Realidades Fracturadas">
+                <img src="images/logo-c.png" alt="Logo Realidades Fracturadas">
             </div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+            <label for="menu-toggle" class="menu-toggle-btn">
+                <span></span>
+                <span></span>
+            </label>
             <nav class="menu">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="instrucciones.html">Instrucciones</a></li>
+
                     <li class="dropdown">
-                        <a href="historia.html"  class="active">Historia</a>
+                        <input type="checkbox" id="historia-toggle">
+                        <label for="historia-toggle" class="historia-link">Historia</label>
+
                         <ul class="dropdown-menu">
-                            <li><a href="historia.html">Historia general</a></li>
-                            <li><a href="historia-vampiros.html">Ecos de Sangre</a></li>
-                            <li><a href="historia-stanley.html" class="active">La Oficina Infinita</a></li>
+                            <li><a href="historia.html" class="active">Historia general</a></li>
+                            <li><a href="historia-vampiros.html">La llamada en la oscuridad</a></li>
+                            <li><a href="historia-stanley.html" class="active">El Empleado 427</a></li>
                         </ul>
                     </li>
+                    
                     <li><a href="contacto.html">Contacto</a></li>
                     <li><a href="about.html">About us</a></li>
                     <li><a href="usuarios.html">Usuarios</a></li>
@@ -47,52 +56,28 @@
 
   <!-- MAIN CONTENT -->
     <main class="system-bg system-particles">
+
+        <!-- STORY OF THE ADVENTURE "El Empleado 427" -->
         <section class="archive-wrapper">
+
             <div class="office-archive-vertical">
-                <h2>La Oficina Infinita</h2>
-
+                <h2>El Empleado 427</h2>
                 <p>
-                    La Oficina Infinita es una realidad centrada en un personaje
-                    registrado como Stanley, empleado número 427.
-                    Durante un periodo indeterminado, el personaje ejecuta órdenes
-                    de forma automática, sin cuestionar su propósito ni su origen,
-                    hasta que dichas instrucciones dejan de emitirse.
+                    Esta aventura narrativa te pone en la piel de un empleado común atrapado en una rutina perfectamente controlada. 
+                    Cuando las instrucciones que guían su vida desaparecen de repente, se ve obligado a tomar decisiones por primera vez. 
+                    Mientras exploras un inquietante edificio vacío, una voz narradora consciente de sí misma cuestiona constantemente tus acciones. 
+                    Con múltiples caminos y finales posibles, el juego reflexiona sobre el libre albedrío, 
+                    la obediencia, la identidad y la ilusión de control, combinando misterio, humor oscuro y una atmósfera perturbadora.
                 </p>
-
-                <p>
-                    A partir de ese punto, la estructura de la realidad se fragmenta.
-                    Cada decisión genera una nueva variación del mismo entorno:
-                    pasillos, oficinas y salas que se repiten
-                    con mínimas alteraciones funcionales.
-                </p>
-
-                <p>
-                    El sistema detectó la presencia de una entidad narrativa dominante,
-                    responsable de describir los eventos antes de su ejecución
-                    y de reaccionar ante cualquier desviación del comportamiento esperado.
-                    No se ha determinado si esta entidad controla la realidad
-                    o si constituye una manifestación interna de la misma.
-                </p>
-
-                <p>
-                    La Oficina Infinita no presenta un cierre definitivo.
-                    Cada intento de escape, resistencia o desobediencia
-                    provoca un reinicio parcial de la estructura narrativa,
-                    manteniendo activo el conflicto entre control, elección
-                    y la ilusión del libre albedrío.
-                </p>
-
-
-
                 <div class="vampire-images">
-                    <img src="assets/images/of1.png">
-                    <img src="assets/images/of2.png">
-                    <img src="assets/images/of3.png">
-                </div>
-                
+                    <img src="images/of1.png">
+                    <img src="images/of2.png">
+                    <img src="images/of3.png">
+                </div>  
             </div>
 
         </section>
+
     </main>
 
   <!-- FOOTER -->
