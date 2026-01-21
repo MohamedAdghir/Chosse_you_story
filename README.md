@@ -81,3 +81,33 @@ Para ejecutar el proyecto es necesario contar con:
 > host --> IP donde se encuentre la base de datos, si está en local puede ponerse localhost o 127.0.0.1
 
 > contraseña --> Cambiala por la contraseña que quieras utilizar
+
+5. Ejecutar los scripts .sql en el siguiente orden (Se pueden encontrar en M02)
+   ```bash
+   sudo mysql -u root < Create_DB.sql
+   sudo mysql -u root choose_your_story < Alter_Table.sql
+   sudo mysql -u root choose_your_story < Insert_Data.sql
+   ```
+
+---
+
+## Ejecución y uso
+
+> [!IMPORTANT]
+> Para que funcione el juego, hay que tener en cuenta los datos que tenemos configurados dentro de db_manager.py
+
+Al principio del archivo, podremos encontrar la siguiente función que se encarga de la conexión a la base de datos:
+```python
+def connect_to_db():
+    host = "127.0.0.1" # IP de la base de datos. Dejar 127.0.0.1 si es local.
+    port = 3307 # Puerto de la base de datos. Si se usa en local, reemplazar por 3306. Si se utiliza otro personalizado cambiarlo.
+    user = 'pyuser' # Usuario que hemos configurado antes.
+    password = '1234567890' # Reemplazar por la contraseña configurada antes.
+    database = 'choose_your_story' # Dejar como está
+```
+Rellenaremos los datos con lo que indican los comentarios.
+
+Para iniciar el juego, deberemos ejecutar el siguiente comando:
+```bash
+python3 main.py
+```
