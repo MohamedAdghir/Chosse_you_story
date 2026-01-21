@@ -4,10 +4,8 @@ from Variables import *
 flg_salir = True
 
 menu_general = "principal"
-
 current_user = 0
 userList = get_user_ids()
-
 textVel = 0.05
 while flg_salir:
     while menu_general == "principal":
@@ -70,7 +68,7 @@ while flg_salir:
         elif opc == 2:
             menu_general = "game_loop"
         elif opc == 3:
-            print("Replay Adventure")
+            menu_general = "Replay"
         elif opc == 4:
             print("Reports")
             menu_general = "Reports"
@@ -146,19 +144,12 @@ while flg_salir:
             input("Enter to continue")
             menu_general = "principal"
             break
-        #show_relive_adventure()
+        show_relive_adventure()
         start = 0
         page_size = 5
         total = len(replayAdventures)
         keys = getReplayKeysSortedByDate(replayAdventures)
         while True:
-            limpiar_terminal()
-            if start < 0:
-                start = 0
-            if start >= total:
-                start = total - page_size
-                if start < 0:
-                    start = 0
             page_dict = getReplayPage(replayAdventures, keys, start, page_size)
             header = getHeadeForTableFromTuples(
             ("Id", "Username", "Name", "CharacterName", "date"),
@@ -177,11 +168,10 @@ while flg_salir:
                 game = replayAdventures[idGame]
                 print("You selected the game", idGame)
                 print("\n")
-                print(getHeader(game["Name"]))
                 id_adventure = game["idAdventure"]
                 choices = getChoices(idGame)
                 characterName = game["CharacterName"]
-                replay(id_adventure,choices,characterName)
+                replay(id_adventure,choices,characterName,game["Name"])
                 menu_general = "principal"
                 start = 0
                 continue
