@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Realidades Fracturadas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body class="body-index">
+
+  <!-- HEADER -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="assets/images/logo-c.png" alt="Logo Realidades Fracturadas">
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                    <li><a href="instrucciones.html">Instrucciones</a></li>
+                    <li class="dropdown">
+                        <a href="historia.html">Historia</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="historia.html">Historia general</a></li>
+                            <li><a href="historia-vampiros.html">Ecos de Sangre</a></li>
+                            <li><a href="historia-stanley.html">La Oficina Infinita</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="usuarios.html">Usuarios</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+        <section class="hero">
+            <div class="hero-content">
+
+                <h1>Realidades Fracturadas</h1>
+
+                <p class="hero-subtitle">
+                    Entra en la cueva.
+                    Dentro te esperan múltiples realidades,
+                    cada una con sus propias reglas y consecuencias.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="usuarios.html" class="btn-primary">
+                    Iniciar aventura
+                    </a>
+                    <a href="historia.html" class="btn-secondary">
+                    Descubrir la historia
+                    </a>
+                </div>
+
+            </div>
+        </section>
+        <section class="section section-intro">
+            <div class="intro-content">
+                <h2>El núcleo de las realidades</h2>
+                <div class="text">
+                    <p>
+                        Realidades Fracturadas es un juego de aventuras narrativas
+                        ambientado dentro de una cueva que actúa como núcleo del sistema.
+                        Desde este espacio, los jugadores acceden a diferentes aventuras
+                        conocidos como <strong>realidades fracturadas</strong>.
+                    </p>
+
+                    <p>
+                        El usuario no vive la historia directamente,
+                        sino que observa y decide a través de los personajes.
+                    </p>
+
+                    <p>
+                        Cada realidad contiene su propia historia y decisiones.
+                        No existe una única aventura, sino múltiples caminos que se activan
+                        según el personaje y las elecciones realizadas.
+                    </p>
+
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="section scroll-reveal-game">
+            <div class="reveal-step">
+                <h3>Acceso al sistema</h3>
+                <p>
+                    El jugador accede al sistema creando un usuario.
+                    Este usuario representa a la persona que explora la cueva
+                    y gestiona las decisiones realizadas.
+                </p>
+            </div>
+
+            <div class="reveal-step">
+                <h3>Selección de personaje</h3>
+                <p>
+                    Dentro de la cueva, el usuario elige uno de los personajes disponibles.
+                    Cada personaje tiene su propio contexto, información y forma
+                    de interactuar con las realidades.
+                </p>
+            </div>
+
+            <div class="reveal-step">
+                <h3>Exploración de realidades</h3>
+                <p>
+                    Un mismo personaje puede acceder a distintas aventuras.
+                    Según el personaje elegido, las opciones, eventos
+                    y finales de cada realidad pueden variar.
+                </p>
+            </div>
+        </section>
+
+        <section class="svg-story">
+            <h2>Un sistema de caminos ramificados</h2>
+
+            <svg class="paths-svg" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+                <path d="M300 20 L300 140" />
+                <path d="M300 140 L120 260" />
+                <path d="M300 140 L300 260" />
+                <path d="M300 140 L480 260" />
+            </svg>
+
+            <p>
+                El sistema registra cada decisión y genera nuevas bifurcaciones.
+                No todos los caminos están disponibles para todos los personajes.
+            </p>
+        </section>
+
+        <section class="section section-how">
+            <h2>¿Cómo se juega?</h2>
+
+            <div class="how-grid">
+                <div class="how-item bg-user">
+                    <h3>Personaje y aventura</h3>
+                    <p>
+                        Elige uno de los personajes disponibles para comenzar la aventura escogida. 
+                    </p>
+                </div>
+
+                <div class="how-item bg-decision">
+                    <h3>Explora realidades</h3>
+                    <p>
+                        A lo largo de la historia se te presentarán diferentes opciones.
+                    </p>
+                </div>
+
+                <div class="how-item bg-ending">
+                    <h3>Explora finales</h3>
+                    <p>
+                        Las decisiones acumuladas determinan el desarrollo y el final de cada aventura.
+                    </p>
+                </div>
+            </div>
+
+            <div class="how-action">
+                <a href="instrucciones.html" class="btn-secondary">
+                Ver instrucciones completas
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+
+  <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p>
+                © 2026 Realidades Fracturadas
+            </p>
+            <div class="material-icons">
+                <a href="https://x.com/"><span>public</span></a>
+                <a href="https://www.instagram.com/"><span>photo_camera</span></a>
+                <a href="https://www.facebook.com/"><span>facebook</span></a>
+                <a href="https://www.tiktok.com/"><span>smart_display</span></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
