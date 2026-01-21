@@ -63,14 +63,12 @@ while flg_salir:
         opc = int(opc)
 
         if opc == 1:
-            print("Logout")
             menu_general = "principal"
         elif opc == 2:
             menu_general = "game_loop"
         elif opc == 3:
             menu_general = "Replay"
         elif opc == 4:
-            print("Reports")
             menu_general = "Reports"
         elif opc == 5:
             menu_general = "config"
@@ -104,6 +102,8 @@ while flg_salir:
                     print(getFormatedBodyColumns(datos_fila, (28, 28, 28, 28)))
             else:
                 print("No hay datos para mostrar.")
+            input("Continue")
+            limpiar_terminal()
         elif opc == 2:
             usuario,partidas = most_played_player()
             print(getHeadeForTableFromTuples(("NOMBRE USUARIO", "PARTIDAS JUGADAS"), (60, 60),
@@ -134,9 +134,10 @@ while flg_salir:
 
         else:
             print("Salir")
-            flg_salir = False
-            menu_general = ""
-    
+        input("Continue")
+        limpiar_terminal()
+        menu_general = "Play"
+
     while menu_general == "Replay":
         replayAdventures = getReplayAdventures()
         if not replayAdventures:
