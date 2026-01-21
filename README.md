@@ -115,29 +115,6 @@ Para utilizar las opciones del programa se tendrán que escribir los números in
 
 ---
 
-## Estructura del proyecto
-```text
-/Choose_your_story
-│── M01                   # Sistemas (Vacía, no la hemos utilizado)
-│── M02                   # Base de datos (Scripts)
-    │── Create_DB.sql
-    │── Alter_Table.sql
-    │── Insert_Data.sql
-│── M03                   # Programación
-    │── Proyecto
-        │── __init__.py
-        │── db_manager.py
-        │── Funciones_grupal.py
-        │── main.py
-        │── Variables.py
-│── M04                   # Lenguaje de marcas (Página web promocional)
-│── M05                   # Entornos de desarrollo
-│── .gitignore
-│── README.md             # Este archivo
-```
-
----
-
 ## Equipo del proyecto
 
 | Integrante | Roles | Contacto |
