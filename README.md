@@ -78,5 +78,7 @@ Para ejecutar el proyecto es necesario contar con:
    ```
 > [!NOTE]
 > pyuser puede ser cambiado por el nombre que quieras darle al usuario, pero luego deberá editarse en el código.
+
 > host deberá ser sustituido por la IP donde se encuentre hosteada la base de datos, si tienes la base de datos en tu ordenador, deberás poner localhost o 127.0.0.1
+
 > contraseña cambiala por la contraseña que quieras utilizar
