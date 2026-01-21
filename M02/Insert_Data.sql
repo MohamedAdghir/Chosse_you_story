@@ -9,19 +9,27 @@ INSERT INTO CHARACTERS (name, created_by)
 VALUES
 ('Stanley', CURRENT_USER()),
 ('Daniel', CURRENT_USER()),
-('Andrew', CURRENT_USER());
+('Felipe VI', CURRENT_USER()),
+('Makoke', CURRENT_USER()),
+('Jordi Garcia', CURRENT_USER()),
+('Celeste', CURRENT_USER());
 
 /* Aventuras */
 INSERT INTO ADVENTURE (name, description, created_by)
 VALUES
-('The Stanley Parable: Terminal Edition', 'Esta es la historia de un hombre.', CURRENT_USER());
+('The Stanley Parable: Terminal Edition', 'Esta es la historia de un hombre.', CURRENT_USER()),
+('La llamada en la oscuridad', 'Una llamada en mitad de la noche rompe la calma y arrastra a $NAME a una cadena de decisiones imposibles. Vampiros, secretos familiares y alianzas inesperadas marcarán el camino. Cada elección puede acercarte a la verdad… o a un final fatal.', CURRENT_USER());
 
 /* Personajes-Aventura */
 INSERT INTO CHARACTER_ADVENTURE (id_character, id_adventure, created_by)
 VALUES
 (1,1,CURRENT_USER()),
 (2,1,CURRENT_USER()),
-(3,1,CURRENT_USER());
+(3,1,CURRENT_USER()),
+(4,1,CURRENT_USER()),
+(4,2,CURRENT_USER()),
+(5,2,CURRENT_USER()),
+(6,2,CURRENT_USER());
 
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -87,11 +95,39 @@ VALUES
 (1, 'Narrador: ¡Sí! Había ganado. Había derrotado a la máquina, se había liberado del control de otra persona. ¡La libertad estaba a solo unos instantes! Y, sin embargo, incluso mientras la inmensa puerta se abría lentamente, $NAME reflexionaba sobre cuántos enigmas quedaban aún por resolver. ¿Dónde habían ido sus compañeros de trabajo? ¿Cómo se había liberado del control de la máquina? ¿Qué otros misterios escondía ese extraño edificio? Pero, cuando la luz del sol inundó la sala, se dio cuenta de que nada de eso le importaba. Porque lo que había estado buscando no era el conocimiento, ni siquiera el poder, sino la felicidad.', FALSE, FALSE, 58, CURRENT_USER()),
 (1, 'Narrador: Quizás su objetivo no era comprender, sino dejarlo ir. Ya nadie le diría adónde ir, qué hacer o cómo sentirse. Fuera cual fuera la vida que viviera, sería la suya. Y eso era todo lo que necesitaba saber. Quizás era lo único que valía la pena saber. $NAME atravesó la puerta abierta.', FALSE, FALSE, NULL, CURRENT_USER()),
 (1, 'Narrador: $NAME sintió la brisa fresca sobre su piel, la sensación de liberación, la inmensa posibilidad del nuevo camino que se abría ante él. Así era exactamente como, en ese momento, debían suceder las cosas.', FALSE, FALSE, 60, CURRENT_USER()),
-(1, 'Narrador: Y $NAME... fue feliz.', FALSE, TRUE, NULL, CURRENT_USER());
+(1, 'Narrador: Y $NAME... fue feliz.', FALSE, TRUE, NULL, CURRENT_USER()),
+(1, 'Narrador: Ah, sí. Sin duda, una habitación digna de admiración. Al fin y al cabo, había merecido la pena el desvío, solo por pasar unos momentos aquí, en esta habitación inmaculada y bellamente construida. $NAME se quedó allí de pie, absorbiéndolo todo.', FALSE, FALSE, 62, CURRENT_USER()),
+(1, 'Narrador: Pero, ansioso por volver al trabajo, $NAME se desvió por la sección de mantenimiento, caminó recto hacia la puerta opuesta y volvió a la ruta correcta.', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: Así que ahora, para volver, tenía que ir, umm... eh... tu, tu, tu, tu, tu, desde aquí es... amm... a la izquierda.', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: Oh, no. No, es a la derecha, fallo mío.', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: ¡No! ¡No, no, no! ¡No es la derecha! ¿Por qué habría dicho que era a la derecha? ¿En qué estaba pensando? Está claro que... Oh, Dios mío, ¿podrías esperar un momento, por favor? *ruido de papeles* A ver... fuimos, eh... a la derecha... a la izquierda... abajo... a la izquierda... a la derecha... ¡Ah, sí! ¡Vale, vale, sí! ¡Ya lo tengo! Esta historia es absolutamente, definitivamente, por aquí. ', FALSE, FALSE, NULL, CURRENT_USER()),
+(1, 'Narrador: ¡NO! ¡No! ¡No, no, no, no, no, no, no! ¡Esto no está bien! ¡No deberías estar aquí todavía, esto es un spoiler! ¡Rápido, $NAME, cierra los ojos! Vale, vale, vale, vale, solo tenemos que volver a... um... oh... ¿a quién quiero engañar? Ahora todo es una basura. Toda la historia... completamente inutilizable. En lugar de perder el tiempo intentando salvar este sinsentido, ¿qué tal si reiniciamos el juego desde el principio? Y esta vez, supongamos que no nos desviamos tanto del camino, ¿eh? ¡Vale, desde el principio!', FALSE, TRUE, NULL, CURRENT_USER()),
+(2, 'Estás durmiendo cuando un zumbido insistente rompe la quietud de la noche. El teléfono vibra sobre la mesita y $NAME abre los ojos a medias, aún aturdido. En la pantalla parpadea un número desconocido.', TRUE, FALSE, NULL, CURRENT_USER()),
+(2, 'Al día siguiente descubres que tus padres han desaparecido... y un frío brutal te atraviesa el pecho. Todo tu mundo se desmorona en un instante.', FALSE, TRUE, NULL, CURRENT_USER()),
+(2, 'La voz que escuchas es la de tu madre. Te cuenta, con la respiración agitada, que están siendo perseguidos por vampiros y no saben si podrán salir de esta. Antes de cortar, te pide que llames a tu tío.', FALSE, FALSE, NULL, CURRENT_USER()),
+(2, 'Sientes como si una mirada invisible te sigue en silencio.', FALSE, FALSE, NULL, CURRENT_USER()),
+(2, 'Tu tío cumple su palabra. Encuentra a tus padres antes de que sea demasiado tarde y los salva. Cuando por fin están a salvo, $NAME siente cómo la tensión por fin se rompe y puede respirar de nuevo.', FALSE, TRUE, NULL, CURRENT_USER()),
+(2, 'Intentas huir, el miedo te frena. Es demasiado tarde: la sombra te alcanza y te mata.', FALSE, TRUE, NULL, CURRENT_USER()),
+(2, 'Ves de golpe a un ser pálido, con colmillos y ojos rojos. Entiendes al instante que es un vampiro. Se lanza hacia ti, pero reaccionas rápido: le golpeas con el bate y sales corriendo.', FALSE, FALSE, NULL, CURRENT_USER()),
+(2, 'Quedas atrapado con pocas opciones, mientras el vampiro ruge detrás de la barrera.', FALSE, FALSE, NULL, CURRENT_USER()),
+(2, 'Piensas que por fin estás a salvo… pero entonces lo ves: el mismo vampiro de antes se arrodilla ante la oficial, como si la reconociera. La barrera del sótano no la detiene a ella, y en un instante te alcanza y te inmoviliza.', FALSE, TRUE, NULL, CURRENT_USER()),
+(2, 'Abres el compartimiento y encuentras objetos de cazavampiros marcados con los nombres de tus padres. Entre todo eso, una lámpara mágica destaca con un brillo extraño… y algo en ella te transmite un peligro difícil de ignorar.', FALSE, FALSE, NULL, CURRENT_USER()),
+(2, 'El vampiro se quedó allí, esperando pacientemente a que salieras. Al final, nunca lo hiciste. Moriste de hambre dentro de la habitación, mientras él aguardaba en silencio al otro lado.', FALSE, TRUE, NULL, CURRENT_USER()),
+(2, 'El genio cumplió tu deseo. Tus padres regresaron y todos los vampiros fueron eliminados, sin importar si eran buenos o malos. Pero el precio era demasiado alto: $NAME. Desapareciste sin dejar rastro.', FALSE, TRUE, NULL, CURRENT_USER()),
+(2, 'Aun así, mientras aceleras por la carretera, ves al vampiro persiguiéndote.', FALSE, FALSE, NULL, CURRENT_USER()),
+(2, 'Entras en tu casa y encuentras a una mujer majestuosa sentada allí. Con solo mirar a $NAME, una fuerza invisible lo oprime. No puede resistirse y todo se apaga.', FALSE, TRUE, NULL, CURRENT_USER()),
+(2, 'Te acercas a la comisaría y ves a dos oficiales en la entrada. ¿A cuál decides hablarle?', FALSE, FALSE, NULL, CURRENT_USER()),
+(2, 'El hombre te pregunta qué deseas, y mientras habla notas un leve brillo rojo en sus ojos que te pone en alerta.', FALSE, FALSE, NULL, CURRENT_USER()),
+(2, 'Cuando amanece, decides irte de allí, pero sabes que los vampiros seguirán persiguiéndote. Nunca volviste a saber nada de tus padres.', FALSE, TRUE, NULL, CURRENT_USER()),
+(2, 'El chico mira a $NAME con calma. Se presenta como Draven y admite que es un vampiro distinto. Dice que le debe un favor a tus padres y que ayudará pase lo que pase.', FALSE, FALSE, NULL, CURRENT_USER()),
+(2, 'La mujer se sorprende al verte, como si te reconociera. Te lleva a una sala vacía y de repente le brotan colmillos y los ojos se tornan rojos.', FALSE, FALSE, NULL, CURRENT_USER()),
+(2, 'Te agarra del cuello y murmura que por fin podrán vengarse de sus compañeros.', FALSE, TRUE, NULL, CURRENT_USER()),
+(2, 'El oficial dispara a la vampira y esta se desvanece. Luego te pregunta si tus padres son Garnu y Ale.', FALSE, FALSE, NULL, CURRENT_USER()),
+(2, 'Algo cambia y pierdes el control de tu cuerpo. Todo termina en un desenlace trágico.', FALSE, TRUE, NULL, CURRENT_USER()),
+(2, 'Draven lleva a $NAME con su clan. Rescatan a tus padres y vuelves a reunirte con ellos a salvo.', FALSE, TRUE, NULL, CURRENT_USER());
 
 /* (1, 'description', FALSE, FALSE, next_step, CURRENT_USER()), */
 SET FOREIGN_KEY_CHECKS = 1;
-
 
 /* Respuestas (step_id, 'description', 'resolution', next_step, CURRENT_USER()), */
 INSERT INTO ADVENTURE_STEP_ANSWER (id_adventure_step, description, resolution, next_step, created_by)
@@ -99,7 +135,7 @@ VALUES
 (2, 'Salir de la oficina', 'Narrador: Todos sus compañeros de trabajo se habían ido. ¿Qué podía significar eso? $NAME decidió ir a la sala de reuniones; tal vez simplemente se había perdido un memorándum.', 5, CURRENT_USER()),
 (2, 'Cerrar la puerta de la oficina y encerrarse en ella', 'Narrador: Pero $NAME simplemente no pudo soportar la presión.', 3, CURRENT_USER()),
 (5, 'Ir por la puerta de la izquierda', 'Narrador: Sin embargo, aquí tampoco había ni una sola persona. Sintiendo una oleada de incredulidad, $NAME decidió subir a la oficina de su jefe con la esperanza de encontrar allí una respuesta.', 6, CURRENT_USER()),
-/* --- */ (5, 'Ir por la puerta de la derecha', 'Narrador: Este no era el camino correcto hacia la sala de reuniones, y $NAME lo sabía perfectamente. Quizás quería pasar primero por la sala de descanso de los empleados, solo para admirarla.', next_step, CURRENT_USER()),
+(5, 'Ir por la puerta de la derecha', 'Narrador: Este no era el camino correcto hacia la sala de reuniones, y $NAME lo sabía perfectamente. Quizás quería pasar primero por la sala de descanso de los empleados, solo para admirarla.', 61, CURRENT_USER()),
 (6, 'Subir por las escaleras', 'Narrador: Al entrar en la oficina de su jefe, $NAME se quedó una vez más atónito al descubrir que no había ningún indicio de vida humana.', 20, CURRENT_USER()),
 (6, 'Bajar por las escaleras', 'Narrador: Pero $NAME simplemente no pudo hacerlo.', 7, CURRENT_USER()),
 (20, 'Dejar que el narrador siga hablando', '', 21, CURRENT_USER()),
@@ -143,6 +179,36 @@ VALUES
 (53, 'Resignarte', '', 54, CURRENT_USER()),
 (53, 'Empezar a golpear ordenadores y maquinas aleatorias', '', 54, CURRENT_USER()),
 (53, 'Pulsar un botón blanco con el número 5 intentando evitar que explote la bomba', '', 54, CURRENT_USER()),
-(58, 'Atravesar la puerta abierta', '', 59, CURRENT_USER());
+(58, 'Atravesar la puerta abierta', '', 59, CURRENT_USER()),
+(62, 'Seguir recto hacia la ruta correcta', 'Narrador: Como después de este desvío la oficina del jefe quedaba más cerca, $NAME decidió ir allí en busca de explicaciones.', 6, CURRENT_USER()),
+(62, 'Bajar por un ascensor que se encuentra en la sala', 'Narrador: Pero $NAME no quería volver a la oficina, quería pasear y alejarse aún más del camino.', 63, CURRENT_USER()),
+(63, 'Ir a la izquierda', '', 64, CURRENT_USER()),
+(64, 'Ir a la derecha', '', 65, CURRENT_USER()),
+(65, 'Ir por ahí', '', 66, CURRENT_USER()),
+(67, 'Ignoras la llamada y vuelves a dormir.', 'La noche pasa tranquilamente.', 68, CURRENT_USER()),
+(67, 'Contestas la llamada.', 'Coges el móvil, preguntándote quién llama.', 69, CURRENT_USER()),
+(67, 'Ignoras la llamada pero te levantas.', 'Una inquietud te recorre el cuerpo.', 70, CURRENT_USER()),
+(70, 'Decides quedarte en tu habitación.', 'Una sombra aparece en la ventana.', 72, CURRENT_USER()),
+(70, 'Sales con un bate en la mano.', 'No ves nada, pero algo se esconde.', 73, CURRENT_USER()),
+(70, 'Llamas a tus padres.', 'El aire se vuelve pesado.', 69, CURRENT_USER()),
+(69, 'Llamas a tu tío.', 'Te promete que se encargará.', 71, CURRENT_USER()),
+(73, 'Bajas al sótano.', 'Una barrera invisible protege el lugar.', 74, CURRENT_USER()),
+(74, 'Llamas a la policía.', 'Una oficial aparece en la casa.', 75, CURRENT_USER()),
+(74, 'Buscas algo útil.', 'Encuentras un compartimiento secreto.', 76, CURRENT_USER()),
+(76, 'Frotas la lámpara.', 'Un genio aparece y cumples tu deseo.', 78, CURRENT_USER()),
+(76, 'No haces nada.', 'Mueres atrapado.', 77, CURRENT_USER()),
+(73, 'Vas al garaje.', 'Logras escapar en el coche.', 79, CURRENT_USER()),
+(79, 'Intentas despistar al vampiro.', 'El silencio se vuelve inquietante.', 80, CURRENT_USER()),
+(79, 'Vas a la comisaría.', 'Buscas ayuda desesperadamente.', 81, CURRENT_USER()),
+(81, 'Hablas con el hombre pálido.', 'Algo no te da buena espina.', 82, CURRENT_USER()),
+(82, 'Pides quedarte allí.', 'El oficial se marcha.', 83, CURRENT_USER()),
+(82, 'Cuentas todo.', 'Escuchas un disparo.', 84, CURRENT_USER()),
+(81, 'Hablas con la mujer afro.', 'Le explicas quién eres.', 85, CURRENT_USER()),
+(85, 'La enfrentas con el bate.', 'No le haces daño.', 86, CURRENT_USER()),
+(85, 'Gritas pidiendo ayuda.', 'El otro oficial entra.', 87, CURRENT_USER()),
+(87, 'Rompes a llorar.', 'Todo termina mal.', 88, CURRENT_USER()),
+(87, 'Confirmas quiénes son tus padres.', 'El oficial intenta tranquilizarte.', 84, CURRENT_USER()),
+(84, 'Confías en él.', 'Te lleva con su clan.', 89, CURRENT_USER()),
+(84, 'Le preguntas qué lo hace distinto.', 'Te explica su código.', 89, CURRENT_USER());
 
 /* (step_id, 'description', 'resolution', next_step, CURRENT_USER()), */
