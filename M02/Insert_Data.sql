@@ -9,7 +9,10 @@ INSERT INTO CHARACTERS (name, created_by)
 VALUES
 ('Stanley', CURRENT_USER()),
 ('Daniel', CURRENT_USER()),
-('Andrew', CURRENT_USER());
+('Felipe VI', CURRENT_USER()),
+('Makoke', CURRENT_USER()),
+('Jordi Garcia', CURRENT_USER()),
+('Celeste', CURRENT_USER());
 
 /* Aventuras */
 INSERT INTO ADVENTURE (name, description, created_by)
@@ -22,7 +25,11 @@ INSERT INTO CHARACTER_ADVENTURE (id_character, id_adventure, created_by)
 VALUES
 (1,1,CURRENT_USER()),
 (2,1,CURRENT_USER()),
-(3,1,CURRENT_USER());
+(3,1,CURRENT_USER()),
+(4,1,CURRENT_USER()),
+(4,2,CURRENT_USER()),
+(5,2,CURRENT_USER()),
+(6,2,CURRENT_USER());
 
 SET FOREIGN_KEY_CHECKS = 0;
 
