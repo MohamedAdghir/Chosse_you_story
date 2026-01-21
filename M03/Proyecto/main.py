@@ -7,6 +7,7 @@ menu_general = "principal"
 current_user = 0
 userList = get_user_ids()
 
+
 while flg_salir:
     while menu_general == "principal":
         opc = getOpt(show_project_title()+"1)Login\n2)Create user\n3)Replay Adventure\n4)Reports\n5)Exit","\nElige tu opción:",[1, 2, 3, 4,5],[],{})
@@ -26,7 +27,6 @@ while flg_salir:
                     current_user = userList[1][userList[0].index(login_name)]
                     userList = get_user_ids()
                     break
-
         elif opc == 2: # Create User
             print("Create User")
             name = input("Usename:\n")
@@ -138,10 +138,15 @@ while flg_salir:
 
         else:
             print("Salir")
+            if current_user == 0:
+                menu_general = "principal"
+
+            else:
+                menu_general = "Play"
+
+
         input("Continue")
         limpiar_terminal()
-        menu_general = "Play"
-
     while menu_general == "Replay":
         replayAdventures = getReplayAdventures()
         if not replayAdventures:
