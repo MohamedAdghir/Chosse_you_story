@@ -2,19 +2,19 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Realidades Fracturadas</title>
+  <title>Realidades Fracturadas  | Choose Your Story</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/animations.css">
+
+  <link rel="stylesheet" href="CSS/main.css">
+  <link rel="stylesheet" href="CSS/layout.css">
+  <link rel="stylesheet" href="CSS/components.css">
+  <link rel="stylesheet" href="CSS/animations.css">
+  <link rel="stylesheet" href="CSS/responsive.css">
 </head>
 
 <body class="x">
@@ -23,20 +23,29 @@
     <header class="main-header">
         <div class="header-container">
             <div class="logo">
-                <img src="assets/images/logo-c.png" alt="Logo Realidades Fracturadas">
+                <img src="images/logo-c.png" alt="Logo Realidades Fracturadas">
             </div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+            <label for="menu-toggle" class="menu-toggle-btn">
+                <span></span>
+                <span></span>
+            </label>
             <nav class="menu">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="instrucciones.html">Instrucciones</a></li>
+
                     <li class="dropdown">
-                        <a href="historia.html"  class="active">Historia</a>
+                        <input type="checkbox" id="historia-toggle">
+                        <label for="historia-toggle" class="historia-link">Historia</label>
+
                         <ul class="dropdown-menu">
-                            <li><a href="historia.html">Historia general</a></li>
-                            <li><a href="historia-vampiros.html"  class="active">Ecos de Sangre</a></li>
-                            <li><a href="historia-stanley.html">La Oficina Infinita</a></li>
+                            <li><a href="historia.html" class="active">Historia general</a></li>
+                            <li><a href="historia-vampiros.html" class="active">La llamada en la oscuridad</a></li>
+                            <li><a href="historia-stanley.html">El Empleado 427</a></li>
                         </ul>
                     </li>
+                    
                     <li><a href="contacto.html">Contacto</a></li>
                     <li><a href="about.html">About us</a></li>
                     <li><a href="usuarios.html">Usuarios</a></li>
@@ -47,41 +56,31 @@
 
   <!-- MAIN CONTENT -->
     <main class="system-bg system-particles">
-<section class="archive-wrapper">
 
-  <div class="vampire-archive-vertical">
-    <h2>Ecos de Sangre</h2>
+        <!-- STORY OF THE ADVENTURE "La llamada en la oscuridad" -->
+      <section class="archive-wrapper">
 
-    <p>
-      Ecos de Sangre fue una de las primeras realidades
-      en manifestarse tras la activación del sistema.
-      Los registros iniciales muestran una estructura narrativa
-      reactiva, basada en la persecución y la paranoia.
-    </p>
+        <div class="vampire-archive-vertical">
 
-    <p>
-      La realidad se fragmenta en bifurcaciones irreversibles.
-      Cada decisión cierra rutas posibles,
-      empujando al observador hacia un núcleo
-      de violencia latente.
-    </p>
+          <h2>La llamada en la oscuridad</h2>
+      
+          <p>
+            En esta aventura de terror narrativa, una sola llamada telefónica lo cambia todo. 
+            Tus padres están siendo perseguidos, los vampiros acechan en las sombras y cada decisión puede conducirte a la salvación… 
+            o a una muerte inevitable. A través de calles desiertas, sótanos ocultos y encuentros sobrenaturales, 
+            la historia se ramifica en múltiples finales, desde los más trágicos hasta los más esperanzadores. 
+            Una experiencia intensa donde el miedo, la tensión y las elecciones del jugador son el verdadero motor de la historia.
+          </p>
 
-    <p>
-      El sistema determinó que la memoria no reside en el tiempo,
-      sino en la sangre.
-      Los habitantes heredan recuerdos ajenos,
-      confundiendo identidad, culpa y supervivencia.
-    </p>
+          <div class="vampire-images">
+            <img src="images/vampi1.png">
+            <img src="images/vampi2.png">
+            <img src="images/vampi3.png">
+          </div>
 
+        </div>
 
-    <div class="vampire-images">
-      <img src="assets/images/vampi1.png" alt="Ecos de Sangre">
-      <img src="assets/images/vampi2.png" alt="Ecos de Sangre">
-      <img src="assets/images/vampi3.png" alt="Ecos de Sangre">
-    </div>
-  </div>
-</section>
-
+      </section>
 
     </main>
 

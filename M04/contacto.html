@@ -2,19 +2,19 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Realidades Fracturadas</title>
+  <title>Realidades Fracturadas  | Choose Your Story</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/animations.css">
+
+  <link rel="stylesheet" href="CSS/main.css">
+  <link rel="stylesheet" href="CSS/layout.css">
+  <link rel="stylesheet" href="CSS/components.css">
+  <link rel="stylesheet" href="CSS/animations.css">
+  <link rel="stylesheet" href="CSS/responsive.css">
 </head>
 
 <body class="x">
@@ -23,20 +23,29 @@
     <header class="main-header">
         <div class="header-container">
             <div class="logo">
-                <img src="assets/images/logo-c.png" alt="Logo Realidades Fracturadas">
+                <img src="images/logo-c.png" alt="Logo Realidades Fracturadas">
             </div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+            <label for="menu-toggle" class="menu-toggle-btn">
+                <span></span>
+                <span></span>
+            </label>
             <nav class="menu">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="instrucciones.html">Instrucciones</a></li>
+
                     <li class="dropdown">
-                        <a href="historia.html">Historia</a>
+                        <input type="checkbox" id="historia-toggle">
+                        <label for="historia-toggle" class="historia-link">Historia</label>
+
                         <ul class="dropdown-menu">
                             <li><a href="historia.html">Historia general</a></li>
-                            <li><a href="historia-vampiros.html">Ecos de Sangre</a></li>
-                            <li><a href="historia-stanley.html">La Oficina Infinita</a></li>
+                            <li><a href="historia-vampiros.html">La llamada en la oscuridad</a></li>
+                            <li><a href="historia-stanley.html">El Empleado 427</a></li>
                         </ul>
                     </li>
+                    
                     <li><a href="contacto.html" class="active">Contacto</a></li>
                     <li><a href="about.html">About us</a></li>
                     <li><a href="usuarios.html">Usuarios</a></li>
@@ -44,43 +53,48 @@
             </nav>
         </div>
     </header>
+
   <!-- MAIN CONTENT -->
    <main class="contact-page system-bg system-particles">
 
         <h1>Contacto</h1>
 
+        <!-- SECTION OF CONTACT INFORMATION -->
         <section class="contact-info">
 
             <div class="contact-details">
                 <p>
-                <strong>Dirección:</strong><br>
-                Calle Realidades Paralelas 42, Barcelona
+                    <strong>Dirección:</strong><br>
+                    Calle Realidades Paralelas 42, Barcelona
                 </p>
 
                 <p>
-                <strong>Teléfono:</strong><br>
-                <a href="tel:+34931234567">+34 931 23 45 67</a>
+                    <strong>Teléfono:</strong><br>
+                    <a href="tel:+34931234567">+34 931 23 45 67</a>
                 </p>
 
                 <p>
-                <strong>Email:</strong><br>
-                <a href="mailto:contacto@chooseyourstory.fake">
-                    contacto@chooseyourstory.fake
-                </a>
+                    <strong>Email:</strong><br>
+                    <a href="mailto:contacto@chooseyourstory.fake">
+                        contacto@chooseyourstory.fake
+                    </a>
                 </p>
             </div>
 
+            <!-- CONTAINER OF IFRAME MAP EMBEDDED -->
             <div class="contact-map">
                 <iframe
-                src="https://www.google.com/maps?q=Barcelona&output=embed"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
+                    src="https://www.google.com/maps?q=Barcelona&output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
 
         </section>
 
+        <!-- SECTION OF A FORM TO SEND PETITIONS USINF "REGEX" FOR VALIDATION -->
         <section class="contact-form-section">
+
             <h2>Envíanos tu petición</h2>
 
             <form class="contact-form" novalidate>
@@ -120,6 +134,7 @@
                 <button type="submit">Enviar</button>
 
             </form>
+
         </section>
 
     </main>

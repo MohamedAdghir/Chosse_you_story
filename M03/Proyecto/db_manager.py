@@ -1,5 +1,4 @@
 import pymysql
-
 def connect_to_db():
     host = "127.0.0.1"
     port = 3307
@@ -100,7 +99,6 @@ def get_adventures_with_chars():
         connection.close()
 
 #print(get_adventures_with_chars())
-
 
 def get_id_bystep_adventure(id_adventure):
     connection = connect_to_db()
@@ -235,12 +233,13 @@ def get_answers_bystep_adventure(adventure_id_step):
     try:
         with connection.cursor() as cursor:
             sql = "select id_adventure_step_answer,id_adventure_step,description,resolution,next_step from ADVENTURE_STEP_ANSWER where id_adventure_step =  %s "
-            cursor.execute(sql,(adventure_id_step))
+            cursor.execute(sql,(adventure_id_step,))
             resultado = cursor.fetchall()
             answers = {}
             for fila in resultado:
                 clave = (fila["id_adventure_step_answer"],fila["id_adventure_step"])
-                answers[clave] = {"Description": fila["description"],"Resolution_Answer": fila["resolution"],"NextStep_Adventure": fila["next_step"]}
+                answers[clave] = {"Description": fila["description"],"Resolution_Answer": fila["resolution"],
+                                  "NextStep_Adventure": fila["next_step"]}
             return answers
     except pymysql.MySQLError as e:
         print("Error:", e)
@@ -277,12 +276,13 @@ def most_played_player():
                      LIMIT 1;
                    """
             cursor.execute(sql)
-            resultado = cursor.fetcone()
+            resultado = cursor.fetchone()
             if resultado:
                 return  resultado["NOMBRE USUARIO"], resultado["PARTIDAS JUGADAS"]
-            return None
+            return None, None
     except pymysql.MySQLError as e:
         print("Error:", e)
+        return None, None
     finally:
         connection.close()
 
@@ -338,7 +338,7 @@ def GetMostUsedAnswersReport():
                     ADVENTURE_STEP s ON a.id_adventure = s.id_adventure
                 JOIN 
                     ADVENTURE_STEP_ANSWER ans ON s.id_adventure_step = ans.id_adventure_step
-                LEFT JOIN 
+                JOIN 
                     CHOICE c ON ans.id_adventure_step_answer = c.id_adventure_step_answer
                 GROUP BY 
                     a.id_adventure, a.name, 
@@ -363,3 +363,108 @@ def GetMostUsedAnswersReport():
         return None
     finally:
         connection.close()
+
+def getIdGames():
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = "SELECT id_game FROM GAME"
+            cursor.execute(sql)
+            resultado = cursor.fetchall()
+            ids = []
+            for fila in resultado:
+                ids.append(fila["id_game"])
+            n=len(ids)
+            for i in range(n):
+                cambios = False
+                for j in range (0,n - i - 1):
+                    if ids[j] > ids[j+1]:
+                        ids[j],ids[j+1] = ids[j+1],ids[j]
+                        cambios = True
+                if not cambios:
+                    break
+            return tuple(ids)
+    except pymysql.MySQLError as e:
+        print("Error:", e)
+        return ()
+    finally:
+        connection.close()
+
+#print(getIdGames())
+
+def getReplayAdventures():
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = """
+                SELECT 
+                    g.id_game,
+                    u.id_user,
+                    u.username,
+                    a.id_adventure,
+                    a.name AS adventure_name,
+                    g.playing_date,
+                    c.id_character,
+                    c.name AS character_name
+
+                FROM GAME g
+                JOIN USERS u ON g.id_user = u.id_user
+                JOIN ADVENTURE a ON g.id_adventure = a.id_adventure
+                JOIN CHARACTERS c ON g.id_character = c.id_character
+                ORDER BY g.playing_date DESC
+            """
+            cursor.execute(sql)
+            resultado = cursor.fetchall()
+
+            replayAdventures = {}
+            for fila in resultado:
+                replayAdventures[fila["id_game"]] = {
+                    "idUser": fila["id_user"],
+                    "Username": fila["username"],
+                    "idAdventure": fila["id_adventure"],
+                    "Name": fila["adventure_name"],
+                    "date": fila["playing_date"],
+                    "idCharacter": fila["id_character"],
+                    "CharacterName": fila["character_name"]
+                }
+            return replayAdventures
+    except pymysql.MySQLError as e:
+        print("Error:", e)
+        return {}
+    finally:
+        connection.close()
+
+#print(getReplayAdventures())
+
+
+
+def getChoices(idGame):
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            sql = """
+                SELECT 
+                    id_adventure_step,
+                    id_adventure_step_answer
+                FROM CHOICE
+                WHERE id_game = %s
+                ORDER BY id_choice ASC
+            """
+            cursor.execute(sql, (idGame,))
+            resultado = cursor.fetchall()
+
+            choices = []
+            for fila in resultado:
+                choices.append(
+                    (fila["id_adventure_step"], fila["id_adventure_step_answer"])
+                )
+
+            return tuple(choices)
+    except pymysql.MySQLError as e:
+        print("Error:", e)
+        return ()
+    finally:
+        connection.close()
+
+#print(getChoices(1))
+

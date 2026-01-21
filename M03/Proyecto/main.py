@@ -4,19 +4,15 @@ from Variables import *
 flg_salir = True
 
 menu_general = "principal"
-
 current_user = 0
 userList = get_user_ids()
-
 textVel = 0.05
-
 while flg_salir:
     while menu_general == "principal":
         opc = getOpt("1)Login\n2)Create user\n3)Replay Adventure\n4)Reports\n5)Exit","\nElige tu opción:",[1, 2, 3, 4,5],[],{})
         opc = int(opc)
         if opc == 1:
             for i in range(3,0,-1):
-                print(userList)
                 login_name = input("Username:\n")
                 login_passw = input("Password:\n")
                 opc = checkUserbdd(login_name, login_passw)
@@ -50,7 +46,7 @@ while flg_salir:
             userList = get_user_ids()
             current_user = userList[1][userList[0].index(name)]
         elif opc == 3:
-            print("Replay Adventure")
+            menu_general = "Replay"
         elif opc == 4:
             print("Reports")
             menu_general = "Reports"
@@ -66,14 +62,12 @@ while flg_salir:
         opc = int(opc)
 
         if opc == 1:
-            print("Logout")
             menu_general = "principal"
         elif opc == 2:
             menu_general = "game_loop"
         elif opc == 3:
-            print("Replay Adventure")
+            menu_general = "Replay"
         elif opc == 4:
-            print("Reports")
             menu_general = "Reports"
         elif opc == 5:
             menu_general = "config"
@@ -87,23 +81,103 @@ while flg_salir:
                      [1, 2, 3, 4], [], {})
         opc = int(opc)
         if opc == 1:
-            print("Most used answer")
-            print(getHeadeForTableFromTuples(("ID AVENTURA - NOMBRE","ID PASO-DESCRIPCION","ID RESPUESTA - DESCRIPCION","NUMERO VECES SELECCIONADA"),(30,30,30,30), title="Most used answer"))
+            reporte = GetMostUsedAnswersReport()
+
+            if reporte:
+
+                print(getHeadeForTableFromTuples(
+                    ("ID AVENTURA - NOMBRE", "ID PASO-DESCRIPCION", "ID RESPUESTA - DESCRIPCION",
+                     "NUMERO VECES SELECCIONADA"),
+                    (30, 30, 30, 30),
+                    title="Most used answer"
+                ))
+                for fila in reporte:
+                    datos_fila = (
+                        str(fila["ID AVENTURA - NOMBRE"]),
+                        str(fila["ID PASO - DESCRIPCION"]),
+                        str(fila["ID RESPUESTA - DESCRIPCION"]),
+                        str(fila["NUMERO VECES SELECCIONADA"])
+                    )
+                    print(getFormatedBodyColumns(datos_fila, (28, 28, 28, 28)))
+            else:
+                print("No hay datos para mostrar.")
+            input("Continue")
+            limpiar_terminal()
         elif opc == 2:
-            print(getHeadeForTableFromTuples(("NOMBRE USUARIO","PARTIDAS JUGADAS"),(60,60), title="Player with more games played"))
-            usuario,partidas =most_played_player
-            print("{:60}{:60}".format(usuario,partidas))
+            usuario,partidas = most_played_player()
+            print(getHeadeForTableFromTuples(("NOMBRE USUARIO", "PARTIDAS JUGADAS"), (60, 60),
+                                             title="Player with more games played"))
+            if usuario is not None:
+                print("{:<60}{:<60}".format(str(usuario), str(partidas)))
+            else:
+                print("No se encontraron datos")
+            input("Continue")
+            limpiar_terminal()
         elif opc == 3:
             name = input("What user do you want to see?")
             if checkUserbdd(name,"hola") == -1:
-                print(getHeadeForTableFromTuples(("Id_Adventure","Name","Date"), (40,40,40),
-                                                 title="Games played by {}").format(name))
+                aventuras = GetPlayerAdventureLog(name)
+
+                if aventuras:
+                    print(getHeadeForTableFromTuples(("Id_Adventure", "Name", "Date"), (40, 40, 40),
+                                                     title="Games played by "+name))
+                    for fila in aventuras:
+                        print("{:<40}{:<40}{:<40}".format(
+                            str(fila["idadventure"]),
+                            str(fila["Name"]),
+                            str(fila["date"])))
+                else:
+                    print("El usuario no ha hecho ninguna aventura")
             else:
                 input("Usuario no existe")
+
         else:
             print("Salir")
-            flg_salir = False
-            menu_general = ""
+        input("Continue")
+        limpiar_terminal()
+        menu_general = "Play"
+
+    while menu_general == "Replay":
+        replayAdventures = getReplayAdventures()
+        if not replayAdventures:
+            print("No adventures to replay.")
+            input("Enter to continue")
+            menu_general = "principal"
+            break
+        show_relive_adventure()
+        start = 0
+        page_size = 5
+        total = len(replayAdventures)
+        keys = getReplayKeysSortedByDate(replayAdventures)
+        while True:
+            page_dict = getReplayPage(replayAdventures, keys, start, page_size)
+            header = getHeadeForTableFromTuples(
+            ("Id", "Username", "Name", "CharacterName", "date"),
+            (6, 15, 40, 20, 24),"")
+            datos = header + "\n"
+            datos += getTableFromDict(("Username", "Name", "CharacterName", "date"),(6, 15, 40, 20, 24),page_dict) + "\n"
+            datos += "Which adventure do you want to replay?(+ next | - prev | 0 Go back): \n" 
+            opc = input(datos).strip()
+            if opc == "0":
+                menu_general = "principal"
+                break
+            elif opc == "+" or opc == "-":
+                start = ReplayStart(start, page_size, total, opc)
+            elif opc.isdigit() and int(opc) in page_dict:
+                idGame = int(opc)
+                game = replayAdventures[idGame]
+                print("You selected the game", idGame)
+                print("\n")
+                id_adventure = game["idAdventure"]
+                choices = getChoices(idGame)
+                characterName = game["CharacterName"]
+                replay(id_adventure,choices,characterName,game["Name"])
+                menu_general = "principal"
+                start = 0
+                continue
+            else:
+                print("Invalid option")
+                input("Enter to continue")
 
     while menu_general == "config":
         opc = getOpt("Velocidad de escritura de los textos:\n1)Instantaneo\n2)Rápido\n3)Normal\n4)Lento\n5)Back", "\nElige tu opción:",
