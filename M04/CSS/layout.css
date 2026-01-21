@@ -1,9 +1,8 @@
 /* =====================================================
    ESTRUCTURA GENERAL DEL SITIO
-   Header, footer, secciones y grids principales
+   Header, footer, secciones y grids principales,menus
 ===================================================== */
 /* HEADER */
-
 .main-header {
     width: 100%;
     background: linear-gradient(
@@ -161,13 +160,21 @@
 
 /* SECCIONES GENERALES */
 /* SECCION HERO */
-
 .system-bg {
   position: relative;
   background:
     radial-gradient(circle at top, rgba(0,255,255,0.08), transparent 60%),
     linear-gradient(to bottom, #050b12, #03142a);
   overflow: hidden;
+}
+.system-particles::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../images/particles.png') repeat;
+  opacity: 0.18;
+  pointer-events: none;
+  animation: particles-float 180s linear infinite;
 }
 .hero {
   min-height: 70vh;
@@ -199,29 +206,6 @@
   margin: 0 auto;
   text-align: center;
 }
-.svg-story {
-  text-align: center;
-  padding: 120px 10% 140px;
-}
-
-.svg-story h2 {
-  color: #00ffee;
-  margin-bottom: 40px;
-}
-.paths-svg {
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto 30px;
-  display: block;
-}
-
-.svg-story p {
-  max-width: 500px;
-  margin: 0 auto;
-  opacity: 0.85;
-}
-
-
 .instructions {
   min-height: 60vh;
   display: flex;
@@ -231,43 +215,15 @@
   padding: 0 10%;
   padding-top: 50px;
 }
-.system-particles::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('../images/particles.png') repeat;
-  opacity: 0.18;
-  pointer-events: none;
-  animation: particles-float 180s linear infinite;
-}
-.hover-glow img {
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.hover-glow:hover img {
-  transform: scale(1.04);
-  box-shadow:
-    0 0 25px rgba(0,255,255,0.35),
-    0 0 60px rgba(0,255,255,0.15);
-}
 .mechanics {
   padding: 120px 10% 140px;
   text-align: center;
 }
-
-.section-title {
-  font-family: 'Cinzel', serif;
-  font-size: 2.4rem;
-  color: #00ffee;
-  margin-bottom: 80px;
-}
-
 .mechanics-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 40px;
 }
-
 .mechanic-card {
   position: relative;
   padding: 50px 35px;
@@ -276,36 +232,30 @@
   backdrop-filter: blur(6px);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-
 .mechanic-card:hover {
   transform: translateY(-10px);
   box-shadow:
     0 0 30px rgba(0,255,255,0.35);
 }
-
 .mechanic-card span {
   font-size: 2.4rem;
   color: #00ffee;
   margin-bottom: 20px;
   display: block;
 }
-
 .mechanic-card h3 {
   font-family: 'Cinzel', serif;
   margin-bottom: 12px;
 }
-
 .mechanic-card p {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   color: rgba(255,255,255,0.85);
 }
-
 .instructions-briefing {
   padding: 120px 20px 80px;
   text-align: center;
 }
-
 .instructions-briefing::after {
   content: "";
   position: absolute;
@@ -317,12 +267,10 @@
   background: linear-gradient(90deg, transparent, #00ffee, transparent);
   opacity: 0.6;
 }
-
 .briefing-content {
   max-width: 700px;
   margin: 0 auto;
 }
-
 .briefing-tag {
   display: inline-block;
   font-family: 'Orbitron', sans-serif;
@@ -332,7 +280,6 @@
   margin-bottom: 20px;
   opacity: 0.8;
 }
-
 .instructions-briefing h1 {
   font-family: 'Cinzel', serif;
   font-size: 2.6rem;
@@ -340,7 +287,6 @@
   margin-bottom: 20px;
   padding-top: 20px;
 }
-
 .instructions-briefing p {
   font-family: 'Inter', sans-serif;
   color: rgba(255,255,255,0.85);
@@ -348,6 +294,60 @@
   font-size: 1.05rem;
 }
 
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+}
+.how-item {
+  position: relative;
+  padding: 50px 30px;
+  border: 1px solid rgba(0,255,255,0.15);
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.how-item h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: #00ffee;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.how-item p {
+  font-family: 'Inter', sans-serif;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.how-action {
+  margin-top: 20px;
+}
+.bg-user {
+  background-image: url('../images/how-user.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-decision {
+  background-image: url('../images/how-decision.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-ending {
+  background-image: url('../images/how-ending.png');
+  background-size: cover;
+  background-position: center;
+}
 .instructions-steps {
   max-width: 1000px;
   margin: 0 auto 120px;
@@ -356,44 +356,25 @@
   gap: 80px;
   padding: 0 20px;
 }
-
 .instruction-step {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   align-items: center;
 }
-
 .step-image img {
   width: 100%;
   border-radius: 12px;
   box-shadow: 0 20px 50px #03142a;
 }
-
 .step-text h2 {
   font-family: 'Cinzel', serif;
   margin-bottom: 12px;
 }
-
 .step-text p {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   color: #d0d0d0;
-}
-.scan-lines {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.15;
-}
-
-.scan-lines line {
-  stroke: #00ffee;
-  stroke-width: 1;
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
 }
 .system-log {
   position: relative;
@@ -405,7 +386,6 @@
   max-width: 720px;
   margin: 0 auto;
 }
-
 .log-tag {
   font-family: 'Orbitron', sans-serif;
   font-size: 0.75rem;
@@ -415,7 +395,6 @@
   display: inline-block;
   margin-bottom: 25px;
 }
-
 .system-log h2 {
   font-family: 'Cinzel', serif;
   font-size: 2.2rem;
@@ -423,14 +402,12 @@
   margin-bottom: 30px;
   text-shadow: 0 0 12px rgba(0,255,255,0.25);
 }
-
 .log-text {
   font-family: 'Inter', sans-serif;
   line-height: 1.7;
   color: rgba(255,255,255,0.85);
   margin-bottom: 18px;
 }
-
 .log-text.muted {
   opacity: 0.65;
 }
@@ -453,83 +430,34 @@
     transparent
   );
 }
-.history-intro {
-  max-width: 800px;
-  margin: 0 auto;
+
+.history-carousel {
+  overflow: hidden;
+  margin: 100px auto;
+  max-width: 900px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 40px;
+  animation: carouselScroll 20s linear infinite;
+}
+
+.carousel-item {
+  min-width: 280px;
   text-align: center;
-  padding: 140px 20px 80px;
 }
 
-.history-intro h1 {
-  font-family: 'Cinzel', serif;
-  font-size: 3rem;
-  color: #00ffee;
-  margin-bottom: 30px;
-}
-
-.history-block {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  max-width: 1100px;
-  margin: 120px auto;
-  padding: 0 20px;
-}
-
-.history-block.reverse {
-  direction: rtl;
-}
-
-.history-block.reverse * {
-  direction: ltr;
-}
-
-.history-block .history-text h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 2rem;
-  color: #00ffee;
-  margin-bottom: 20px;
-}
-
-.history-block .history-text p {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: #c0f0ff;
-  margin-bottom: 20px;
-}
-
-.history-block .btn-secondary {
-  background: transparent;
-  color: #00ffee;
-  border: 2px solid #00ffee;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.history-block .btn-secondary:hover {
-  background: #00ffee;
-  color: #001f2f;
-}
-.history-block .history-image img {
-  width: 100%;           /* fills the container column */
-  max-width: 400px;      /* prevents them from being huge */
-  max-height: 300px;     /* keeps them balanced with text */
-  object-fit: cover;     /* crops nicely if tall */
+.carousel-item img {
+  width: 100%;
   border-radius: 12px;
-  box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
-  margin: 0 auto;        /* centers image in column */
-  display: block;
-  transition: transform 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
-.history-block .history-image img:hover {
-  transform: scale(1.05);
+.carousel-item p {
+  margin-top: 15px;
+  font-family: 'Cinzel', serif;
+  color: #00ffee;
 }
 .archive-wrapper {
   display: flex;
@@ -593,11 +521,9 @@
   object-fit: cover;
   border-radius: 10px;
   max-height: 140px;
-
   box-shadow:
     0 0 12px rgba(120,0,0,0.35),
     inset 0 0 18px rgba(0,0,0,0.6);
-
   opacity: 0.9;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -683,77 +609,9 @@
   color: #6fb7ff;
   text-decoration: none;
 }
-
-.contact-map iframe {
-  width: 100%;
-  height: 250px;
-  border: none;
-  border-radius: 12px;
-}
-
-.contact-form-section {
-  max-width: 600px;
-  margin: auto;
-}
-
-.contact-form-section h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.4rem;
-}
-
-.contact-form label {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.9rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: 0.7rem;
-  border-radius: 8px;
-  border: 2px solid #2a3f55;
-  background-color: rgba(255,255,255,0.05);
-  color: white;
-  font-family: inherit;
-}
-
-/* REGEX VISUAL VALIDATION */
-.contact-form input:valid,
-.contact-form textarea:valid {
-  border-color: #4caf50;
-}
-
-.contact-form input:invalid,
-.contact-form textarea:invalid {
-  border-color: #f44336;
-}
-
-.contact-form textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.contact-form button {
-  margin-top: 1rem;
-  padding: 0.8rem;
-  border: none;
-  border-radius: 10px;
-  background-color: #6fb7ff;
-  color: #0b1c2d;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.contact-form button:hover {
-  background-color: #8fc7ff;
-}
+/* =============================
+   About PAGE
+============================= */
 .about-page {
   max-width: 900px;
   margin: auto;
@@ -789,30 +647,6 @@
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.video-section {
-  margin-top: 4rem;
-}
-
-.video-section h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.video-wrapper {
-  position: relative;
-  padding-top: 56.25%; /* 16:9 */
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 0 30px rgba(0,0,0,0.35);
-}
-
-.video-wrapper iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
 /* =============================
    USUARIOS PAGE
 ============================= */
