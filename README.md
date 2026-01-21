@@ -76,9 +76,6 @@ Para ejecutar el proyecto es necesario contar con:
    ```sql
    CREATE USER 'pyuser'@'host' IDENTIFIED BY 'contraseña';
    ```
-> [!NOTE]
-> pyuser puede ser cambiado por el nombre que quieras darle al usuario, pero luego deberá editarse en el código.
-
-> host deberá ser sustituido por la IP donde se encuentre hosteada la base de datos, si tienes la base de datos en tu ordenador, deberás poner localhost o 127.0.0.1
-
-> contraseña cambiala por la contraseña que quieras utilizar
+> pyuser --> Usuario que queramos usar para conectar el programa a la base de datos
+> host --> IP donde se encuentre la base de datos, si está en local puede ponerse localhost o 127.0.0.1
+> contraseña --> Cambiala por la contraseña que quieras utilizar
