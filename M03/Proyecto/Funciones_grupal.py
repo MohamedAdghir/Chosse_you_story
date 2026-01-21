@@ -197,10 +197,6 @@ def writeText(texto, retraso_base=0.05):
             time.sleep(retraso_base)  # retraso normal
     print()  # salto de línea al final
 
-#writeText(formatText(texto, 105, "\n"),0.025)
-
-
-
 def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
     lista = list(dict_of_data)
     resultText = ""
