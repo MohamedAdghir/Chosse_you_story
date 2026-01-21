@@ -105,7 +105,7 @@ VALUES
 (2, 'Estás durmiendo cuando un zumbido insistente rompe la quietud de la noche. El teléfono vibra sobre la mesita y $NAME abre los ojos a medias, aún aturdido. En la pantalla parpadea un número desconocido.', TRUE, FALSE, NULL, CURRENT_USER()),
 (2, 'Al día siguiente descubres que tus padres han desaparecido... y un frío brutal te atraviesa el pecho. Todo tu mundo se desmorona en un instante.', FALSE, TRUE, NULL, CURRENT_USER()),
 (2, 'La voz que escuchas es la de tu madre. Te cuenta, con la respiración agitada, que están siendo perseguidos por vampiros y no saben si podrán salir de esta. Antes de cortar, te pide que llames a tu tío.', FALSE, FALSE, NULL, CURRENT_USER()),
-(2, 'Sientes como si una mirada invisible te sigue en silencio.', FALSE, TRUE, NULL, CURRENT_USER()),
+(2, 'Sientes como si una mirada invisible te sigue en silencio.', FALSE, FALSE, NULL, CURRENT_USER()),
 (2, 'Tu tío cumple su palabra. Encuentra a tus padres antes de que sea demasiado tarde y los salva. Cuando por fin están a salvo, $NAME siente cómo la tensión por fin se rompe y puede respirar de nuevo.', FALSE, TRUE, NULL, CURRENT_USER()),
 (2, 'Intentas huir, el miedo te frena. Es demasiado tarde: la sombra te alcanza y te mata.', FALSE, TRUE, NULL, CURRENT_USER()),
 (2, 'Ves de golpe a un ser pálido, con colmillos y ojos rojos. Entiendes al instante que es un vampiro. Se lanza hacia ti, pero reaccionas rápido: le golpeas con el bate y sales corriendo.', FALSE, FALSE, NULL, CURRENT_USER()),
