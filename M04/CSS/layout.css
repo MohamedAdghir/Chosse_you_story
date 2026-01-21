@@ -38,14 +38,16 @@
     margin: 0;
     padding: 0;
 }
-.menu ul li a {
+.menu ul li a,
+.historia-link {
     position: relative;
     padding-bottom: 4px;
     text-decoration: none;
     color: #00ffea;
     font-weight: bold;
 }
-.menu ul li a:hover {
+.menu ul li a:hover,
+.historia-link:hover {
     color: #9ffcff;
     
 }
@@ -59,7 +61,8 @@
     background: #00ffee;
     transition: width 0.3s ease;
 }
-.menu ul li a:hover::after {
+.menu ul li a:hover::after,
+.historia-link:hover::after {
     width: 100%;
 }
 .menu a.active {

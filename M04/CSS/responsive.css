@@ -31,26 +31,57 @@
     height: auto;
   }
 }
-
 /* =====================================================
-   MOBILE NAV – VERTICAL MENU (FINAL)
+   MOBILE HAMBURGER MENU (NO JS)
 ===================================================== */
+
+/* hide checkboxes */
+.menu-toggle-checkbox,
+#historia-toggle {
+  display: none;
+}
+
+/* hamburger button */
+.menu-toggle-btn {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.menu-toggle-btn span {
+  width: 24px;
+  height: 2px;
+  background: #00ffee;
+}
+
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
-  .header-container {
+  /* show hamburger */
+  .menu-toggle-btn {
+    display: flex;
+  }
+
+  /* hide menu by default */
+  .menu {
+    display: none;
+    width: 100%;
+  }
+
+  /* show menu when hamburger clicked */
+  .menu-toggle-checkbox:checked + .menu-toggle-btn + .menu {
+    display: block;
+  }
+
+  /* vertical menu */
+  .menu ul {
+    display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  /* FORCE VERTICAL MENU */
-  .menu ul {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-  }
-
   .menu ul li {
-    display: block !important;
     width: 100%;
     text-align: center;
   }
@@ -58,22 +89,53 @@
   .menu ul li a,
   .menu ul li label {
     display: block;
-    width: 100%;
     padding: 12px 0;
   }
 
-  /* DROPDOWN: CLOSED BY DEFAULT */
+  /* dropdown closed */
   .dropdown-menu {
     display: none;
     position: static;
     background: transparent;
-    border: none;
   }
 
-  /* OPEN ON CLICK (CHECKBOX METHOD) */
+  /* dropdown open on click */
   #historia-toggle:checked + .historia-link + .dropdown-menu {
     display: block;
   }
+
+  .historia-link::after {
+    content: " ▼";
+    font-size: 0.7rem;
+  }
+}
+
+/* =====================================================
+   MOBILE FIX: HISTORIA BUTTONS
+===================================================== */
+@media (max-width: 768px) {
+
+  .history-block .btn-secondary {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    margin: 16px auto 0;
+    text-align: center;
+    white-space: normal;
+  }
+
+}
+/* =====================================================
+   MOBILE FIX: USUARIOS CHARACTER IMAGES
+===================================================== */
+@media (max-width: 768px) {
+
+  .character-options {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+
 }
 
 /* =====================================================
