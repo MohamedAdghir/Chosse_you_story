@@ -1,3 +1,8 @@
+/* =====================================================
+   COMPONENTES REUTILIZABLES
+   Botones, tarjetas, menús, formularios y bloques UI
+===================================================== */
+
 .hero h1 {
     font-family: 'Cinzel', serif;
     font-size: 3.5rem;
@@ -63,9 +68,7 @@
   margin-bottom: 25px;
   text-shadow: 0 0 10px rgba(0,255,255,0.3);
 }
-.text {
-    letter-spacing: 0.10em;
-}
+
 .scroll-reveal-game {
   max-width: 900px;
   margin: 0 auto;

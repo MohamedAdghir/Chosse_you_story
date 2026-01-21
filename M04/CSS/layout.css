@@ -1,3 +1,7 @@
+/* =====================================================
+   ESTRUCTURA GENERAL DEL SITIO
+   Header, footer, secciones y grids principales
+===================================================== */
 /* HEADER */
 
 .main-header {
@@ -48,8 +52,7 @@
 }
 .menu ul li a:hover,
 .historia-link:hover {
-    color: #9ffcff;
-    
+    color: #9ffcff; 
 }
 .menu ul li a::after {
     content: "";
@@ -71,7 +74,6 @@
 .dropdown {
   position: relative;
 }
-
 .dropdown-menu {
   position: absolute;
   top: 105%;
@@ -87,7 +89,6 @@
   transition: all 0.3s ease;
   backdrop-filter: blur(6px);
 }
-
 .dropdown-menu li a {
   display: block;
   padding: 6px 16px;
@@ -99,18 +100,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .dropdown-menu li a:hover {
   background: rgba(0,255,255,0.1);
 }
-
 .dropdown:hover .dropdown-menu {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
 }
-
-
 /* FOOTER */
 .main-footer {
     position: relative;
@@ -125,7 +122,6 @@
     box-shadow: 0 -10px 40px rgba(0, 255, 255, 0.12);
     z-index: 20;
 }
-
 .main-footer::before {
     content: "";
     position: absolute;
@@ -135,7 +131,6 @@
     height: 2px;
     background: linear-gradient(90deg,transparent,#00ffee,transparent);
 }
-
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -144,14 +139,12 @@
     justify-content: space-between;
     align-items: center;
 }
-
 .footer-container p {
     margin: 0;
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.8);
     letter-spacing: 0.5px;
 }
-
 .footer-container .material-icons a {
     color: #00ffee;
     margin-left: 18px;
@@ -161,14 +154,21 @@
         0 0 14px rgba(0,255,255,0.4);
     text-decoration: none;
 }
-
 .footer-container .material-icons a:hover {
     color: #9ffcff;
     transform: translateY(-3px);
 }
 
-
+/* SECCIONES GENERALES */
 /* SECCION HERO */
+
+.system-bg {
+  position: relative;
+  background:
+    radial-gradient(circle at top, rgba(0,255,255,0.08), transparent 60%),
+    linear-gradient(to bottom, #050b12, #03142a);
+  overflow: hidden;
+}
 .hero {
   min-height: 70vh;
   position: relative;
@@ -187,7 +187,6 @@
   width: 100%;
   height: 180px;
   background: linear-gradient(to bottom,rgba(5,7,8,0) 0%, #050708 100%);
-
   pointer-events: none;
 }
 .hero-content {
@@ -209,7 +208,6 @@
   color: #00ffee;
   margin-bottom: 40px;
 }
-
 .paths-svg {
   max-width: 600px;
   width: 100%;
@@ -222,13 +220,7 @@
   margin: 0 auto;
   opacity: 0.85;
 }
-.system-bg {
-  position: relative;
-  background:
-    radial-gradient(circle at top, rgba(0,255,255,0.08), transparent 60%),
-    linear-gradient(to bottom, #050b12, #03142a);
-  overflow: hidden;
-}
+
 
 .instructions {
   min-height: 60vh;
@@ -290,11 +282,7 @@
   box-shadow:
     0 0 30px rgba(0,255,255,0.35);
 }
-.x {
-  background:
-    radial-gradient(circle at top, rgba(0,255,255,0.08), transparent 60%),
-    linear-gradient(to bottom, #050b12, #03142a);
-}
+
 .mechanic-card span {
   font-size: 2.4rem;
   color: #00ffee;
