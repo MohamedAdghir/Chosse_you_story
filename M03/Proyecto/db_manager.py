@@ -449,7 +449,7 @@ def getChoices(idGame):
                     id_adventure_step_answer
                 FROM CHOICE
                 WHERE id_game = %s
-                ORDER BY id_adventure_step ASC
+                ORDER BY id_choice ASC
             """
             cursor.execute(sql, (idGame,))
             resultado = cursor.fetchall()

@@ -250,9 +250,8 @@ def getFormatedAdventures():
 
 def replay(idAdventure,choices,characterName):
     adventure_steps = get_id_bystep_adventure(idAdventure)
-
+    
     for step_id, answer_id in choices:
-        limpiar_terminal()
     
 
         #mostrar la description del paso
@@ -264,42 +263,66 @@ def replay(idAdventure,choices,characterName):
         # mostrar la opcion seleccionada y resolution
         answers = get_answers_bystep_adventure(step_id)
         if not answers:
-            print("\nOption selected")
+            print("\n(No decision was required in this step)")
             continue
-        else:
-            resolution = answers[(answer_id, step_id)]["Resolution_Answer"]
-            resolution = resolution.replace("$NAME",characterName)
-            print(formatText(resolution, 105, "\n"))
-            input("Enter to continue")
+        chosen_answer = answers[(answer_id, step_id)]["Description"]
+        chosen_answer = chosen_answer.replace("$NAME", characterName)
+        
+        print("\nYou chose:")
+        print(getFormatedAnswers(answer_id, chosen_answer, 105, 3))
+        input("Enter to see the result")
+
+        resolution = answers[(answer_id, step_id)]["Resolution_Answer"]
+        resolution = resolution.replace("$NAME",characterName)
+        print(formatText(resolution, 105, "\n"))
+        input("Enter to continue")
     print(show_fin())
-    input("Enter to continue")
 
 #print(getFormatedAdventures())
 
+def ReplayStart(start, page_size, total, option):
+    if option == "+":
+        start = start + page_size
+        if start >= total:
+            start = total - page_size
+            if start < 0:
+                start = 0
+    elif option == "-":
+        start = start - page_size
+        if start < 0:
+            start = 0
 
-def show_relive_adventure():
-    limpiar_terminal()
-    print("""
-     ____        ____        ____        ____        ____        ____        ____        ____        ____        ____    
-    / /\ \      / /\ \      / /\ \      / /\ \      / /\ \      / /\ \      / /\ \      / /\ \      / /\ \      / /\ \   
-   / /  \ \    / /  \ \    / /  \ \    / /  \ \    / /  \ \    / /  \ \    / /  \ \    / /  \ \    / /  \ \    / /  \ \  
-  / /    \ \  / /    \ \  / /    \ \  / /    \ \  / /    \ \  / /    \ \  / /    \ \  / /    \ \  / /    \ \  / /    \ \ 
- /_/      \_\/_/      \_\/_/      \_\/_/      \_\/_/      \_\/_/      \_\/_/      \_\/_/      \_\/_/      \_\/_/      \_\
-                                                                                                                         
-  ____  _____ _     _____     _______   __   _____  _   _ ____       _    ______     _______ _   _ _____ _   _ ____  _____ 
- |  _ \| ____| |   |_ _\ \   / / ____|  \ \ / / _ \| | | |  _ \     / \  |  _ \ \   / / ____| \ | |_   _| | | |  _ \| ____|
- | |_) |  _| | |    | | \ \ / /|  _|     \ V / | | | | | | |_) |   / _ \ | | | \ \ / /|  _| |  \| | | | | | | | |_) |  _|  
- |  _ <| |___| |___ | |  \ V / | |___     | || |_| | |_| |  _ <   / ___ \| |_| |\ V / | |___| |\  | | | | |_| |  _ <| |___ 
- |_| \_\_____|_____|___|  \_/  |_____|    |_| \___/ \___/|_| \_\ /_/   \_\____/  \_/  |_____|_| \_| |_|  \___/|_| \_\_____|
-                                                                                                                           
- __           ____           ____           ____           ____           ____           ____           ____           __
- \ \         / /\ \         / /\ \         / /\ \         / /\ \         / /\ \         / /\ \         / /\ \         / /
-  \ \       / /  \ \       / /  \ \       / /  \ \       / /  \ \       / /  \ \       / /  \ \       / /  \ \       / / 
-   \ \     / /    \ \     / /    \ \     / /    \ \     / /    \ \     / /    \ \     / /    \ \     / /    \ \     / /  
-    \_\___/_/      \_\___/_/      \_\___/_/      \_\___/_/      \_\___/_/      \_\___/_/      \_\___/_/      \_\___/_/   
-     |_____|        |_____|        |_____|        |_____|        |_____|        |_____|        |_____|        |_____|    
-""")
-    input("Enter to continue")
+    return start
+
+def getReplayPage(replayAdventures, keys, start, page_size):
+    page_dict = {}
+    end = start + page_size
+
+    for i in range(start, end):
+        if i >= len(keys):
+            break
+        page_dict[keys[i]] = replayAdventures[keys[i]]
+
+    return page_dict
+
+def getReplayKeysSortedByDate(replayAdventures):
+    keys = list(replayAdventures.keys())
+
+    for pasada in range(len(keys) - 1):
+        cambios = False
+        for i in range(len(keys) - 1 - pasada):
+            date1 = replayAdventures[keys[i]]["date"]
+            date2 = replayAdventures[keys[i + 1]]["date"]
+
+            if date1 > date2:
+                keys[i], keys[i + 1] = keys[i + 1], keys[i]
+                cambios = True
+
+        if not cambios:
+            break
+
+    return keys
+
 
 #replayAdventures = getReplayAdventures()
 #getTableFromDict(("Username", "Name", "CharacterName", "date"),(6, 15, 35, 20, 25),replayAdventures)

@@ -144,29 +144,50 @@ while flg_salir:
         if not replayAdventures:
             print("No adventures to replay.")
             input("Enter to continue")
-
             menu_general = "principal"
             break
-        header = getHeadeForTableFromTuples(
+        #show_relive_adventure()
+        start = 0
+        page_size = 5
+        total = len(replayAdventures)
+        keys = getReplayKeysSortedByDate(replayAdventures)
+        while True:
+            limpiar_terminal()
+            if start < 0:
+                start = 0
+            if start >= total:
+                start = total - page_size
+                if start < 0:
+                    start = 0
+            page_dict = getReplayPage(replayAdventures, keys, start, page_size)
+            header = getHeadeForTableFromTuples(
             ("Id", "Username", "Name", "CharacterName", "date"),
             (6, 15, 40, 20, 24),"")
-        show_relive_adventure()
-        datos = header
-        datos += getTableFromDict(("Username", "Name", "CharacterName", "date"),(6, 15, 40, 20, 24),replayAdventures) + "\n"
-        datos += "Which adventure do you want to replay?(0 Go back): " 
-        opc = getOpt(inputOptText=datos,rangeList=[0,len(replayAdventures)],dictionary=replayAdventures)
-        valid_ids = list(replayAdventures.keys())
-        if opc == "0":
-            menu_general = "principal"
-            break
-        idGame = int(opc)
-        id_adventure = replayAdventures[idGame]["idAdventure"]
-        choices = getChoices(idGame)
-        #characterlista = get_characters()
-        characterName = replayAdventures[idGame]["CharacterName"]
-        replay(id_adventure,choices,characterName)
-        menu_general = "principal"
-
+            datos = header + "\n"
+            datos += getTableFromDict(("Username", "Name", "CharacterName", "date"),(6, 15, 40, 20, 24),page_dict) + "\n"
+            datos += "Which adventure do you want to replay?(+ next | - prev | 0 Go back): \n" 
+            opc = input(datos).strip()
+            if opc == "0":
+                menu_general = "principal"
+                break
+            elif opc == "+" or opc == "-":
+                start = ReplayStart(start, page_size, total, opc)
+            elif opc.isdigit() and int(opc) in page_dict:
+                idGame = int(opc)
+                game = replayAdventures[idGame]
+                print("You selected the game", idGame)
+                print("\n")
+                print(getHeader(game["Name"]))
+                id_adventure = game["idAdventure"]
+                choices = getChoices(idGame)
+                characterName = game["CharacterName"]
+                replay(id_adventure,choices,characterName)
+                menu_general = "principal"
+                start = 0
+                continue
+            else:
+                print("Invalid option")
+                input("Enter to continue")
 
     while menu_general == "config":
         opc = getOpt("Velocidad de escritura de los textos:\n1)Instantaneo\n2)Rápido\n3)Normal\n4)Lento\n5)Back", "\nElige tu opción:",
