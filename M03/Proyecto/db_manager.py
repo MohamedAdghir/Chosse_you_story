@@ -3,7 +3,7 @@ import pymysql
 def connect_to_db():
     host = "127.0.0.1"
     port = 3307
-    user = 'ibtipyuser'
+    user = 'pyuser'
     password = '1234567890'
     database = 'choose_your_story'
 
