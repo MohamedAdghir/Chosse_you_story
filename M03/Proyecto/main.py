@@ -1,17 +1,18 @@
 from Funciones_grupal import *
-from  db_manager import *
+from db_manager import *
 from Variables import *
 flg_salir = True
 
 menu_general = "principal"
 current_user = 0
 userList = get_user_ids()
-textVel = 0.05
+
 while flg_salir:
     while menu_general == "principal":
-        opc = getOpt("1)Login\n2)Create user\n3)Replay Adventure\n4)Reports\n5)Exit","\nElige tu opción:",[1, 2, 3, 4,5],[],{})
+        opc = getOpt(show_project_title()+"1)Login\n2)Create user\n3)Replay Adventure\n4)Reports\n5)Exit","\nElige tu opción:",[1, 2, 3, 4,5],[],{})
         opc = int(opc)
-        if opc == 1:
+        
+        if opc == 1: # Login
             for i in range(3,0,-1):
                 login_name = input("Username:\n")
                 login_passw = input("Password:\n")
@@ -25,7 +26,8 @@ while flg_salir:
                     current_user = userList[1][userList[0].index(login_name)]
                     userList = get_user_ids()
                     break
-        elif opc == 2:
+
+        elif opc == 2: # Create User
             print("Create User")
             name = input("Usename:\n")
             while True:
@@ -45,13 +47,16 @@ while flg_salir:
             menu_general = "Play"
             userList = get_user_ids()
             current_user = userList[1][userList[0].index(name)]
-        elif opc == 3:
+
+        elif opc == 3: # Replay
             menu_general = "Replay"
-        elif opc == 4:
+
+        elif opc == 4: # Reports
             print("Reports")
             menu_general = "Reports"
+
         else:
-            print("Exit")
+            print("Goodbye!")
             flg_salir = False
 
             menu_general = ""
