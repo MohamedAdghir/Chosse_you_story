@@ -77,5 +77,7 @@ Para ejecutar el proyecto es necesario contar con:
    CREATE USER 'pyuser'@'host' IDENTIFIED BY 'contraseña';
    ```
 > pyuser --> Usuario que queramos usar para conectar el programa a la base de datos
+
 > host --> IP donde se encuentre la base de datos, si está en local puede ponerse localhost o 127.0.0.1
+
 > contraseña --> Cambiala por la contraseña que quieras utilizar
