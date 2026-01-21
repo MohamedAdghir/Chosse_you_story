@@ -13,7 +13,6 @@ while flg_salir:
         opc = int(opc)
         if opc == 1:
             for i in range(3,0,-1):
-                print(userList)
                 login_name = input("Username:\n")
                 login_passw = input("Password:\n")
                 opc = checkUserbdd(login_name, login_passw)
