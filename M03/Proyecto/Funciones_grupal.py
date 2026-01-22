@@ -1,12 +1,15 @@
 import os
 from db_manager import *
 
-# Funciones chidas
+# Funcion para limpiar terminal según el sistema operativo
 def limpiar_terminal():
     if os.name == 'nt':  # Windows
         os.system('cls')
     else:  # Linux y macOS
         os.system('clear')
+# Héctor: Hemos optado por esto porque lo de meter 58 \n me parecía una locura.
+# Se ve que esto en PyCharm da un fallo raro que no sabemos que és, pero no afecta al funcionamiento del código,
+# es una movida turbia del PyCharm, pero el programa se supone que se debe ejecutar en terminal asi que da igual.
 
 # Funcion para formatear texto
 def formatText(text, lenLine, split):
@@ -68,7 +71,7 @@ def getFormatedBodyColumns(texts,lenLines,margin=2):
 
     return finalText
 
-#Funcion de las opciones del menu
+# Funcion para mostrar menús y gestionar la entrada de opciones.
 def getOpt(textOpts="", inputOptText="", rangeList=[], exceptions=[], dictionary={}):
     opciones_validas = []
     for a in rangeList:
@@ -86,7 +89,7 @@ def getOpt(textOpts="", inputOptText="", rangeList=[], exceptions=[], dictionary
         print("Opción inválida. Intenta de nuevo.\n")
         input("Enter para continuar")
 
-#Funcion de comprobar que la contraseña cumpla con los parametros
+# Función de comprobar que la contraseña cumpla con los requisitos mínimos
 def checkPassword(password):
     if not 8 <= len(password) <= 12:
         print("La contraseña debe tener entre 8 y 12 caracteres.")
@@ -121,7 +124,7 @@ def checkPassword(password):
         return False
     return True
 
-#Funcion de comprobar que el usuario cumpla con los parametros
+# Funcion de comprobar que el usuario cumpla con los requisitos mínimos
 def checkUser(user):
     if len(user) not in range(6,11):
         print("Invalid range")
@@ -131,7 +134,7 @@ def checkUser(user):
         return False
     return True
 
-#Funcion para los encabezados
+# Funcion para formar los encabezados complejos
 def getHeadeForTableFromTuples(t_name_columns,t_size_columns,title=""):
     suma = 0
     texto = ""
@@ -144,11 +147,12 @@ def getHeadeForTableFromTuples(t_name_columns,t_size_columns,title=""):
     texto += "\n" + "".center(suma,"*")
     return texto
 
-# Funcion que crea un header
+# Funcion que crea los headers simples
 def getHeader(text):
     texto = "".center(105,"*") + "\n" + text.center(105,"=") + "\n" + "".center(105,"*")
     return texto
 
+# Función para obtener las respuestas de un paso formateadas
 def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
     prefijo = margen_derecho * " " + "{}) ".format(id_respuesta)
     sangria = " " * len(prefijo)
@@ -178,6 +182,7 @@ def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
 
     return resultado
 
+# Función que convierte un diccionario en un texto formateado printeable
 def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
     lista = list(dict_of_data)
     resultText = ""
@@ -197,6 +202,7 @@ def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
         resultText += texto + "\n"
     return resultText
 
+# Comprobador de si un usuario existe
 def user_exist(lista,usuario):
     lista = list(lista)
     if usuario in lista:
@@ -204,6 +210,7 @@ def user_exist(lista,usuario):
     else:
         return False
 
+# Devuelve las aventuras existentes formateadas para printear
 def getFormatedAdventures():
     adventures = get_adventures_with_chars()
     body = getHeadeForTableFromTuples(("Id Adventure", "Adventure", "Description"), (15, 22, 68), "Adventures") + "\n"
@@ -217,13 +224,13 @@ def getFormatedAdventures():
         body += getFormatedBodyColumns(texts, lenLines) + "\n"
     return body
 
+# Función principal para las replays
 def replay(idAdventure,choices,characterName,adventureName):
     adventure_steps = get_id_bystep_adventure(idAdventure)
     
     for step_id, answer_id in choices:
-        #limpiar_terminal()
         print(getHeader(adventureName))
-        #mostrar la description del paso
+        # mostrar la description del paso
         step_text = adventure_steps[step_id]["Description"]
         step_text = step_text.replace("$NAME",characterName)
         print(formatText(step_text, 105, "\n"))
@@ -250,6 +257,7 @@ def replay(idAdventure,choices,characterName,adventureName):
         input("Enter to continue")
     show_fin()
 
+# Función para organizar replays por páginas
 def ReplayStart(start, page_size, total, option):
     if option == "+":
         if start + page_size < total:
@@ -259,6 +267,7 @@ def ReplayStart(start, page_size, total, option):
             start = start - page_size
     return start
 
+# Función para obtener la página actual de replays
 def getReplayPage(replayAdventures, keys, start, page_size):
     page_dict = {}
     end = start + page_size
@@ -270,6 +279,7 @@ def getReplayPage(replayAdventures, keys, start, page_size):
 
     return page_dict
 
+# Obtención de las replays ordenadas por fecha
 def getReplayKeysSortedByDate(replayAdventures):
     keys = list(replayAdventures.keys())
 
@@ -287,6 +297,10 @@ def getReplayKeysSortedByDate(replayAdventures):
             break
 
     return keys
+
+# --------------------------------
+#  ASCIIs utilizados en el código
+# --------------------------------
 
 def show_relive_adventure():
     limpiar_terminal()
@@ -314,8 +328,6 @@ _/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\_
 /_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\_
 """)
 
-
-
 def show_fin():
     limpiar_terminal()
     print(r"""
@@ -334,8 +346,6 @@ _/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\_
 \\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /
 /_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\_
 """)
-
-
 
 def show_project_title():
     limpiar_terminal()
@@ -361,3 +371,5 @@ def show_project_title():
           
 ****************************************************************************************************                                                                                         
 """
+
+# bruhh

@@ -1,46 +1,46 @@
 from Funciones_grupal import *
 from db_manager import *
-from Variables import *
-flg_salir = True
+flg_salir = True # Bucle principal
 
-menu_general = "principal"
-current_user = 0
-userList = get_user_ids()
+menu_general = "principal" # Manejo de los menús por estados (un string)
+current_user = 0 # Constancia del usuario que está utilizando el programa
+userList = get_user_ids() # Obtención de los usuarios existentes
 
 while flg_salir:
-    while menu_general == "principal":
-        opc = getOpt(show_project_title()+"1) Login\n2) Create user\n3) Replay Adventure\n4) Reports\n5) Exit","\nElige tu opción: ",[1, 2, 3, 4,5],[],{})
+    while menu_general == "principal": # Menú principal del programa
+        opc = getOpt(show_project_title()+"1) Login\n2) Crear usuario\n3) Repeticiones de aventura\n4) Reportes\n5) Salir","\nElige tu opción: ",[1, 2, 3, 4,5],[],{})
         opc = int(opc)
         
         if opc == 1: # Login
             for i in range(3,0,-1):
-                login_name = input("Username:\n")
-                login_passw = input("Password:\n")
+                login_name = input("Nombre de usuario: ")
+                login_passw = input("Contraseña: ")
                 opc = checkUserbdd(login_name, login_passw)
                 if opc == 0:
-                    print("The user does not exist. You have {} more attempts.".format(i))
+                    print("El usuario no existe. Te quedan {} intentos.".format(i))
                 elif opc == -1:
-                    print("The password is incorrect, please try again.You have {} more attempts.".format(i))
+                    print("La contraseña es incorrecta, intentalo de nuevo. Te quedan {} intentos.".format(i))
                 else:
                     menu_general = "Play"
                     current_user = userList[1][userList[0].index(login_name)]
                     userList = get_user_ids()
                     break
+
         elif opc == 2: # Create User
-            print("Create User")
-            name = input("Usename:\n")
+            print("Creación de usuario")
+            name = input("Nombre de usuario: ")
             while True:
                 if not checkUser(name):
-                    name = input("Usename:\n")
+                    name = input("Nombre de usuario: ")
                 elif user_exist(get_users(), name):
-                    print("User already in use")
-                    name = input("Usename:\n")
+                    print("Este usuario ya existe.")
+                    name = input("Nombre de usuario: ")
                 else:
                     break
-            passw = input("Password:\n")
+            passw = input("Contraseña: ")
             while True:
                 if not checkPassword(passw):
-                    passw = input("Password:\n")
+                    passw = input("Contraseña: ")
                 break
             insertUser(name,passw)
             menu_general = "Play"
@@ -51,17 +51,17 @@ while flg_salir:
             menu_general = "Replay"
 
         elif opc == 4: # Reports
-            print("Reports")
+            print("Reportes")
             menu_general = "Reports"
 
         else:
-            print("Goodbye!")
+            print("Hasta la próxima!")
             flg_salir = False
 
             menu_general = ""
 
-    while menu_general == "Play":
-        opc = getOpt(show_project_title()+"\n1) Logout\n2) Play\n3) Replay Adventure\n4) Reports\n5) Exit", "\nElige tu opción: ",
+    while menu_general == "Play": # Menú después de logearse
+        opc = getOpt(show_project_title()+"\n1) Cerrar sesión\n2) Jugar\n3) Repeticiones de aventura\n4) Reportes\n5) Salir", "\nElige tu opción: ",
                      [1, 2, 3, 4, 5, 6], [], {})
         opc = int(opc)
 
@@ -74,12 +74,12 @@ while flg_salir:
         elif opc == 4:
             menu_general = "Reports"
         else:
-            print("Goodbye!")
+            print("Hasta la próxima!")
             flg_salir = False
             menu_general = ""
 
     while menu_general == "Reports":
-        opc = getOpt(show_project_title()+"\n1) Most used answer\n2) Player with more games played\n3) Games played by user\n4) Back", "\nElige tu opción: ",
+        opc = getOpt(show_project_title()+"\n1) Respuestas más usadas\n2) Jugadores con mas partidas jugadas\n3) Partidas jugadas por usuario\n4) Volver", "\nElige tu opción: ",
                      [1, 2, 3, 4], [], {})
         opc = int(opc)
 
@@ -90,7 +90,7 @@ while flg_salir:
                     ("ID AVENTURA - NOMBRE", "ID PASO-DESCRIPCION", "ID RESPUESTA - DESCRIPCION",
                      "NUMERO VECES SELECCIONADA"),
                     (30, 30, 30, 30),
-                    title="Most used answer"
+                    title="Respuestas más usadas"
                 ))
                 for fila in reporte:
                     datos_fila = (
@@ -102,27 +102,26 @@ while flg_salir:
                     print(getFormatedBodyColumns(datos_fila, (28, 28, 28, 28)))
             else:
                 print("No hay datos para mostrar.")
-            input("Continue")
+            input("Continuar")
             limpiar_terminal()
 
         elif opc == 2:
             usuario,partidas = most_played_player()
             print(getHeadeForTableFromTuples(("NOMBRE USUARIO", "PARTIDAS JUGADAS"), (60, 60),
-                                             title="Player with more games played"))
+                                             title="Jugadores con mas partidas jugadas"))
             if usuario is not None:
                 print("{:<60}{:<60}".format(str(usuario), str(partidas)))
             else:
                 print("No se encontraron datos")
-            input("Continue")
+            input("Continuar")
             limpiar_terminal()
         elif opc == 3:
             name = input("Que usuario quieres ver? ")
             if checkUserbdd(name,"hola") == -1:
                 aventuras = GetPlayerAdventureLog(name)
-
                 if aventuras:
                     print(getHeadeForTableFromTuples(("Id_Adventure", "Name", "Date"), (40, 40, 40),
-                                                     title="Games played by "+name))
+                                                     title="Partidas jugadas por"+name))
                     for fila in aventuras:
                         print("{:<40}{:<40}{:<40}".format(
                             str(fila["idadventure"]),
@@ -130,7 +129,7 @@ while flg_salir:
                             str(fila["date"])))
                 else:
                     print("El usuario no ha hecho ninguna aventura")
-                input("Continue")
+                input("Continuar")
             else:
                 input("Usuario no existe")
         else:
@@ -145,8 +144,8 @@ while flg_salir:
     while menu_general == "Replay":
         replayAdventures = getReplayAdventures()
         if not replayAdventures:
-            print("No adventures to replay.")
-            input("Enter to continue")
+            print("No hay aventuras para reproducir.")
+            input("Enter para continuar")
             menu_general = "principal"
             break
         show_relive_adventure()
@@ -161,7 +160,7 @@ while flg_salir:
             (6, 15, 40, 20, 24),"")
             datos = header + "\n"
             datos += getTableFromDict(("Username", "Name", "CharacterName", "date"),(6, 15, 40, 20, 24),page_dict) + "\n"
-            datos += "Which adventure do you want to replay?(+ next | - prev | 0 Go back): " 
+            datos += "Que aventura quieres visualizar?(+ siguiente | - anterior | 0 Volver): " 
             opc = input(datos).strip()
             if opc == "0":
                 menu_general = "principal"
@@ -171,7 +170,7 @@ while flg_salir:
             elif opc.isdigit() and int(opc) in page_dict:
                 idGame = int(opc)
                 game = replayAdventures[idGame]
-                print("You selected the game", idGame)
+                print("Has seleccionado la partida", idGame)
                 print("\n")
                 id_adventure = game["idAdventure"]
                 choices = getChoices(idGame)
@@ -181,8 +180,8 @@ while flg_salir:
                 start = 0
                 continue
             else:
-                print("Invalid option")
-                input("Enter to continue")
+                print("Opción inválida")
+                input("Enter para continuar")
 
     while menu_general == "game_loop":
         # Exportacion de datos que necesitamos para settear la aventura

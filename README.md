@@ -75,6 +75,7 @@ Para ejecutar el proyecto es necesario contar con:
 4. Dentro de la base de datos creamos el usuario que utilizará el programa python para acceder a la base de datos:
    ```sql
    CREATE USER 'pyuser'@'host' IDENTIFIED BY 'contraseña';
+   exit
    ```
 > pyuser --> Usuario que queramos usar para conectar el programa a la base de datos
 
@@ -87,6 +88,12 @@ Para ejecutar el proyecto es necesario contar con:
    sudo mysql -u root < Create_DB.sql
    sudo mysql -u root choose_your_story < Alter_Table.sql
    sudo mysql -u root choose_your_story < Insert_Data.sql
+   ```
+
+6. Le damos permisos al usuario dentro de la base de datos recien creada
+   ```sql
+   GRANT ALL PRIVILEGES ON choose_your_story.* TO 'pyuser'@'localhost';
+   FLUSH PRIVILEGES;
    ```
 
 ---

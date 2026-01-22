@@ -1,11 +1,12 @@
 import pymysql
+
+# Función encargada de inicializar la conexión a la base de datos
 def connect_to_db():
     host = "127.0.0.1"
     port = 3307
     user = 'pyuser'
     password = '1234567890'
     database = 'choose_your_story'
-
     try:
         connection = pymysql.connect(
             host=host,
@@ -20,6 +21,7 @@ def connect_to_db():
         print("Error al conectar a la base de datos:", e)
         return None
 
+# Obtención de los personajes existentes
 def get_characters():
     connection = connect_to_db()
     try:
@@ -38,13 +40,13 @@ def get_characters():
     finally:
         connection.close()
 
+# Obtención de los usuarios
 def get_users():
     connection = connect_to_db()
     try:
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM USERS")
             resultados = cursor.fetchall()
-
         # Formateo personalizado
         users = {}
         for row in resultados:
@@ -56,6 +58,7 @@ def get_users():
     finally:
         connection.close()
 
+# Obtención de los usuarios en formato nombre - id
 def get_user_ids():
     connection = connect_to_db()
     try:
@@ -75,6 +78,7 @@ def get_user_ids():
     finally:
         connection.close()
 
+# Obtención de los personajes por aventura
 def get_adventures_with_chars():
     connection = connect_to_db()
     try:
@@ -94,6 +98,7 @@ def get_adventures_with_chars():
     finally:
         connection.close()
 
+# Obtención de los pasos involucrados en una aventura
 def get_id_bystep_adventure(id_adventure):
     connection = connect_to_db()
     try:
@@ -139,6 +144,7 @@ def get_id_bystep_adventure(id_adventure):
     finally:
         connection.close()
 
+# Inserción de un nuevo usuario en la base de datos
 def insertUser(user,password):
     connection = connect_to_db()
     try:
@@ -151,6 +157,7 @@ def insertUser(user,password):
     finally:
         connection.close()
 
+# Inserción de una nueva partida finalizada en la base de datos
 def insertGame(userID,characterID,adventureID):
     connection = connect_to_db()
     try:
@@ -159,10 +166,11 @@ def insertGame(userID,characterID,adventureID):
             cursor.execute(sql,(userID,characterID,adventureID))
             connection.commit()
     except pymysql.MySQLError as e:
-        print("Error al insertar el usuario:", e)
+        print("Error al insertar los datos:", e)
     finally:
         connection.close()
 
+# Inserción de una elección a la base de datos
 def insertChoice(gameID,stepID,answerID):
     connection = connect_to_db()
     try:
@@ -171,10 +179,12 @@ def insertChoice(gameID,stepID,answerID):
             cursor.execute(sql,(gameID,stepID,answerID))
             connection.commit()
     except pymysql.MySQLError as e:
-        print("Error al insertar el usuario:", e)
+        print("Error al insertar los datos:", e)
     finally:
         connection.close()
+    # Héctor: Se que esta función podría haberse hecho de otra forma mucho más optima para que tardase menos en insertar los datos pero hemos tirado para delante con esto
 
+# Obtener las partidas
 def getIdGames():
     connection = connect_to_db()
     try:
@@ -202,6 +212,7 @@ def getIdGames():
     finally:
         connection.close()
 
+# Obtener el primer paso de una aventura
 def get_first_step_adventure(adventure_id):
     connection = connect_to_db()
     try:
@@ -217,7 +228,8 @@ def get_first_step_adventure(adventure_id):
         print("Error:", e)
     finally:
         connection.close()
-        
+
+# Obtener las respuestas involucradas con un paso
 def get_answers_bystep_adventure(adventure_id_step):
     connection = connect_to_db()
     try:
@@ -236,6 +248,7 @@ def get_answers_bystep_adventure(adventure_id_step):
     finally:
         connection.close()
 
+# Comprobación de credenciales en login
 def checkUserbdd(user,password):
     existingUsers = get_users()
     if user not in existingUsers:
@@ -245,6 +258,7 @@ def checkUserbdd(user,password):
     else:
         return 1
 
+# Jugador con más partidas
 def most_played_player():
     connection = connect_to_db()
     try:
@@ -275,7 +289,7 @@ def most_played_player():
     finally:
         connection.close()
 
-
+# Obtener las aventuras de un jugador
 def GetPlayerAdventureLog(username):
     connection = connect_to_db()
     try:
@@ -311,6 +325,7 @@ def GetPlayerAdventureLog(username):
     finally:
         connection.close()
 
+# Obtención de las respuestas utilizadas
 def GetMostUsedAnswersReport():
     connection = connect_to_db()
     try:
@@ -353,6 +368,7 @@ def GetMostUsedAnswersReport():
     finally:
         connection.close()
 
+# Conseguir las ids de las partidas
 def getIdGames():
     connection = connect_to_db()
     try:
@@ -379,6 +395,7 @@ def getIdGames():
     finally:
         connection.close()
 
+# Obtención de la información de una partida
 def getReplayAdventures():
     connection = connect_to_db()
     try:
@@ -421,6 +438,7 @@ def getReplayAdventures():
     finally:
         connection.close()
 
+# Obtención de las elecciones de una partida
 def getChoices(idGame):
     connection = connect_to_db()
     try:
