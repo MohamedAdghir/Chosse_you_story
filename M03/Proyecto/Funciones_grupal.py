@@ -1,5 +1,3 @@
-import  datetime
-import time
 import os
 from db_manager import *
 
@@ -146,14 +144,11 @@ def getHeadeForTableFromTuples(t_name_columns,t_size_columns,title=""):
     texto += "\n" + "".center(suma,"*")
     return texto
 
-#print(getHeadeForTableFromTuples(("Id", "Username", "Name", "CharacterName", "date"),(6, 15, 35, 20, 25),"")))
-
 # Funcion que crea un header
 def getHeader(text):
     texto = "".center(105,"*") + "\n" + text.center(105,"=") + "\n" + "".center(105,"*")
     return texto
 
-texto = "Narrador: Y entonces, un día, ocurrió algo muy peculiar. Algo que cambiaría para siempre a $NAME. Algo que nunca olvidaría. Llevaba casi una hora sentado en su escritorio cuando se dio cuenta de que no había llegado ni una sola orden al monitor para que él la siguiese. Nadie había aparecido para darle instrucciones, convocar una reunión o siquiera saludarle. En todos sus años en la empresa nunca había ocurrido algo así, ese aislamiento total. Era evidente que algo iba muy mal. Conmocionado, paralizado, $NAME se encontró incapaz de moverse durante un buen rato. Pero cuando recuperó el juicio y los sentidos, se levantó de su escritorio y salió de su oficina."
 def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
     prefijo = margen_derecho * " " + "{}) ".format(id_respuesta)
     sangria = " " * len(prefijo)
@@ -183,20 +178,6 @@ def getFormatedAnswers(id_respuesta, texto, longitud_linea, margen_derecho):
 
     return resultado
 
-#print(getFormatedAnswers(1, texto, 99, 3))
-
-def writeText(texto, retraso_base=0.05):
-    for caracter in texto:
-        print(caracter, end='', flush=True)
-        
-        if caracter in ',;':
-            time.sleep(retraso_base * 8)  # pausa corta
-        elif caracter in '.!?':
-            time.sleep(retraso_base * 12)  # pausa larga
-        else:
-            time.sleep(retraso_base)  # retraso normal
-    print()  # salto de línea al final
-
 def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
     lista = list(dict_of_data)
     resultText = ""
@@ -216,11 +197,6 @@ def getTableFromDict(tuple_of_keys,weigth_of_columns,dict_of_data):
         resultText += texto + "\n"
     return resultText
 
-
-#lista = get_users()
-#usario = "Tester"
-#print(lista)
-
 def user_exist(lista,usuario):
     lista = list(lista)
     if usuario in lista:
@@ -228,11 +204,9 @@ def user_exist(lista,usuario):
     else:
         return False
 
-#print(user_exist(lista,usario))
-
 def getFormatedAdventures():
     adventures = get_adventures_with_chars()
-    body = getHeadeForTableFromTuples(("Id Adventure", "Adventure", "Description"), (15, 22, 68), "Adventures")
+    body = getHeadeForTableFromTuples(("Id Adventure", "Adventure", "Description"), (15, 22, 68), "Adventures") + "\n"
     for idAdventure in adventures:
         texts = [
             str(idAdventure),
@@ -242,7 +216,6 @@ def getFormatedAdventures():
 
         body += getFormatedBodyColumns(texts, lenLines) + "\n"
     return body
-
 
 def replay(idAdventure,choices,characterName,adventureName):
     adventure_steps = get_id_bystep_adventure(idAdventure)
@@ -271,14 +244,11 @@ def replay(idAdventure,choices,characterName,adventureName):
         print("\nYou chose option", answer_id)
         print(getFormatedAnswers(answer_id, chosen_text, 105, 3))
         input("Enter to see the result")
-        #print(getHeader(adventureName))
         resolution = answers[(answer_id, step_id)]["Resolution_Answer"]
         resolution = resolution.replace("$NAME",characterName)
         print(formatText(resolution, 105, "\n"))
         input("Enter to continue")
     show_fin()
-
-#print(getFormatedAdventures())
 
 def ReplayStart(start, page_size, total, option):
     if option == "+":
@@ -318,9 +288,6 @@ def getReplayKeysSortedByDate(replayAdventures):
 
     return keys
 
-
-#replayAdventures = getReplayAdventures()
-#getTableFromDict(("Username", "Name", "CharacterName", "date"),(6, 15, 35, 20, 25),replayAdventures)
 def show_relive_adventure():
     limpiar_terminal()
     print(r"""
@@ -346,7 +313,6 @@ _/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\_
 \\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /
 /_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\_
 """)
-    input("Enter to continue")
 
 
 
@@ -368,7 +334,6 @@ _/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\_
 \\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /\\  /
 /_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\__/_/\\_
 """)
-    input("Enter to continue")
 
 
 

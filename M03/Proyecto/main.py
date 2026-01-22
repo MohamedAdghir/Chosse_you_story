@@ -7,10 +7,9 @@ menu_general = "principal"
 current_user = 0
 userList = get_user_ids()
 
-
 while flg_salir:
     while menu_general == "principal":
-        opc = getOpt(show_project_title()+"1)Login\n2)Create user\n3)Replay Adventure\n4)Reports\n5)Exit","\nElige tu opción:",[1, 2, 3, 4,5],[],{})
+        opc = getOpt(show_project_title()+"1) Login\n2) Create user\n3) Replay Adventure\n4) Reports\n5) Exit","\nElige tu opción: ",[1, 2, 3, 4,5],[],{})
         opc = int(opc)
         
         if opc == 1: # Login
@@ -62,7 +61,7 @@ while flg_salir:
             menu_general = ""
 
     while menu_general == "Play":
-        opc = getOpt("\n1)Logout\n2)Play\n3)Replay Adventure\n4)Reports\n5)Configuración\n6)Exit", "\nElige tu opción:",
+        opc = getOpt(show_project_title()+"\n1) Logout\n2) Play\n3) Replay Adventure\n4) Reports\n5) Exit", "\nElige tu opción: ",
                      [1, 2, 3, 4, 5, 6], [], {})
         opc = int(opc)
 
@@ -74,22 +73,19 @@ while flg_salir:
             menu_general = "Replay"
         elif opc == 4:
             menu_general = "Reports"
-        elif opc == 5:
-            menu_general = "config"
         else:
-            print("Exit")
+            print("Goodbye!")
             flg_salir = False
             menu_general = ""
 
     while menu_general == "Reports":
-        opc = getOpt("\n1)Most used answer\n2)PLayer with more games played\n3)Games played by user\n4)Back", "\nElige tu opción:",
+        opc = getOpt(show_project_title()+"\n1) Most used answer\n2) Player with more games played\n3) Games played by user\n4) Back", "\nElige tu opción: ",
                      [1, 2, 3, 4], [], {})
         opc = int(opc)
-        if opc == 1:
+
+        if opc == 1: # Most used answer
             reporte = GetMostUsedAnswersReport()
-
             if reporte:
-
                 print(getHeadeForTableFromTuples(
                     ("ID AVENTURA - NOMBRE", "ID PASO-DESCRIPCION", "ID RESPUESTA - DESCRIPCION",
                      "NUMERO VECES SELECCIONADA"),
@@ -108,6 +104,7 @@ while flg_salir:
                 print("No hay datos para mostrar.")
             input("Continue")
             limpiar_terminal()
+
         elif opc == 2:
             usuario,partidas = most_played_player()
             print(getHeadeForTableFromTuples(("NOMBRE USUARIO", "PARTIDAS JUGADAS"), (60, 60),
@@ -119,7 +116,7 @@ while flg_salir:
             input("Continue")
             limpiar_terminal()
         elif opc == 3:
-            name = input("What user do you want to see?")
+            name = input("Que usuario quieres ver? ")
             if checkUserbdd(name,"hola") == -1:
                 aventuras = GetPlayerAdventureLog(name)
 
@@ -133,9 +130,9 @@ while flg_salir:
                             str(fila["date"])))
                 else:
                     print("El usuario no ha hecho ninguna aventura")
+                input("Continue")
             else:
                 input("Usuario no existe")
-
         else:
             print("Salir")
             if current_user == 0:
@@ -143,10 +140,8 @@ while flg_salir:
 
             else:
                 menu_general = "Play"
-
-
-        input("Continue")
         limpiar_terminal()
+
     while menu_general == "Replay":
         replayAdventures = getReplayAdventures()
         if not replayAdventures:
@@ -166,7 +161,7 @@ while flg_salir:
             (6, 15, 40, 20, 24),"")
             datos = header + "\n"
             datos += getTableFromDict(("Username", "Name", "CharacterName", "date"),(6, 15, 40, 20, 24),page_dict) + "\n"
-            datos += "Which adventure do you want to replay?(+ next | - prev | 0 Go back): \n" 
+            datos += "Which adventure do you want to replay?(+ next | - prev | 0 Go back): " 
             opc = input(datos).strip()
             if opc == "0":
                 menu_general = "principal"
@@ -188,20 +183,6 @@ while flg_salir:
             else:
                 print("Invalid option")
                 input("Enter to continue")
-
-    while menu_general == "config":
-        opc = getOpt("Velocidad de escritura de los textos:\n1)Instantaneo\n2)Rápido\n3)Normal\n4)Lento\n5)Back", "\nElige tu opción:",
-                     [1, 2, 3, 4, 5], [], {})
-        if opc == 1: # Instantaneo
-            textVel = 0
-        elif opc == 2: # Rapido
-            textVel = 0.025
-        elif opc == 3: # Normal
-            textVel = 0.05
-        elif opc == 4: # Lento
-            textVel = 0.065
-        else:
-            menu_general = "Play"
 
     while menu_general == "game_loop":
         # Exportacion de datos que necesitamos para settear la aventura
@@ -250,7 +231,7 @@ while flg_salir:
             if current_step in final_steps: # Es un final?
                 stepDisplay += formatText(adventure_steps[current_step]["Description"].replace("$NAME",characterSelected),105,"\n")
                 print(stepDisplay)
-                print("Se acabo\n")
+                show_fin()
                 selectedOptions.append((current_step,None))
                 game_finished = True
                 menu_general = "Play"

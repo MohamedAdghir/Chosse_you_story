@@ -38,7 +38,6 @@ def get_characters():
     finally:
         connection.close()
 
-#print(get_characters())
 def get_users():
     connection = connect_to_db()
     try:
@@ -76,9 +75,6 @@ def get_user_ids():
     finally:
         connection.close()
 
-#print(get_user_ids())
-
-
 def get_adventures_with_chars():
     connection = connect_to_db()
     try:
@@ -97,8 +93,6 @@ def get_adventures_with_chars():
         return None
     finally:
         connection.close()
-
-#print(get_adventures_with_chars())
 
 def get_id_bystep_adventure(id_adventure):
     connection = connect_to_db()
@@ -208,8 +202,6 @@ def getIdGames():
     finally:
         connection.close()
 
-#insertUser("jeffrey","Phreth!1")
-
 def get_first_step_adventure(adventure_id):
     connection = connect_to_db()
     try:
@@ -225,8 +217,6 @@ def get_first_step_adventure(adventure_id):
         print("Error:", e)
     finally:
         connection.close()
-
-#print(get_first_step_adventure(1))
         
 def get_answers_bystep_adventure(adventure_id_step):
     connection = connect_to_db()
@@ -246,7 +236,6 @@ def get_answers_bystep_adventure(adventure_id_step):
     finally:
         connection.close()
 
-#print(get_answers_bystep_adventure(1))
 def checkUserbdd(user,password):
     existingUsers = get_users()
     if user not in existingUsers:
@@ -390,8 +379,6 @@ def getIdGames():
     finally:
         connection.close()
 
-#print(getIdGames())
-
 def getReplayAdventures():
     connection = connect_to_db()
     try:
@@ -434,10 +421,6 @@ def getReplayAdventures():
     finally:
         connection.close()
 
-#print(getReplayAdventures())
-
-
-
 def getChoices(idGame):
     connection = connect_to_db()
     try:
@@ -465,6 +448,3 @@ def getChoices(idGame):
         return ()
     finally:
         connection.close()
-
-#print(getChoices(1))
-
