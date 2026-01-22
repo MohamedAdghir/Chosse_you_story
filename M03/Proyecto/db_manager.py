@@ -184,34 +184,6 @@ def insertChoice(gameID,stepID,answerID):
         connection.close()
     # Héctor: Se que esta función podría haberse hecho de otra forma mucho más optima para que tardase menos en insertar los datos pero hemos tirado para delante con esto
 
-# Obtener las partidas
-def getIdGames():
-    connection = connect_to_db()
-    try:
-        with connection.cursor() as cursor:
-            sql = "SELECT id_game FROM GAME"
-            cursor.execute(sql)
-            resultado = cursor.fetchall()
-
-            ids = []
-            for fila in resultado:
-                ids.append(fila["id_game"])
-            n=len(ids)
-            for i in range(n):
-                cambios = False
-                for j in range (0,n - i - 1):
-                    if ids[j] > ids[j+1]:
-                        ids[j],ids[j+1] = ids[j+1],ids[j]
-                        cambios = True
-                if not cambios:
-                    break
-            return tuple(ids)
-    except pymysql.MySQLError as e:
-        print("Error:", e)
-        return ()
-    finally:
-        connection.close()
-
 # Obtener el primer paso de una aventura
 def get_first_step_adventure(adventure_id):
     connection = connect_to_db()
